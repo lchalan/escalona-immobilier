@@ -1,0 +1,62 @@
+---
+/**
+ * Footer Component
+ * Pied de page avec liens et infos légales
+ */
+
+const currentYear = new Date().getFullYear();
+---
+
+<footer class="site-footer">
+  <div class="container">
+    <div class="site-footer__grid">
+      
+      <div class="site-footer__section">
+        <h4>Escalona Immobilier</h4>
+        <p class="text-small text-muted">
+          Agence immobilière spécialisée dans les transactions à Lyon 2ème arrondissement.
+          Membre du réseau Laforêt.
+        </p>
+      </div>
+      
+      <div class="site-footer__section">
+        <h4>Lyon 2ème</h4>
+        <ul>
+          <li><a href="/lyon-2-arrondissement/quartiers/bellecour/">Bellecour</a></li>
+          <li><a href="/lyon-2-arrondissement/quartiers/ainay/">Ainay</a></li>
+          <li><a href="/lyon-2-arrondissement/quartiers/confluence/">Confluence</a></li>
+          <li><a href="/lyon-2-arrondissement/quartiers/presquile/">Presqu'île</a></li>
+          <li><a href="/lyon-2-arrondissement/quartiers/perrache/">Perrache</a></li>
+        </ul>
+      </div>
+      
+      <div class="site-footer__section">
+        <h4>Services</h4>
+        <ul>
+          <li><a href="/acheter/">Acheter</a></li>
+          <li><a href="/vendre/">Vendre</a></li>
+          <li><a href="/vendre/estimation-gratuite/">Estimation gratuite</a></li>
+          <li><a href="/marche-immobilier/">Marché immobilier</a></li>
+        </ul>
+      </div>
+      
+      <div class="site-footer__section">
+        <h4>Contact</h4>
+        <ul>
+          <li>Lyon 2ème arrondissement</li>
+          <li><a href="/contact/">Nous contacter</a></li>
+        </ul>
+      </div>
+      
+    </div>
+    
+    <div class="site-footer__bottom">
+      <p>
+        © {currentYear} Escalona Immobilier - Tous droits réservés |
+        <a href="/mentions-legales/">Mentions légales</a> |
+        <a href="/politique-confidentialite/">Politique de confidentialité</a> |
+        <a href="/plan-site/">Plan du site</a>
+      </p>
+    </div>
+  </div>
+</footer>

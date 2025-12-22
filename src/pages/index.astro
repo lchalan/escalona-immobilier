@@ -1,0 +1,282 @@
+---
+/**
+ * PAGE D'ACCUEIL - Escalona Immobilier
+ * Optimisée SEO/GEO pour Lyon 2ème arrondissement
+ */
+import BaseLayout from '@layouts/BaseLayout.astro';
+import KeyInfo from '@components/KeyInfo.astro';
+import FAQ from '@components/FAQ.astro';
+import CTABox from '@components/CTABox.astro';
+
+const pageTitle = "Agence Immobilière Lyon 2ème Arrondissement";
+const pageDescription = "Escalona Immobilier, votre agence spécialisée dans la transaction immobilière à Lyon 2ème arrondissement (Presqu'île, Bellecour, Ainay, Confluence). Achat, vente, estimation gratuite. Membre du réseau Laforêt.";
+
+// Données marché pour extraction LLM
+const keyInfoItems = [
+  { label: "Prix moyen Lyon 2", value: "6 200 €/m²", trend: "stable" as const },
+  { label: "Évolution 2024", value: "+1.8%" },
+  { label: "Délai de vente", value: "45 jours" },
+  { label: "Zone", value: "Presqu'île" }
+];
+
+// FAQ accueil - Questions générales pour GEO
+const homeFaq = [
+  {
+    question: "Quel est le prix moyen au m² dans le 2ème arrondissement de Lyon ?",
+    answer: "Le prix moyen au m² dans le 2ème arrondissement de Lyon est d'environ 6 200 € en décembre 2024. Ce prix varie selon les quartiers : Bellecour et Ainay affichent des prix autour de 6 500-7 000 €/m², tandis que Perrache est plus accessible à 5 200-5 800 €/m². La Confluence, quartier moderne, se situe autour de 5 500-6 000 €/m²."
+  },
+  {
+    question: "Quels sont les meilleurs quartiers pour acheter dans Lyon 2ème ?",
+    answer: "Les meilleurs quartiers de Lyon 2ème dépendent de votre profil. Bellecour et Ainay sont prisés pour leur prestige et leur architecture haussmannienne, idéaux pour les familles aisées. La Confluence attire les jeunes actifs avec ses logements modernes et ses espaces verts. Perrache offre un bon rapport qualité-prix avec la proximité de la gare."
+  },
+  {
+    question: "Comment estimer la valeur de mon bien à Lyon 2ème ?",
+    answer: "Pour estimer votre bien à Lyon 2ème, nous prenons en compte : l'emplacement précis (quartier, rue, étage), la surface et l'agencement, l'état général et les travaux éventuels, les prestations (balcon, parking, cave), et les transactions récentes comparables. Nous proposons une estimation gratuite et personnalisée basée sur notre connaissance approfondie du marché local."
+  },
+  {
+    question: "Pourquoi choisir Escalona Immobilier pour vendre à Lyon 2ème ?",
+    answer: "Escalona Immobilier est spécialisé exclusivement sur le 2ème arrondissement de Lyon. Cette expertise locale nous permet de connaître chaque rue, chaque immeuble, et d'estimer au plus juste la valeur de votre bien. Membre du réseau Laforêt, nous bénéficions également d'une visibilité nationale et d'outils performants pour vendre rapidement et au meilleur prix."
+  }
+];
+
+// Schema pour la page d'accueil
+const homeSchema = {
+  "@context": "https://schema.org",
+  "@type": "WebPage",
+  "name": pageTitle,
+  "description": pageDescription,
+  "isPartOf": {
+    "@type": "WebSite",
+    "name": "Escalona Immobilier",
+    "url": "https://escalona-immobilier.fr"
+  }
+};
+---
+
+<BaseLayout 
+  title={pageTitle}
+  description={pageDescription}
+  schema={homeSchema}
+>
+  <!-- HERO SECTION -->
+  <section class="hero section">
+    <h1>Votre Expert Immobilier à Lyon 2ème Arrondissement</h1>
+    
+    <p class="hero__subtitle">
+      Spécialiste de la transaction immobilière sur la Presqu'île : 
+      Bellecour, Ainay, Confluence, Perrache et Cordeliers.
+      <br>Membre du réseau <strong>Laforêt</strong>.
+    </p>
+    
+    <KeyInfo items={keyInfoItems} title="Le marché immobilier Lyon 2 aujourd'hui" />
+    
+    <div class="hero__actions">
+      <a href="/acheter/" class="btn btn--primary">Acheter</a>
+      <a href="/vendre/estimation-gratuite/" class="btn">Estimer mon bien</a>
+    </div>
+  </section>
+  
+  <!-- PRÉSENTATION LYON 2 -->
+  <section class="section">
+    <h2>L'immobilier dans le 2ème arrondissement de Lyon</h2>
+    
+    <p>
+      Le <strong>2ème arrondissement de Lyon</strong>, situé au cœur de la Presqu'île entre Rhône et Saône, 
+      est l'un des secteurs les plus prisés de l'agglomération lyonnaise. Il regroupe des quartiers 
+      emblématiques comme <strong>Bellecour</strong>, <strong>Ainay</strong>, <strong>la Confluence</strong> 
+      et <strong>Perrache</strong>.
+    </p>
+    
+    <p>
+      Ce secteur offre un cadre de vie exceptionnel avec son patrimoine architectural remarquable, 
+      ses commerces de proximité, ses écoles réputées et son accessibilité grâce au métro A et D, 
+      au tramway T1 et à la gare de Perrache.
+    </p>
+    
+    <p>
+      <a href="/lyon-2-arrondissement/">Découvrir le guide complet du 2ème arrondissement →</a>
+    </p>
+  </section>
+  
+  <!-- QUARTIERS -->
+  <section class="section">
+    <h2>Nos quartiers d'expertise</h2>
+    
+    <div class="grid grid--3">
+      <div class="card">
+        <h3 class="card__title"><a href="/lyon-2-arrondissement/quartiers/bellecour/">Bellecour</a></h3>
+        <p class="card__meta">~6 800 €/m² • Prestige • Central</p>
+        <p>Cœur historique de Lyon, place emblématique, immeubles haussmanniens.</p>
+      </div>
+      
+      <div class="card">
+        <h3 class="card__title"><a href="/lyon-2-arrondissement/quartiers/ainay/">Ainay</a></h3>
+        <p class="card__meta">~6 500 €/m² • Familial • Calme</p>
+        <p>Quartier résidentiel prisé, rues piétonnes, marché quotidien.</p>
+      </div>
+      
+      <div class="card">
+        <h3 class="card__title"><a href="/lyon-2-arrondissement/quartiers/confluence/">Confluence</a></h3>
+        <p class="card__meta">~5 700 €/m² • Moderne • Dynamique</p>
+        <p>Quartier contemporain, éco-quartier, musée des Confluences.</p>
+      </div>
+      
+      <div class="card">
+        <h3 class="card__title"><a href="/lyon-2-arrondissement/quartiers/presquile/">Presqu'île Centre</a></h3>
+        <p class="card__meta">~6 200 €/m² • Commercial • Vivant</p>
+        <p>Artère commerciale, République-Cordeliers, vie nocturne.</p>
+      </div>
+      
+      <div class="card">
+        <h3 class="card__title"><a href="/lyon-2-arrondissement/quartiers/perrache/">Perrache</a></h3>
+        <p class="card__meta">~5 400 €/m² • Accessible • Transport</p>
+        <p>Proximité gare, bon rapport qualité-prix, en transformation.</p>
+      </div>
+      
+      <div class="card">
+        <h3 class="card__title"><a href="/lyon-2-arrondissement/quartiers/cordeliers/">Cordeliers</a></h3>
+        <p class="card__meta">~6 300 €/m² • Historique • Central</p>
+        <p>Quartier historique, place des Jacobins, immeubles de caractère.</p>
+      </div>
+    </div>
+  </section>
+  
+  <!-- SERVICES -->
+  <section class="section">
+    <h2>Nos services immobiliers</h2>
+    
+    <div class="grid grid--3">
+      <div class="card">
+        <h3 class="card__title"><a href="/acheter/">Acheter</a></h3>
+        <p>Trouvez votre appartement ou maison à Lyon 2ème. Accompagnement personnalisé de la recherche à la signature.</p>
+        <p><a href="/acheter/">Voir les biens à vendre →</a></p>
+      </div>
+      
+      <div class="card">
+        <h3 class="card__title"><a href="/vendre/">Vendre</a></h3>
+        <p>Vendez au meilleur prix grâce à notre expertise locale et la puissance du réseau Laforêt.</p>
+        <p><a href="/vendre/estimation-gratuite/">Estimation gratuite →</a></p>
+      </div>
+      
+      <div class="card">
+        <h3 class="card__title"><a href="/marche-immobilier/">Marché</a></h3>
+        <p>Suivez l'évolution des prix et les tendances du marché immobilier Lyon 2ème.</p>
+        <p><a href="/marche-immobilier/">Voir les analyses →</a></p>
+      </div>
+    </div>
+  </section>
+  
+  <!-- POURQUOI NOUS -->
+  <section class="section section--alt">
+    <h2>Pourquoi choisir Escalona Immobilier ?</h2>
+    
+    <div class="grid grid--2">
+      <div>
+        <h3>Expertise locale exclusive</h3>
+        <p>
+          Nous travaillons <strong>uniquement sur le 2ème arrondissement de Lyon</strong>. 
+          Cette spécialisation nous permet de connaître chaque rue, chaque immeuble, 
+          et d'évaluer avec précision la valeur de chaque bien.
+        </p>
+      </div>
+      
+      <div>
+        <h3>Réseau Laforêt</h3>
+        <p>
+          Membre du réseau <strong>Laforêt</strong>, nous bénéficions d'outils performants, 
+          d'une visibilité nationale sur plus de 700 agences, et d'une formation continue 
+          aux meilleures pratiques du métier.
+        </p>
+      </div>
+      
+      <div>
+        <h3>Transparence et conseil</h3>
+        <p>
+          Nous vous accompagnons avec des <strong>conseils honnêtes et personnalisés</strong>. 
+          Notre objectif : vous aider à prendre la meilleure décision, pas juste conclure une vente.
+        </p>
+      </div>
+      
+      <div>
+        <h3>Connaissance du terrain</h3>
+        <p>
+          Prix au m² par rue, historique des copropriétés, projets urbains à venir... 
+          Notre <strong>connaissance approfondie du terrain</strong> fait la différence.
+        </p>
+      </div>
+    </div>
+  </section>
+  
+  <!-- DERNIÈRES ANALYSES -->
+  <section class="section">
+    <h2>Dernières analyses du marché</h2>
+    
+    <div class="grid grid--2">
+      <div class="card">
+        <h3 class="card__title"><a href="/marche-immobilier/rapports/2024-12/">Rapport Décembre 2024</a></h3>
+        <p class="card__meta">Publié le 15/12/2024</p>
+        <p>Analyse complète du marché immobilier Lyon 2ème en décembre 2024. Prix, volumes, tendances.</p>
+      </div>
+      
+      <div class="card">
+        <h3 class="card__title"><a href="/marche-immobilier/tendances-2025/">Tendances 2025</a></h3>
+        <p class="card__meta">Publié le 01/12/2024</p>
+        <p>Nos prévisions pour le marché immobilier lyonnais en 2025. Opportunités et vigilances.</p>
+      </div>
+    </div>
+    
+    <p><a href="/marche-immobilier/">Voir toutes les analyses →</a></p>
+  </section>
+  
+  <!-- FAQ -->
+  <section class="section">
+    <FAQ items={homeFaq} title="Questions fréquentes" />
+    <p><a href="/faq/">Voir toutes les questions →</a></p>
+  </section>
+  
+  <!-- CTA -->
+  <CTABox 
+    title="Prêt à concrétiser votre projet immobilier ?"
+    text="Que vous souhaitiez acheter, vendre ou simplement vous informer sur le marché, notre équipe est à votre écoute."
+    buttonText="Nous contacter"
+    buttonHref="/contact/"
+    variant="primary"
+  />
+</BaseLayout>
+
+<style>
+  .hero {
+    text-align: center;
+    padding: var(--space-2xl) 0;
+  }
+  
+  .hero h1 {
+    font-size: 2.5rem;
+    margin-bottom: var(--space-md);
+  }
+  
+  .hero__subtitle {
+    font-size: 1.125rem;
+    color: var(--color-text-light);
+    max-width: 600px;
+    margin: 0 auto var(--space-xl);
+  }
+  
+  .hero__actions {
+    display: flex;
+    gap: var(--space-md);
+    justify-content: center;
+    margin-top: var(--space-xl);
+  }
+  
+  @media (max-width: 768px) {
+    .hero h1 {
+      font-size: 1.75rem;
+    }
+    
+    .hero__actions {
+      flex-direction: column;
+      align-items: center;
+    }
+  }
+</style>

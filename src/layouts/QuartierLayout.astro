@@ -1,0 +1,172 @@
+---
+/**
+ * QuartierLayout
+ * Layout pour les pages de quartier
+ * Template optimisé SEO/GEO pour le contenu local
+ */
+import BaseLayout from './BaseLayout.astro';
+import Breadcrumbs from '@components/Breadcrumbs.astro';
+import KeyInfo from '@components/KeyInfo.astro';
+import PriceTable from '@components/PriceTable.astro';
+import FAQ from '@components/FAQ.astro';
+import CTABox from '@components/CTABox.astro';
+
+interface Props {
+  // SEO
+  title: string;
+  description: string;
+  
+  // Quartier info
+  quartierName: string;
+  quartierSlug: string;
+  
+  // Key info
+  prixMoyen: number;
+  evolution: string;
+  typeBiens: string;
+  ambiance: string;
+  
+  // Prix détaillés
+  prixParType: Array<{
+    type: string;
+    prixMoyen: number;
+    fourchetteBasse: number;
+    fourchetteHaute: number;
+    evolution?: string;
+  }>;
+  
+  // FAQ
+  faqItems: Array<{
+    question: string;
+    answer: string;
+  }>;
+  
+  // Dates
+  lastUpdate: string;
+}
+
+const { 
+  title,
+  description,
+  quartierName,
+  quartierSlug,
+  prixMoyen,
+  evolution,
+  typeBiens,
+  ambiance,
+  prixParType,
+  faqItems,
+  lastUpdate
+} = Astro.props;
+
+const breadcrumbs = [
+  { label: 'Accueil', href: '/' },
+  { label: 'Lyon 2ème', href: '/lyon-2-arrondissement/' },
+  { label: 'Quartiers', href: '/lyon-2-arrondissement/quartiers/' },
+  { label: quartierName }
+];
+
+const keyInfoItems = [
+  { label: 'Prix moyen/m²', value: `${new Intl.NumberFormat('fr-FR').format(prixMoyen)} €`, trend: evolution.startsWith('+') ? 'up' as const : evolution.startsWith('-') ? 'down' as const : 'stable' as const },
+  { label: 'Évolution 12 mois', value: evolution },
+  { label: 'Type de biens', value: typeBiens },
+  { label: 'Ambiance', value: ambiance }
+];
+
+// Schema Place pour le quartier
+const placeSchema = {
+  "@context": "https://schema.org",
+  "@type": "Place",
+  "name": `Quartier ${quartierName}`,
+  "description": description,
+  "containedInPlace": {
+    "@type": "AdministrativeArea",
+    "name": "Lyon 2ème arrondissement",
+    "containedInPlace": {
+      "@type": "City",
+      "name": "Lyon"
+    }
+  }
+};
+---
+
+<BaseLayout 
+  title={title}
+  description={description}
+  schema={placeSchema}
+>
+  <Breadcrumbs items={breadcrumbs} />
+  
+  <article class="quartier-page">
+    <!-- SECTION 1: Hero + Résumé (extraction LLM) -->
+    <header class="section">
+      <h1>Immobilier {quartierName} - Lyon 2ème Arrondissement</h1>
+      
+      <KeyInfo items={keyInfoItems} title="En résumé" />
+      
+      <p class="text-muted text-small">Dernière mise à jour : {lastUpdate}</p>
+    </header>
+    
+    <!-- SECTION 2: Présentation (slot pour contenu personnalisé) -->
+    <section class="section">
+      <h2>Présentation du quartier {quartierName}</h2>
+      <slot name="presentation" />
+    </section>
+    
+    <!-- SECTION 3: Prix immobiliers -->
+    <section class="section">
+      <h2>Prix immobilier {quartierName} en {new Date().getFullYear()}</h2>
+      
+      <PriceTable 
+        rows={prixParType}
+        source="Données DVF et analyse locale"
+        date={lastUpdate}
+      />
+      
+      <slot name="analyse-prix" />
+    </section>
+    
+    <!-- SECTION 4: Vie de quartier -->
+    <section class="section">
+      <h2>Vivre dans le quartier {quartierName}</h2>
+      <slot name="vie-quartier" />
+    </section>
+    
+    <!-- SECTION 5: Avantages/Inconvénients -->
+    <section class="section">
+      <h2>Avantages et inconvénients de {quartierName}</h2>
+      <slot name="avantages-inconvenients" />
+    </section>
+    
+    <!-- SECTION 6: Biens disponibles -->
+    <section class="section">
+      <h2>Appartements à vendre à {quartierName}</h2>
+      <slot name="biens-disponibles" />
+      <p>
+        <a href={`/acheter/appartements/?quartier=${quartierSlug}`} class="btn">
+          Voir tous les biens à {quartierName}
+        </a>
+      </p>
+    </section>
+    
+    <!-- SECTION 7: FAQ -->
+    <section class="section">
+      <FAQ items={faqItems} title={`Questions fréquentes sur ${quartierName}`} />
+    </section>
+    
+    <!-- SECTION 8: CTA -->
+    <CTABox 
+      title={`Vous cherchez un bien à ${quartierName} ?`}
+      text="Contactez notre équipe spécialisée sur le 2ème arrondissement de Lyon."
+      buttonText="Nous contacter"
+      buttonHref="/contact/"
+      variant="primary"
+    />
+    
+    <!-- SECTION 9: Articles liés -->
+    <section class="section">
+      <h2>Articles sur {quartierName}</h2>
+      <slot name="articles-lies" />
+    </section>
+  </article>
+</BaseLayout>

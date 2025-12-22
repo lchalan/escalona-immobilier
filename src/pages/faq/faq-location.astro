@@ -1,0 +1,180 @@
+---
+/**
+ * PAGE FAQ LOCATION
+ * Questions fréquentes sur la location
+ */
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Breadcrumbs from '@components/Breadcrumbs.astro';
+
+const pageTitle = "FAQ Location Lyon 2ème : Questions Propriétaires et Locataires";
+const pageDescription = "Toutes vos questions sur la location à Lyon 2ème arrondissement : loyers, garanties, gestion locative, bail, charges. Réponses d'experts.";
+
+const breadcrumbs = [
+  { label: 'Accueil', href: '/' },
+  { label: 'FAQ', href: '/faq/' },
+  { label: 'Questions Location' }
+];
+
+const faqItems = [
+  {
+    question: "Quel est le loyer moyen à Lyon 2ème arrondissement ?",
+    answer: "Le loyer moyen charges comprises en 2024 est d'environ 17-20€/m² dans le 2ème arrondissement. Un studio de 25m² se loue 450-550€, un T2 de 45m² entre 750-950€, un T3 de 70m² entre 1100-1400€. Les quartiers Bellecour et Ainay sont les plus chers, Confluence et Perrache légèrement moins."
+  },
+  {
+    question: "Lyon est-elle en zone d'encadrement des loyers ?",
+    answer: "Oui, depuis novembre 2021, Lyon métropole applique l'encadrement des loyers. Le loyer ne peut pas dépasser un plafond fixé par quartier, type de logement et époque de construction. Un complément de loyer est possible pour les biens présentant des caractéristiques exceptionnelles. Vérifiez les plafonds sur le site de la métropole."
+  },
+  {
+    question: "Quelles garanties demander à un locataire ?",
+    answer: "Vous pouvez demander : bulletins de salaire des 3 derniers mois, avis d'imposition, contrat de travail, justificatif d'identité, justificatif de domicile actuel. Le locataire doit gagner environ 3x le loyer. Un garant peut être demandé. La caution Visale (garantie d'État) est une alternative aux garants traditionnels."
+  },
+  {
+    question: "Qu'est-ce que la garantie Visale ?",
+    answer: "Visale est une caution gratuite fournie par Action Logement. Elle garantit au propriétaire le paiement du loyer et des dégradations en cas de défaillance du locataire. Elle est accessible aux jeunes de moins de 30 ans, aux salariés en mobilité, et sous conditions aux autres locataires. Gratuite et sans frais."
+  },
+  {
+    question: "Faut-il louer vide ou meublé ?",
+    answer: "Location vide : bail de 3 ans, préavis 3 mois (1 mois en zone tendue comme Lyon), loyer généralement plus bas, revenus fonciers. Location meublée : bail de 1 an (9 mois étudiants), préavis 1 mois, loyer plus élevé (+15-20%), fiscalité BIC souvent plus avantageuse (LMNP). Le choix dépend de votre situation fiscale et du profil de locataires visé."
+  },
+  {
+    question: "Comment déclarer mes revenus locatifs ?",
+    answer: "Location vide : revenus fonciers (micro-foncier si <15 000€/an ou régime réel). Location meublée : BIC (micro-BIC si <77 700€/an ou régime réel LMNP). Le LMNP au réel permet d'amortir le bien et souvent de ne pas payer d'impôts pendant plusieurs années. Consultez un comptable pour optimiser."
+  },
+  {
+    question: "Qu'est-ce que la gestion locative et combien ça coûte ?",
+    answer: "La gestion locative consiste à déléguer à une agence : recherche de locataires, rédaction du bail, états des lieux, encaissement des loyers, suivi des travaux, relation avec le locataire. Le coût varie entre 6% et 10% des loyers perçus selon les prestations. Cela représente 50-100€/mois pour un T2."
+  },
+  {
+    question: "Comment gérer un impayé de loyer ?",
+    answer: "Procédure recommandée : 1) Relance amiable dès le 1er retard, 2) Mise en demeure par courrier recommandé, 3) Commandement de payer par huissier, 4) Assignation au tribunal si persistance. La garantie Visale ou une GLI (Garantie Loyers Impayés) vous protège. La procédure d'expulsion est longue (12-18 mois minimum)."
+  },
+  {
+    question: "Quand puis-je donner congé à mon locataire ?",
+    answer: "Uniquement à l'échéance du bail, avec préavis de 6 mois. Motifs légaux : vente du bien (avec offre prioritaire au locataire), reprise pour habiter (vous ou famille proche), motif légitime et sérieux (impayés répétés). Les locataires de plus de 65 ans avec faibles revenus bénéficient d'une protection renforcée."
+  },
+  {
+    question: "Quels travaux puis-je déduire de mes revenus locatifs ?",
+    answer: "En régime réel : travaux d'entretien et réparation (peinture, plomberie, électricité), travaux d'amélioration (isolation, chauffage), intérêts d'emprunt, assurances, frais de gestion, taxe foncière. Les travaux de construction ou agrandissement ne sont pas déductibles mais amortissables en LMNP."
+  },
+  {
+    question: "Comment calculer la rentabilité locative ?",
+    answer: "Rentabilité brute = (loyer annuel / prix d'achat) x 100. Exemple : loyer 800€/mois, prix 300 000€ → (9600/300000) x 100 = 3,2% brut. Rentabilité nette = (loyer - charges - taxe foncière - travaux) / (prix + frais d'achat). Dans le 2ème, la rentabilité est modérée (2-4%) mais la valorisation du patrimoine est forte."
+  },
+  {
+    question: "Que doit contenir l'état des lieux ?",
+    answer: "L'état des lieux doit décrire précisément chaque pièce : revêtements (sols, murs, plafonds), équipements (électroménager, sanitaires), menuiseries, compteurs. Photos recommandées. Un état des lieux d'entrée détaillé vous protège pour l'état des lieux de sortie. Il doit être contradictoire (signé par les 2 parties)."
+  }
+];
+
+// Schema.org FAQPage
+const schemaFaq = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqItems.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+};
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <Breadcrumbs items={breadcrumbs} />
+  
+  <script type="application/ld+json" set:html={JSON.stringify(schemaFaq)} />
+  
+  <article>
+    <header class="section">
+      <h1>FAQ Location Lyon 2ème</h1>
+      <p>
+        Réponses à toutes vos questions sur la location dans le 2ème arrondissement de Lyon, 
+        que vous soyez propriétaire bailleur ou locataire.
+      </p>
+    </header>
+    
+    <section class="section">
+      <div class="faq-list">
+        {faqItems.map(faq => (
+          <details class="faq-item">
+            <summary class="faq-question">{faq.question}</summary>
+            <div class="faq-answer">
+              <p>{faq.answer}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </section>
+    
+    <section class="section related-links">
+      <h2>Pages Connexes</h2>
+      <ul>
+        <li><a href="/louer/">Biens à louer Lyon 2ème</a></li>
+        <li><a href="/investir/">Investir dans l'immobilier locatif</a></li>
+        <li><a href="/marche-immobilier/">Prix du marché</a></li>
+        <li><a href="/contact/">Nous contacter</a></li>
+      </ul>
+    </section>
+  </article>
+</BaseLayout>
+
+<style>
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+  
+  .faq-item {
+    border: 1px solid var(--color-border);
+    background: var(--color-bg-alt);
+  }
+  
+  .faq-question {
+    padding: var(--space-lg);
+    cursor: pointer;
+    font-weight: 600;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .faq-question::after {
+    content: '+';
+    font-size: 1.5rem;
+    font-weight: 300;
+    flex-shrink: 0;
+    margin-left: var(--space-md);
+  }
+  
+  details[open] .faq-question::after {
+    content: '−';
+  }
+  
+  .faq-answer {
+    padding: 0 var(--space-lg) var(--space-lg);
+    border-top: 1px solid var(--color-border);
+  }
+  
+  .related-links ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+    list-style: none;
+    padding: 0;
+  }
+  
+  .related-links a {
+    display: inline-block;
+    padding: var(--space-sm) var(--space-md);
+    border: 1px solid var(--color-border);
+    text-decoration: none;
+  }
+  
+  .related-links a:hover {
+    background: var(--color-bg-alt);
+  }
+</style>

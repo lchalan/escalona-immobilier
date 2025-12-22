@@ -1,0 +1,193 @@
+---
+/**
+ * PAGE FAQ VENTE
+ * Questions fréquentes sur la vente immobilière
+ */
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Breadcrumbs from '@components/Breadcrumbs.astro';
+
+const pageTitle = "FAQ Vendre son Bien Lyon 2ème : Questions et Réponses";
+const pageDescription = "Toutes vos questions sur la vente d'un appartement à Lyon 2ème : estimation, documents, délais, fiscalité, mandat. Réponses d'experts locaux.";
+
+const breadcrumbs = [
+  { label: 'Accueil', href: '/' },
+  { label: 'FAQ', href: '/faq/' },
+  { label: 'Questions Vente' }
+];
+
+const faqItems = [
+  {
+    question: "Comment estimer correctement le prix de mon appartement ?",
+    answer: "Une estimation fiable repose sur : 1) L'analyse des ventes comparables récentes (DVF), 2) L'emplacement précis (quartier, étage, exposition, vue), 3) L'état du bien et le DPE, 4) Les prestations (parking, cave, extérieur), 5) L'état de la copropriété. Les estimations en ligne donnent un ordre de grandeur, mais seule une visite par un professionnel du quartier garantit une estimation précise."
+  },
+  {
+    question: "Quels documents dois-je fournir pour vendre ?",
+    answer: "Documents obligatoires : titre de propriété, diagnostics immobiliers (DPE, amiante, électricité, gaz, etc.), 3 derniers PV d'AG, règlement de copropriété, état daté, carnet d'entretien de l'immeuble, montant des charges, taxe foncière. Nous vous accompagnons pour rassembler tous ces documents."
+  },
+  {
+    question: "Combien de temps faut-il pour vendre dans le 2ème arrondissement ?",
+    answer: "En moyenne, un bien au bon prix se vend en 2 à 3 mois dans le 2ème arrondissement. Les studios et T2 partent plus vite (1-2 mois), les grands appartements familiaux peuvent demander 3-4 mois. Un bien surévalué peut rester plusieurs mois sans offre. Le positionnement prix initial est crucial."
+  },
+  {
+    question: "Quelle différence entre mandat exclusif et mandat simple ?",
+    answer: "Mandat exclusif : une seule agence vend votre bien, avec engagement mutuel (meilleure implication, moyens marketing importants, un seul interlocuteur). Mandat simple : plusieurs agences peuvent vendre, mais chacune investit moins. Statistiquement, les mandats exclusifs se vendent plus vite et au meilleur prix."
+  },
+  {
+    question: "Quels sont les honoraires d'agence pour une vente ?",
+    answer: "Les honoraires varient généralement entre 3% et 5% du prix de vente TTC. Ils peuvent être à la charge du vendeur ou de l'acquéreur selon le mandat. Chez Escalona Immobilier, nous affichons des honoraires transparents et justifiés par notre expertise locale et nos services inclus."
+  },
+  {
+    question: "Dois-je payer une plus-value en vendant mon appartement ?",
+    answer: "La résidence principale est exonérée de plus-value. Pour une résidence secondaire ou un investissement locatif, la plus-value est taxée à 36,2% (19% IR + 17,2% PS), avec abattements progressifs. Exonération totale après 22 ans (IR) et 30 ans (PS). Des exonérations existent (1ère vente pour achat résidence principale, etc.)."
+  },
+  {
+    question: "Puis-je vendre si mon locataire est encore en place ?",
+    answer: "Oui, vous pouvez vendre occupé (bien loué) ou donner congé pour vente au locataire. Le congé doit respecter un préavis de 6 mois avant échéance du bail, avec offre de vente prioritaire au locataire. Vendre occupé décote le prix de 10-20% mais évite le risque de vacance."
+  },
+  {
+    question: "Faut-il faire des travaux avant de vendre ?",
+    answer: "Pas toujours nécessaire. Le home staging léger (peinture, désencombrement, petites réparations) a un bon retour sur investissement. Les gros travaux ne se rentabilisent pas toujours. En revanche, un DPE très mauvais (F-G) impacte fortement le prix et le délai de vente : améliorer le DPE peut être rentable."
+  },
+  {
+    question: "Comment se passent les visites ?",
+    answer: "Nous organisons les visites selon vos disponibilités. Nous pré-qualifions chaque acquéreur (projet, budget, financement) avant visite pour éviter les curieux. Nous préparons un dossier de présentation complet. Après chaque visite, nous vous faisons un retour détaillé."
+  },
+  {
+    question: "Que se passe-t-il si l'acheteur se rétracte ?",
+    answer: "Pendant les 10 jours suivant le compromis, l'acheteur peut se rétracter sans motif ni pénalité. Passé ce délai, s'il se rétracte hors conditions suspensives, vous conservez le dépôt de garantie (5-10% du prix). Le bien peut être remis en vente immédiatement."
+  },
+  {
+    question: "Dois-je vider l'appartement avant la vente ?",
+    answer: "Pour les visites, un appartement désencombré se vend mieux. Lors de la signature chez le notaire, le bien doit être libéré de ses occupants et meubles (sauf vente meublée négociée). Prévoyez le déménagement quelques jours avant la signature."
+  },
+  {
+    question: "Vaut-il mieux vendre avant d'acheter ?",
+    answer: "Cela dépend de votre situation financière. Vendre avant = sécurité financière mais risque de se retrouver sans logement ou en location temporaire. Acheter avant = risque de deux crédits. Le prêt relais peut être une solution. Nous pouvons vous conseiller selon votre situation."
+  }
+];
+
+// Schema.org FAQPage
+const schemaFaq = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqItems.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+};
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <Breadcrumbs items={breadcrumbs} />
+  
+  <script type="application/ld+json" set:html={JSON.stringify(schemaFaq)} />
+  
+  <article>
+    <header class="section">
+      <h1>FAQ Vendre son Bien Lyon 2ème</h1>
+      <p>
+        Toutes les réponses à vos questions sur la vente de votre appartement 
+        ou maison dans le 2ème arrondissement de Lyon.
+      </p>
+    </header>
+    
+    <section class="section">
+      <div class="faq-list">
+        {faqItems.map(faq => (
+          <details class="faq-item">
+            <summary class="faq-question">{faq.question}</summary>
+            <div class="faq-answer">
+              <p>{faq.answer}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </section>
+    
+    <section class="section cta-box">
+      <h2>Prêt à vendre ?</h2>
+      <p>Obtenez une estimation gratuite et sans engagement de votre bien.</p>
+      <a href="/vendre/estimation-gratuite/" class="btn btn--primary">Demander une estimation</a>
+    </section>
+    
+    <section class="section related-links">
+      <h2>Pages Connexes</h2>
+      <ul>
+        <li><a href="/vendre/">Vendre avec Escalona Immobilier</a></li>
+        <li><a href="/vendre/estimation-gratuite/">Estimation gratuite</a></li>
+        <li><a href="/marche-immobilier/">Prix du marché Lyon 2ème</a></li>
+        <li><a href="/faq/faq-achat/">FAQ Acheter un bien</a></li>
+      </ul>
+    </section>
+  </article>
+</BaseLayout>
+
+<style>
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+  
+  .faq-item {
+    border: 1px solid var(--color-border);
+    background: var(--color-bg-alt);
+  }
+  
+  .faq-question {
+    padding: var(--space-lg);
+    cursor: pointer;
+    font-weight: 600;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .faq-question::after {
+    content: '+';
+    font-size: 1.5rem;
+    font-weight: 300;
+    flex-shrink: 0;
+    margin-left: var(--space-md);
+  }
+  
+  details[open] .faq-question::after {
+    content: '−';
+  }
+  
+  .faq-answer {
+    padding: 0 var(--space-lg) var(--space-lg);
+    border-top: 1px solid var(--color-border);
+  }
+  
+  .cta-box {
+    text-align: center;
+    background: var(--color-bg-alt);
+    padding: var(--space-xl);
+    border: 1px solid var(--color-border);
+  }
+  
+  .related-links ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+    list-style: none;
+    padding: 0;
+  }
+  
+  .related-links a {
+    display: inline-block;
+    padding: var(--space-sm) var(--space-md);
+    border: 1px solid var(--color-border);
+    text-decoration: none;
+  }
+  
+  .related-links a:hover {
+    background: var(--color-bg-alt);
+  }
+</style>

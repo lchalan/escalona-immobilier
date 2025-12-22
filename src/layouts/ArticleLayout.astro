@@ -1,0 +1,183 @@
+---
+/**
+ * ArticleLayout
+ * Layout pour les articles de blog
+ * Optimisé E-E-A-T avec auteur, date, mise à jour
+ */
+import BaseLayout from './BaseLayout.astro';
+import Breadcrumbs from '@components/Breadcrumbs.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  author: string;
+  authorBio?: string;
+  publishedDate: string;
+  modifiedDate?: string;
+  category: string;
+  categorySlug: string;
+  readingTime?: string;
+  image?: string;
+}
+
+const {
+  title,
+  description,
+  author,
+  authorBio,
+  publishedDate,
+  modifiedDate,
+  category,
+  categorySlug,
+  readingTime = '5 min',
+  image
+} = Astro.props;
+
+const breadcrumbs = [
+  { label: 'Accueil', href: '/' },
+  { label: 'Actualités', href: '/actualites/' },
+  { label: category, href: `/actualites/${categorySlug}/` },
+  { label: title }
+];
+
+// Schema Article
+const articleSchema = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": title,
+  "description": description,
+  "image": image || '/images/og-default.jpg',
+  "author": {
+    "@type": "Person",
+    "name": author
+  },
+  "publisher": {
+    "@type": "Organization",
+    "name": "Escalona Immobilier",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://escalona-immobilier.fr/images/logo.png"
+    }
+  },
+  "datePublished": publishedDate,
+  "dateModified": modifiedDate || publishedDate,
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": Astro.url.href
+  }
+};
+---
+
+<BaseLayout 
+  title={title}
+  description={description}
+  type="article"
+  publishedTime={publishedDate}
+  modifiedTime={modifiedDate}
+  author={author}
+  image={image}
+  schema={articleSchema}
+>
+  <Breadcrumbs items={breadcrumbs} />
+  
+  <article class="article">
+    <header class="article-header">
+      <div class="article-category">
+        <a href={`/actualites/${categorySlug}/`}>{category}</a>
+      </div>
+      
+      <h1>{title}</h1>
+      
+      <div class="article-meta">
+        <span>Par <strong>{author}</strong></span>
+        <span> • </span>
+        <time datetime={publishedDate}>
+          {new Date(publishedDate).toLocaleDateString('fr-FR', { 
+            year: 'numeric', 
+            month: 'long', 
+            day: 'numeric' 
+          })}
+        </time>
+        {modifiedDate && modifiedDate !== publishedDate && (
+          <>
+            <span> • </span>
+            <span>Mis à jour le {new Date(modifiedDate).toLocaleDateString('fr-FR', { 
+              year: 'numeric', 
+              month: 'long', 
+              day: 'numeric' 
+            })}</span>
+          </>
+        )}
+        <span> • </span>
+        <span>{readingTime} de lecture</span>
+      </div>
+    </header>
+    
+    <!-- Table des matières (optionnelle, via slot) -->
+    <slot name="toc" />
+    
+    <!-- Contenu principal -->
+    <div class="article-content">
+      <slot />
+    </div>
+    
+    <!-- FAQ liée à l'article -->
+    <slot name="faq" />
+    
+    <!-- À propos de l'auteur -->
+    <aside class="author-box section--alt">
+      <h3>À propos de l'auteur</h3>
+      <div class="author-info">
+        <div class="author-avatar">[Photo]</div>
+        <div class="author-details">
+          <strong>{author}</strong>
+          {authorBio && <p class="text-small text-muted">{authorBio}</p>}
+        </div>
+      </div>
+    </aside>
+    
+    <!-- Articles connexes -->
+    <section class="section">
+      <h2>Articles connexes</h2>
+      <slot name="related" />
+    </section>
+  </article>
+</BaseLayout>
+
+<style>
+  .article-header {
+    margin-bottom: var(--space-xl);
+  }
+  
+  .article-category a {
+    font-size: 0.875rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  
+  .article-content {
+    max-width: var(--container-narrow);
+  }
+  
+  .author-box {
+    margin: var(--space-xl) 0;
+  }
+  
+  .author-info {
+    display: flex;
+    gap: var(--space-lg);
+    align-items: flex-start;
+  }
+  
+  .author-avatar {
+    width: 80px;
+    height: 80px;
+    background: var(--color-bg-alt);
+    border: 1px solid var(--color-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--color-text-muted);
+    font-size: 0.75rem;
+  }
+</style>

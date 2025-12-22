@@ -1,0 +1,66 @@
+---
+/**
+ * PropertyCard Component
+ * Carte d'un bien immobilier pour les listes
+ */
+
+interface Props {
+  title: string;
+  price: number;
+  pricePerMeter?: number;
+  surface: number;
+  rooms: number;
+  quartier: string;
+  href: string;
+  image?: string;
+  dpe?: string;
+}
+
+const { 
+  title, 
+  price, 
+  pricePerMeter,
+  surface, 
+  rooms, 
+  quartier, 
+  href, 
+  image,
+  dpe 
+} = Astro.props;
+
+const formattedPrice = new Intl.NumberFormat('fr-FR').format(price);
+const formattedPricePerMeter = pricePerMeter 
+  ? new Intl.NumberFormat('fr-FR').format(pricePerMeter)
+  : new Intl.NumberFormat('fr-FR').format(Math.round(price / surface));
+---
+
+<article class="property-card">
+  <div class="property-card__image">
+    {image ? (
+      <img src={image} alt={title} loading="lazy" />
+    ) : (
+      <span>[Image du bien]</span>
+    )}
+  </div>
+  
+  <div class="property-card__content">
+    <h3 class="property-card__title">
+      <a href={href}>{title}</a>
+    </h3>
+    
+    <div class="property-card__price">
+      {formattedPrice} €
+    </div>
+    
+    <div class="property-card__details">
+      <span>{surface} m²</span> •
+      <span>{rooms} pièces</span> •
+      <span>{quartier}</span>
+      {dpe && <span> • DPE {dpe}</span>}
+    </div>
+    
+    <div class="property-card__meta">
+      {formattedPricePerMeter} €/m²
+    </div>
+  </div>
+</article>

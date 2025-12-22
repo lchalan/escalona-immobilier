@@ -1,0 +1,233 @@
+---
+/**
+ * PAGE VENDRE - Index
+ * Hub pour les vendeurs
+ */
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Breadcrumbs from '@components/Breadcrumbs.astro';
+import KeyInfo from '@components/KeyInfo.astro';
+import FAQ from '@components/FAQ.astro';
+import CTABox from '@components/CTABox.astro';
+
+const pageTitle = "Vendre son Appartement à Lyon 2ème : Estimation & Accompagnement";
+const pageDescription = "Vendez votre appartement à Lyon 2ème au meilleur prix. Estimation gratuite, conseils d'experts, accompagnement complet. Escalona Immobilier, spécialiste du 2ème arrondissement.";
+
+const breadcrumbs = [
+  { label: 'Accueil', href: '/' },
+  { label: 'Vendre' }
+];
+
+const keyInfoItems = [
+  { label: "Délai moyen de vente", value: "45 jours" },
+  { label: "Prix moyen obtenu", value: "98% du prix" },
+  { label: "Biens vendus 2024", value: "87" },
+  { label: "Satisfaction clients", value: "4.8/5" }
+];
+
+const faqVente = [
+  {
+    question: "Comment estimer mon appartement à Lyon 2ème ?",
+    answer: "Pour estimer votre appartement à Lyon 2ème, nous analysons plusieurs critères : l'emplacement précis (quartier, rue, étage), la surface et l'agencement, l'état général et les travaux éventuels, les prestations (balcon, parking, cave), le DPE, et les transactions récentes comparables dans le secteur. Notre estimation gratuite inclut un rapport détaillé et une recommandation de prix de mise en vente."
+  },
+  {
+    question: "Combien de temps pour vendre un appartement à Lyon 2ème ?",
+    answer: "Le délai moyen de vente dans le 2ème arrondissement de Lyon est de 45 jours pour un bien au prix du marché. Ce délai varie selon le quartier (30 jours à Bellecour, 60 jours à Perrache), le type de bien (les T2/T3 partent plus vite), et le prix. Un bien surestimé peut rester plusieurs mois sur le marché, d'où l'importance d'une estimation juste dès le départ."
+  },
+  {
+    question: "Quels sont les frais pour vendre un appartement ?",
+    answer: "Les frais pour vendre un appartement comprennent : les honoraires d'agence (4-5% du prix de vente, à la charge du vendeur ou de l'acquéreur selon le mandat), les diagnostics obligatoires (200-500€), et éventuellement l'impôt sur la plus-value si ce n'est pas votre résidence principale. Les frais de notaire sont à la charge de l'acquéreur. Nous pouvons vous fournir une estimation précise des frais."
+  },
+  {
+    question: "Quels diagnostics sont obligatoires pour vendre ?",
+    answer: "Les diagnostics obligatoires pour vendre à Lyon comprennent : le DPE (diagnostic de performance énergétique), l'état des risques naturels et technologiques, le diagnostic amiante (si immeuble avant 1997), le diagnostic plomb (si immeuble avant 1949), l'état de l'installation électrique et gaz (si > 15 ans), et le métrage Carrez. Nous vous accompagnons dans la réalisation de ces diagnostics."
+  }
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <Breadcrumbs items={breadcrumbs} />
+  
+  <article>
+    <header class="section">
+      <h1>Vendre votre Appartement à Lyon 2ème</h1>
+      <p>
+        Confiez la vente de votre bien à des experts du 2ème arrondissement. 
+        Estimation gratuite, stratégie de commercialisation sur-mesure, 
+        accompagnement jusqu'à la signature.
+      </p>
+      
+      <KeyInfo items={keyInfoItems} title="Nos résultats" />
+    </header>
+    
+    <!-- CTA ESTIMATION -->
+    <section class="section">
+      <div class="cta-box">
+        <h2>Estimation gratuite de votre bien</h2>
+        <p>
+          Recevez une estimation précise basée sur notre connaissance approfondie 
+          du marché Lyon 2ème. Sans engagement.
+        </p>
+        <a href="/vendre/estimation-gratuite/" class="btn btn--primary">Estimer mon bien</a>
+      </div>
+    </section>
+    
+    <!-- NOTRE MÉTHODE -->
+    <section class="section">
+      <h2>Notre méthode de vente</h2>
+      
+      <div class="steps">
+        <div class="step">
+          <div class="step__number">1</div>
+          <div>
+            <h3>Estimation précise</h3>
+            <p>Visite de votre bien, analyse du marché, rapport d'estimation détaillé avec recommandation de prix.</p>
+          </div>
+        </div>
+        
+        <div class="step">
+          <div class="step__number">2</div>
+          <div>
+            <h3>Mise en valeur</h3>
+            <p>Photos professionnelles, rédaction d'annonce optimisée, conseils de home staging si nécessaire.</p>
+          </div>
+        </div>
+        
+        <div class="step">
+          <div class="step__number">3</div>
+          <div>
+            <h3>Commercialisation</h3>
+            <p>Diffusion sur les portails majeurs, notre fichier acquéreurs, réseau Laforêt (700 agences).</p>
+          </div>
+        </div>
+        
+        <div class="step">
+          <div class="step__number">4</div>
+          <div>
+            <h3>Visites qualifiées</h3>
+            <p>Nous pré-qualifions chaque acquéreur (budget, financement) avant d'organiser les visites.</p>
+          </div>
+        </div>
+        
+        <div class="step">
+          <div class="step__number">5</div>
+          <div>
+            <h3>Négociation & Closing</h3>
+            <p>Nous négocions la meilleure offre et vous accompagnons jusqu'à la signature chez le notaire.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    
+    <!-- POURQUOI NOUS -->
+    <section class="section section--alt">
+      <h2>Pourquoi vendre avec Escalona Immobilier ?</h2>
+      
+      <div class="grid grid--2">
+        <div>
+          <h3>Expertise locale exclusive</h3>
+          <p>
+            Nous travaillons uniquement sur le 2ème arrondissement. Cette spécialisation 
+            nous permet de connaître la valeur réelle de chaque rue, chaque immeuble.
+          </p>
+        </div>
+        
+        <div>
+          <h3>Réseau Laforêt</h3>
+          <p>
+            Votre bien est visible sur le réseau de 700 agences Laforêt en France, 
+            multipliant les contacts acquéreurs potentiels.
+          </p>
+        </div>
+        
+        <div>
+          <h3>Acquéreurs qualifiés</h3>
+          <p>
+            Notre fichier acquéreurs est constamment mis à jour. Nous connaissons 
+            les acheteurs actifs et leur capacité de financement.
+          </p>
+        </div>
+        
+        <div>
+          <h3>Transparence totale</h3>
+          <p>
+            Compte-rendu après chaque visite, reporting régulier sur les actions 
+            menées, conseils honnêtes même si cela signifie baisser le prix.
+          </p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- GUIDES VENDEUR -->
+    <section class="section">
+      <h2>Nos guides pour vendre</h2>
+      
+      <div class="grid grid--2">
+        <div class="card">
+          <h3><a href="/vendre/estimation-gratuite/">Estimation gratuite</a></h3>
+          <p>Obtenez une estimation précise de votre bien en 48h.</p>
+        </div>
+        <div class="card">
+          <h3><a href="/vendre/preparer-vente/">Préparer sa vente</a></h3>
+          <p>Les étapes et conseils pour préparer votre bien avant la mise en vente.</p>
+        </div>
+        <div class="card">
+          <h3><a href="/vendre/diagnostics-obligatoires/">Diagnostics obligatoires</a></h3>
+          <p>Liste complète des diagnostics requis et comment les obtenir.</p>
+        </div>
+        <div class="card">
+          <h3><a href="/vendre/mandat-vente/">Les types de mandats</a></h3>
+          <p>Mandat simple ou exclusif : comprendre les différences.</p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- FAQ -->
+    <section class="section">
+      <FAQ items={faqVente} title="Questions fréquentes sur la vente" />
+      <p><a href="/faq/faq-vente/">Voir toutes les questions sur la vente →</a></p>
+    </section>
+    
+    <!-- CTA FINAL -->
+    <CTABox 
+      title="Prêt à vendre ?"
+      text="Contactez-nous pour une estimation gratuite et sans engagement de votre bien."
+      buttonText="Demander une estimation"
+      buttonHref="/vendre/estimation-gratuite/"
+      variant="primary"
+    />
+  </article>
+</BaseLayout>
+
+<style>
+  .steps {
+    display: grid;
+    gap: var(--space-lg);
+  }
+  
+  .step {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    gap: var(--space-md);
+    align-items: start;
+  }
+  
+  .step__number {
+    width: 50px;
+    height: 50px;
+    border: 2px solid var(--color-text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  .step h3 {
+    margin-bottom: var(--space-xs);
+  }
+  
+  .step p {
+    margin: 0;
+    color: var(--color-text-light);
+  }
+</style>

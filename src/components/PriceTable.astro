@@ -1,0 +1,70 @@
+---
+/**
+ * PriceTable Component
+ * Tableau des prix au m² par type de bien
+ * Format idéal pour extraction LLM
+ */
+
+interface PriceRow {
+  type: string;
+  prixMoyen: number;
+  fourchetteBasse: number;
+  fourchetteHaute: number;
+  evolution?: string;
+}
+
+interface Props {
+  title?: string;
+  rows: PriceRow[];
+  source?: string;
+  date?: string;
+}
+
+const { title, rows, source, date } = Astro.props;
+
+const formatPrice = (price: number) => 
+  new Intl.NumberFormat('fr-FR').format(price);
+---
+
+<div class="price-table-wrapper">
+  {title && <h3>{title}</h3>}
+  
+  <table class="price-table">
+    <thead>
+      <tr>
+        <th>Type de bien</th>
+        <th>Prix moyen/m²</th>
+        <th>Fourchette</th>
+        {rows[0]?.evolution && <th>Évolution</th>}
+      </tr>
+    </thead>
+    <tbody>
+      {rows.map((row) => (
+        <tr>
+          <td>{row.type}</td>
+          <td><strong>{formatPrice(row.prixMoyen)} €</strong></td>
+          <td>{formatPrice(row.fourchetteBasse)} - {formatPrice(row.fourchetteHaute)} €</td>
+          {row.evolution && <td>{row.evolution}</td>}
+        </tr>
+      ))}
+    </tbody>
+  </table>
+  
+  {(source || date) && (
+    <p class="price-table__source text-small text-muted">
+      {source && <span>Source : {source}</span>}
+      {source && date && <span> • </span>}
+      {date && <span>Mis à jour : {date}</span>}
+    </p>
+  )}
+</div>
+
+<style>
+  .price-table-wrapper {
+    margin-bottom: var(--space-xl);
+  }
+  
+  .price-table__source {
+    margin-top: var(--space-sm);
+  }
+</style>

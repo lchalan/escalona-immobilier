@@ -1,0 +1,53 @@
+---
+/**
+ * Header Component
+ * Navigation principale du site
+ */
+
+interface Props {
+  currentPath?: string;
+}
+
+const { currentPath = '' } = Astro.props;
+
+const navItems = [
+  { href: '/', label: 'Accueil' },
+  { href: '/lyon-2-arrondissement/', label: 'Lyon 2ème' },
+  { href: '/acheter/', label: 'Acheter' },
+  { href: '/vendre/', label: 'Vendre' },
+  { href: '/marche-immobilier/', label: 'Marché' },
+  { href: '/guides/', label: 'Guides' },
+  { href: '/faq/', label: 'FAQ' },
+  { href: '/contact/', label: 'Contact' },
+];
+
+function isActive(href: string, current: string): boolean {
+  if (href === '/') return current === '/';
+  return current.startsWith(href);
+}
+---
+
+<header class="site-header">
+  <div class="container">
+    <div class="site-header__inner">
+      <a href="/" class="site-logo">
+        ESCALONA IMMOBILIER
+      </a>
+      
+      <nav class="main-nav" aria-label="Navigation principale">
+        <ul>
+          {navItems.map((item) => (
+            <li>
+              <a 
+                href={item.href}
+                aria-current={isActive(item.href, currentPath) ? 'page' : undefined}
+              >
+                {item.label}
+              </a>
+            </li>
+          ))}
+        </ul>
+      </nav>
+    </div>
+  </div>
+</header>

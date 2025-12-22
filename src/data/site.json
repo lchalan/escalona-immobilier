@@ -1,0 +1,28 @@
+{
+  "agence": {
+    "nom": "Escalona Immobilier",
+    "slogan": "Votre expert immobilier Lyon 2ème arrondissement",
+    "description": "Agence immobilière spécialisée dans le 2ème arrondissement de Lyon.",
+    "adresse": {
+      "rue": "[À compléter]",
+      "codePostal": "69002",
+      "ville": "Lyon",
+      "pays": "France"
+    },
+    "contact": {
+      "telephone": "[À compléter]",
+      "email": "[À compléter]",
+      "siteWeb": "https://escalona-immobilier.fr"
+    },
+    "horaires": {
+      "lundiVendredi": "9h00 - 19h00",
+      "samedi": "10h00 - 18h00",
+      "dimanche": "Fermé"
+    }
+  },
+  "legal": {
+    "raisonSociale": "[À compléter]",
+    "siret": "[À compléter]",
+    "reseau": "Laforêt"
+  }
+}

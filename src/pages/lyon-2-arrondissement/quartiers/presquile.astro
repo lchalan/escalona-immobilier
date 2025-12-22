@@ -1,0 +1,186 @@
+---
+/**
+ * PAGE QUARTIER PRESQU'ÎLE CENTRE
+ */
+import QuartierLayout from '@layouts/QuartierLayout.astro';
+import PropertyCard from '@components/PropertyCard.astro';
+
+const quartierData = {
+  title: "Immobilier Presqu'île Centre Lyon 2 : Prix, Biens à Vendre & Guide 2025",
+  description: "Découvrez le quartier Presqu'île Centre à Lyon 2ème : prix au m² actualisés (6 200€), vie commerçante animée, appartements de caractère. Expert immobilier local.",
+  quartierName: "Presqu'île Centre",
+  quartierSlug: "presquile",
+  prixMoyen: 6200,
+  evolution: "+1.5%",
+  typeBiens: "Haussmannien / Mixte",
+  ambiance: "Animé / Commercial",
+  prixParType: [
+    { type: "Studio (< 30m²)", prixMoyen: 6600, fourchetteBasse: 5800, fourchetteHaute: 7300, evolution: "+1.8%" },
+    { type: "T2 (30-50m²)", prixMoyen: 6300, fourchetteBasse: 5500, fourchetteHaute: 7000, evolution: "+1.6%" },
+    { type: "T3 (50-75m²)", prixMoyen: 6100, fourchetteBasse: 5300, fourchetteHaute: 6800, evolution: "+1.4%" },
+    { type: "T4+ (> 75m²)", prixMoyen: 5900, fourchetteBasse: 5100, fourchetteHaute: 6700, evolution: "+1.2%" }
+  ],
+  faqItems: [
+    {
+      question: "Quel est le prix moyen au m² dans la Presqu'île Centre Lyon ?",
+      answer: "Le prix moyen au m² dans la Presqu'île Centre est de 6 200 € en janvier 2025. Ce secteur, qui englobe la rue de la République et ses alentours, présente des prix homogènes avec des variations selon l'étage, l'état du bien et la proximité des axes bruyants. Les studios et T2 sont particulièrement demandés pour l'investissement locatif."
+    },
+    {
+      question: "Comment est la vie dans la Presqu'île Centre ?",
+      answer: "La vie dans la Presqu'île Centre est très animée. C'est le cœur commercial de Lyon avec la rue de la République, les Halles de Lyon Paul Bocuse, de nombreux restaurants et une vie nocturne active. Idéal pour ceux qui aiment être au cœur de l'action, moins adapté aux familles recherchant le calme. Tout est accessible à pied."
+    },
+    {
+      question: "La Presqu'île Centre est-elle adaptée pour habiter ?",
+      answer: "Habiter dans la Presqu'île Centre convient aux personnes appréciant l'ultra-centralité et l'animation urbaine : jeunes actifs, couples sans enfants, investisseurs. Les appartements sur cour ou dans les rues secondaires offrent plus de calme. Les familles préfèrent généralement Ainay ou Bellecour, plus résidentiels."
+    },
+    {
+      question: "Quel est le potentiel locatif dans la Presqu'île Centre ?",
+      answer: "Le potentiel locatif de la Presqu'île Centre est excellent. La demande est constante (étudiants, jeunes actifs, touristes), la vacance locative quasi nulle. Les studios et T2 se louent très facilement. Le rendement brut moyen est de 3,5 à 4%. La location meublée et saisonnière peut offrir des rendements supérieurs mais attention à la réglementation."
+    }
+  ],
+  lastUpdate: "Janvier 2025"
+};
+---
+
+<QuartierLayout {...quartierData}>
+  
+  <Fragment slot="presentation">
+    <p>
+      La <strong>Presqu'île Centre</strong> désigne le cœur commercial et animé du 2ème arrondissement, 
+      articulé autour de la <strong>rue de la République</strong> et de la <strong>rue Victor Hugo</strong>. 
+      C'est le poumon économique et commerçant de Lyon, où se concentrent boutiques, restaurants et vie urbaine.
+    </p>
+    
+    <h3>Situation géographique</h3>
+    <p>
+      Ce secteur s'étend entre la place Bellecour au sud et la place des Terreaux au nord 
+      (limite avec le 1er arrondissement), englobant les rues commerçantes principales. 
+      C'est le passage obligé de tous les Lyonnais et visiteurs.
+    </p>
+    
+    <h3>Histoire et patrimoine</h3>
+    <p>
+      La rue de la République, percée au XIXème siècle sur le modèle haussmannien, est devenue 
+      l'artère principale de Lyon. Les immeubles qui la bordent présentent une architecture 
+      classique avec commerces en rez-de-chaussée et logements aux étages. Les <strong>Halles de Lyon 
+      Paul Bocuse</strong>, temple de la gastronomie, sont emblématiques du quartier.
+    </p>
+    
+    <h3>Ambiance et population</h3>
+    <p>
+      Population <strong>variée et cosmopolite</strong> : beaucoup de locataires, investisseurs, 
+      locations courte durée. L'ambiance est urbaine, animée jour et nuit, avec un flux constant 
+      de passants. Moins de vie de quartier que dans les secteurs résidentiels.
+    </p>
+  </Fragment>
+  
+  <Fragment slot="analyse-prix">
+    <p>
+      <strong>Notre analyse :</strong> Les prix dans la Presqu'île Centre sont stables, légèrement 
+      inférieurs à Bellecour en raison de l'animation et du bruit. Les appartements sur cour 
+      ou en étage élevé avec double vitrage se vendent mieux. Le marché est porté par les 
+      investisseurs cherchant du rendement locatif.
+    </p>
+  </Fragment>
+  
+  <Fragment slot="vie-quartier">
+    <h3>Transports</h3>
+    <ul>
+      <li><strong>Métro A</strong> : stations Bellecour, Cordeliers</li>
+      <li><strong>Métro D</strong> : station Bellecour</li>
+      <li><strong>Bus</strong> : nombreuses lignes</li>
+      <li><strong>À pied</strong> : tout le centre accessible</li>
+    </ul>
+    
+    <h3>Commerces et gastronomie</h3>
+    <ul>
+      <li><strong>Rue de la République</strong> : enseignes nationales et internationales</li>
+      <li><strong>Halles de Lyon Paul Bocuse</strong> : gastronomie lyonnaise</li>
+      <li><strong>Rue Mercière</strong> : restaurants (attention, zone touristique)</li>
+      <li><strong>Passage de l'Argue</strong> : galerie commerçante couverte</li>
+    </ul>
+    
+    <h3>Culture et loisirs</h3>
+    <ul>
+      <li><strong>Opéra de Lyon</strong> : à la limite nord</li>
+      <li><strong>Cinémas</strong> : UGC, Pathé</li>
+      <li><strong>Théâtres</strong> : Les Célestins</li>
+      <li><strong>Vie nocturne</strong> : bars, clubs</li>
+    </ul>
+    
+    <h3>Services</h3>
+    <p>
+      Tous les services à portée de main : banques, poste, pharmacies, médecins. 
+      Mairie du 2ème arrondissement accessible.
+    </p>
+  </Fragment>
+  
+  <Fragment slot="avantages-inconvenients">
+    <div class="grid grid--2">
+      <div>
+        <h3>✅ Avantages</h3>
+        <ul>
+          <li>Ultra-centralité, tout à pied</li>
+          <li>Excellente desserte transport</li>
+          <li>Commerces et restaurants sans fin</li>
+          <li>Fort potentiel locatif</li>
+          <li>Liquidité à la revente</li>
+          <li>Vie urbaine intense</li>
+          <li>Patrimoine architectural</li>
+        </ul>
+      </div>
+      <div>
+        <h3>⚠️ Inconvénients</h3>
+        <ul>
+          <li>Bruit et animation constants</li>
+          <li>Peu adapté aux familles</li>
+          <li>Manque d'espaces verts</li>
+          <li>Appartements parfois sombres (RDC, 1er)</li>
+          <li>Stationnement quasi impossible</li>
+          <li>Tourisme de masse certains week-ends</li>
+        </ul>
+      </div>
+    </div>
+  </Fragment>
+  
+  <Fragment slot="biens-disponibles">
+    <div class="grid grid--2">
+      <PropertyCard 
+        title="T2 40m² - Rue de la République"
+        price={265000}
+        surface={40}
+        rooms={2}
+        quartier="Presqu'île"
+        href="/acheter/appartements/t2-presquile-republique/"
+        dpe="D"
+      />
+      <PropertyCard 
+        title="Studio 22m² - Proche Halles"
+        price={155000}
+        surface={22}
+        rooms={1}
+        quartier="Presqu'île"
+        href="/acheter/appartements/studio-presquile-halles/"
+        dpe="E"
+      />
+    </div>
+  </Fragment>
+  
+  <Fragment slot="articles-lies">
+    <div class="grid grid--3">
+      <div class="card">
+        <h4 class="card__title"><a href="/actualites/investir-presquile/">Investir dans la Presqu'île</a></h4>
+        <p class="card__meta">12/12/2024</p>
+      </div>
+      <div class="card">
+        <h4 class="card__title"><a href="/actualites/halles-bocuse-guide/">Les Halles Paul Bocuse : guide</a></h4>
+        <p class="card__meta">20/11/2024</p>
+      </div>
+      <div class="card">
+        <h4 class="card__title"><a href="/guides/location-meublee-lyon/">Guide location meublée Lyon</a></h4>
+        <p class="card__meta">Guide</p>
+      </div>
+    </div>
+  </Fragment>
+  
+</QuartierLayout>

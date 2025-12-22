@@ -1,0 +1,265 @@
+---
+/**
+ * PAGE FAQ - HUB
+ * Page centrale des questions fréquentes - Optimisée GEO
+ */
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Breadcrumbs from '@components/Breadcrumbs.astro';
+
+const pageTitle = "FAQ Immobilier Lyon 2ème : Toutes vos Questions Répondues";
+const pageDescription = "Trouvez les réponses à toutes vos questions sur l'immobilier à Lyon 2ème arrondissement : achat, vente, location, prix, quartiers. FAQ complète par nos experts locaux.";
+
+const breadcrumbs = [
+  { label: 'Accueil', href: '/' },
+  { label: 'FAQ' }
+];
+
+const faqCategories = [
+  {
+    title: "Questions sur l'Achat",
+    slug: "faq-achat",
+    icon: "🏠",
+    questions: [
+      "Quel budget pour acheter dans le 2ème arrondissement ?",
+      "Quels sont les frais d'acquisition à prévoir ?",
+      "Combien de temps pour acheter un appartement ?",
+      "Comment financer son achat ?"
+    ]
+  },
+  {
+    title: "Questions sur la Vente",
+    slug: "faq-vente",
+    icon: "📋",
+    questions: [
+      "Comment estimer mon bien ?",
+      "Quels documents pour vendre ?",
+      "Combien de temps pour vendre ?",
+      "Vaut-il mieux vendre avant d'acheter ?"
+    ]
+  },
+  {
+    title: "Questions sur la Location",
+    slug: "faq-location",
+    icon: "🔑",
+    questions: [
+      "Quel loyer pour un appartement dans le 2ème ?",
+      "Quelles garanties demandées aux locataires ?",
+      "Faut-il meubler son logement ?",
+      "Comment gérer les impayés ?"
+    ]
+  },
+  {
+    title: "Questions sur Lyon 2ème",
+    slug: "faq-lyon-2",
+    icon: "📍",
+    questions: [
+      "Quel est le quartier le plus cher ?",
+      "Où investir dans le 2ème ?",
+      "Lyon 2ème est-il bien desservi ?",
+      "Quels sont les projets urbains ?"
+    ]
+  }
+];
+
+// FAQ générale mise en avant
+const faqGenerale = [
+  {
+    question: "Quels sont les prix immobiliers dans le 2ème arrondissement de Lyon ?",
+    answer: "En 2024, le prix moyen au m² dans le 2ème arrondissement de Lyon varie entre 5 000€ et 9 000€ selon le quartier. Bellecour et Ainay sont les secteurs les plus prisés (7 500-9 000€/m²), tandis que Perrache offre des prix plus accessibles (5 000-6 500€/m²). Confluence, quartier moderne, se situe autour de 5 500-7 000€/m²."
+  },
+  {
+    question: "Pourquoi choisir le 2ème arrondissement pour habiter à Lyon ?",
+    answer: "Le 2ème arrondissement de Lyon offre un cadre de vie exceptionnel au cœur de la Presqu'île : patrimoine historique classé UNESCO, commerces de proximité, excellente desserte en transports (métro A, gare Perrache, tramway), espaces verts le long des quais, écoles réputées et vie culturelle riche. C'est l'arrondissement le plus central et le plus recherché de Lyon."
+  },
+  {
+    question: "Quels sont les différents quartiers du 2ème arrondissement ?",
+    answer: "Le 2ème arrondissement de Lyon compte 6 quartiers principaux : Bellecour (place centrale, commerces haut de gamme), Ainay (ancien quartier bourgeois, architecture 19ème), Confluence (éco-quartier moderne au sud), Perrache (proche gare, en renouvellement), Presqu'île Centre (axe piéton République-Cordeliers) et Cordeliers (au nord, dynamique et commerçant)."
+  },
+  {
+    question: "Comment se passe un achat immobilier à Lyon ?",
+    answer: "L'achat immobilier à Lyon suit ces étapes : 1) Définition du budget et du financement, 2) Recherche du bien et visites, 3) Offre d'achat acceptée, 4) Signature du compromis de vente avec dépôt de garantie (5-10%), 5) Délai de rétractation de 10 jours, 6) Obtention du prêt (45-60 jours), 7) Signature de l'acte authentique chez le notaire. Durée totale : 3 à 4 mois."
+  },
+  {
+    question: "Quels sont les frais lors d'un achat immobilier ?",
+    answer: "Les frais d'achat comprennent : frais de notaire (7-8% dans l'ancien, 2-3% dans le neuf), frais de dossier bancaire (500-1500€), frais de garantie du prêt (1-2% du montant emprunté), éventuellement frais d'agence (3-5% à charge acquéreur selon les mandats). Au total, prévoyez 10-12% du prix du bien en plus."
+  }
+];
+
+// Schema.org FAQPage
+const schemaFaq = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqGenerale.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+};
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <Breadcrumbs items={breadcrumbs} />
+  
+  <script type="application/ld+json" set:html={JSON.stringify(schemaFaq)} />
+  
+  <article>
+    <header class="section">
+      <h1>Foire aux Questions Immobilier Lyon 2ème</h1>
+      <p>
+        Retrouvez toutes les réponses à vos questions sur l'immobilier dans le 2ème arrondissement de Lyon. 
+        Achat, vente, location, quartiers, prix : nos experts locaux vous éclairent.
+      </p>
+    </header>
+    
+    <!-- Questions les plus posées -->
+    <section class="section">
+      <h2>Questions les Plus Posées</h2>
+      
+      <div class="faq-list">
+        {faqGenerale.map(faq => (
+          <details class="faq-item">
+            <summary class="faq-question">{faq.question}</summary>
+            <div class="faq-answer">
+              <p>{faq.answer}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </section>
+    
+    <!-- Catégories de FAQ -->
+    <section class="section">
+      <h2>Parcourir par Thème</h2>
+      
+      <div class="faq-categories">
+        {faqCategories.map(cat => (
+          <div class="faq-category">
+            <h3>
+              <a href={`/faq/${cat.slug}/`}>
+                <span class="category-icon">{cat.icon}</span>
+                {cat.title}
+              </a>
+            </h3>
+            <ul class="category-questions">
+              {cat.questions.map(q => (
+                <li>{q}</li>
+              ))}
+            </ul>
+            <a href={`/faq/${cat.slug}/`} class="btn btn--outline">Voir toutes les questions</a>
+          </div>
+        ))}
+      </div>
+    </section>
+    
+    <!-- Question non trouvée -->
+    <section class="section cta-section">
+      <h2>Vous ne trouvez pas votre réponse ?</h2>
+      <p>
+        Notre équipe est disponible pour répondre à toutes vos questions 
+        sur l'immobilier dans le 2ème arrondissement de Lyon.
+      </p>
+      <div class="cta-buttons">
+        <a href="/contact/" class="btn btn--primary">Nous contacter</a>
+        <a href="tel:[telephone]" class="btn btn--outline">Appeler directement</a>
+      </div>
+    </section>
+  </article>
+</BaseLayout>
+
+<style>
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+  
+  .faq-item {
+    border: 1px solid var(--color-border);
+    background: var(--color-bg-alt);
+  }
+  
+  .faq-question {
+    padding: var(--space-lg);
+    cursor: pointer;
+    font-weight: 600;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .faq-question::after {
+    content: '+';
+    font-size: 1.5rem;
+    font-weight: 300;
+  }
+  
+  details[open] .faq-question::after {
+    content: '−';
+  }
+  
+  .faq-answer {
+    padding: 0 var(--space-lg) var(--space-lg);
+    border-top: 1px solid var(--color-border);
+  }
+  
+  .faq-categories {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-xl);
+  }
+  
+  @media (max-width: 768px) {
+    .faq-categories {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  .faq-category {
+    border: 1px solid var(--color-border);
+    padding: var(--space-lg);
+  }
+  
+  .faq-category h3 a {
+    color: inherit;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: var(--space-sm);
+  }
+  
+  .faq-category h3 a:hover {
+    color: var(--color-primary);
+  }
+  
+  .category-icon {
+    font-size: 1.5rem;
+  }
+  
+  .category-questions {
+    margin: var(--space-md) 0;
+    padding-left: var(--space-lg);
+    color: var(--color-text-muted);
+  }
+  
+  .category-questions li {
+    padding: var(--space-xs) 0;
+  }
+  
+  .cta-section {
+    text-align: center;
+    background: var(--color-bg-alt);
+    padding: var(--space-2xl);
+    border: 1px solid var(--color-border);
+  }
+  
+  .cta-buttons {
+    display: flex;
+    gap: var(--space-md);
+    justify-content: center;
+    margin-top: var(--space-lg);
+  }
+</style>

@@ -1,0 +1,256 @@
+---
+/**
+ * PAGE MENTIONS LÉGALES
+ * Informations légales obligatoires
+ */
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Breadcrumbs from '@components/Breadcrumbs.astro';
+
+const pageTitle = "Mentions Légales - Escalona Immobilier Lyon 2ème";
+const pageDescription = "Mentions légales du site Escalona Immobilier : informations sur l'éditeur, l'hébergeur, les conditions d'utilisation et la propriété intellectuelle.";
+
+const breadcrumbs = [
+  { label: 'Accueil', href: '/' },
+  { label: 'Mentions légales' }
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <Breadcrumbs items={breadcrumbs} />
+  
+  <article class="legal-page">
+    <header class="section">
+      <h1>Mentions Légales</h1>
+      <p>Conformément aux dispositions de la loi n° 2004-575 du 21 juin 2004 pour la confiance dans l'économie numérique.</p>
+    </header>
+    
+    <section class="section">
+      <h2>1. Éditeur du site</h2>
+      
+      <p>Le site escalona-immobilier.fr est édité par :</p>
+      
+      <dl class="legal-info">
+        <dt>Raison sociale</dt>
+        <dd>[À compléter]</dd>
+        
+        <dt>Forme juridique</dt>
+        <dd>[À compléter - ex : SARL, SAS, EI...]</dd>
+        
+        <dt>Capital social</dt>
+        <dd>[À compléter]</dd>
+        
+        <dt>Siège social</dt>
+        <dd>[Adresse à compléter], 69002 Lyon</dd>
+        
+        <dt>SIRET</dt>
+        <dd>[À compléter]</dd>
+        
+        <dt>RCS</dt>
+        <dd>Lyon [numéro à compléter]</dd>
+        
+        <dt>Numéro de TVA intracommunautaire</dt>
+        <dd>[À compléter]</dd>
+        
+        <dt>Téléphone</dt>
+        <dd>[À compléter]</dd>
+        
+        <dt>Email</dt>
+        <dd>[À compléter]</dd>
+        
+        <dt>Directeur de la publication</dt>
+        <dd>[Nom à compléter]</dd>
+      </dl>
+    </section>
+    
+    <section class="section">
+      <h2>2. Activité réglementée</h2>
+      
+      <p>
+        Escalona Immobilier exerce une activité d'agent immobilier réglementée par la 
+        loi n° 70-9 du 2 janvier 1970 (loi Hoguet) et son décret d'application n° 72-678 
+        du 20 juillet 1972.
+      </p>
+      
+      <dl class="legal-info">
+        <dt>Carte professionnelle</dt>
+        <dd>CPI [numéro à compléter] - Transactions sur immeubles et fonds de commerce</dd>
+        
+        <dt>Délivrée par</dt>
+        <dd>CCI de Lyon Métropole</dd>
+        
+        <dt>Garantie financière</dt>
+        <dd>[Nom du garant à compléter]<br>
+        Montant : [à compléter]</dd>
+        
+        <dt>Assurance RCP</dt>
+        <dd>[Nom de l'assureur à compléter]<br>
+        Contrat n° [à compléter]</dd>
+        
+        <dt>Caisse de garantie</dt>
+        <dd>[À compléter si détention de fonds]</dd>
+      </dl>
+      
+      <p>
+        <strong>Membre du réseau Laforêt</strong> - Franchise immobilière nationale.
+      </p>
+    </section>
+    
+    <section class="section">
+      <h2>3. Hébergement</h2>
+      
+      <p>Le site est hébergé par :</p>
+      
+      <dl class="legal-info">
+        <dt>Hébergeur</dt>
+        <dd>[À compléter - ex : OVH, Vercel, Netlify...]</dd>
+        
+        <dt>Adresse</dt>
+        <dd>[À compléter]</dd>
+        
+        <dt>Téléphone</dt>
+        <dd>[À compléter]</dd>
+      </dl>
+    </section>
+    
+    <section class="section">
+      <h2>4. Propriété intellectuelle</h2>
+      
+      <p>
+        L'ensemble du contenu de ce site (textes, images, graphismes, logo, icônes, 
+        structure générale) est la propriété exclusive d'Escalona Immobilier ou de ses 
+        partenaires et est protégé par les lois françaises et internationales relatives 
+        à la propriété intellectuelle.
+      </p>
+      
+      <p>
+        Toute reproduction, représentation, modification, publication, adaptation de tout 
+        ou partie des éléments du site, quel que soit le moyen ou le procédé utilisé, 
+        est interdite sans l'autorisation écrite préalable d'Escalona Immobilier.
+      </p>
+      
+      <p>
+        Toute exploitation non autorisée du site ou de son contenu sera considérée comme 
+        constitutive d'une contrefaçon et poursuivie conformément aux dispositions des 
+        articles L.335-2 et suivants du Code de Propriété Intellectuelle.
+      </p>
+    </section>
+    
+    <section class="section">
+      <h2>5. Données personnelles</h2>
+      
+      <p>
+        Les informations relatives au traitement de vos données personnelles sont détaillées 
+        dans notre <a href="/politique-confidentialite/">Politique de confidentialité</a>.
+      </p>
+      
+      <p>
+        Conformément au Règlement Général sur la Protection des Données (RGPD) et à la loi 
+        Informatique et Libertés, vous disposez d'un droit d'accès, de rectification, 
+        d'effacement et de portabilité de vos données, ainsi que d'un droit d'opposition 
+        et de limitation du traitement.
+      </p>
+      
+      <p>
+        Pour exercer ces droits, contactez-nous à : [email à compléter]
+      </p>
+    </section>
+    
+    <section class="section">
+      <h2>6. Cookies</h2>
+      
+      <p>
+        Le site utilise des cookies pour améliorer l'expérience utilisateur et réaliser 
+        des statistiques de visite. Pour en savoir plus sur l'utilisation des cookies et 
+        gérer vos préférences, consultez notre <a href="/politique-cookies/">Politique de cookies</a>.
+      </p>
+    </section>
+    
+    <section class="section">
+      <h2>7. Responsabilité</h2>
+      
+      <p>
+        Les informations fournies sur ce site le sont à titre indicatif. Escalona Immobilier 
+        s'efforce de maintenir des informations à jour et exactes, mais ne peut garantir 
+        l'exactitude, la complétude ou l'actualité des informations diffusées.
+      </p>
+      
+      <p>
+        Les prix des biens immobiliers présentés sont donnés à titre indicatif et peuvent 
+        être modifiés à tout moment. Seule l'offre de vente signée fait foi.
+      </p>
+      
+      <p>
+        Escalona Immobilier ne peut être tenu responsable des dommages directs ou indirects 
+        résultant de l'utilisation de ce site.
+      </p>
+    </section>
+    
+    <section class="section">
+      <h2>8. Liens hypertextes</h2>
+      
+      <p>
+        Le site peut contenir des liens vers d'autres sites. Escalona Immobilier n'exerce 
+        aucun contrôle sur ces sites et décline toute responsabilité quant à leur contenu.
+      </p>
+      
+      <p>
+        La création de liens vers le site escalona-immobilier.fr est autorisée sous réserve 
+        qu'ils ne portent pas atteinte à l'image du site ou de son éditeur.
+      </p>
+    </section>
+    
+    <section class="section">
+      <h2>9. Droit applicable</h2>
+      
+      <p>
+        Les présentes mentions légales sont régies par le droit français. En cas de litige, 
+        et après échec de toute tentative de recherche d'une solution amiable, les tribunaux 
+        français seront seuls compétents.
+      </p>
+    </section>
+    
+    <section class="section">
+      <h2>10. Contact</h2>
+      
+      <p>
+        Pour toute question relative aux présentes mentions légales, vous pouvez nous 
+        contacter à l'adresse : [email à compléter]
+      </p>
+    </section>
+    
+    <p class="text-small text-muted">
+      Dernière mise à jour : [Date à compléter]
+    </p>
+  </article>
+</BaseLayout>
+
+<style>
+  .legal-page {
+    max-width: 800px;
+  }
+  
+  .legal-page h2 {
+    margin-top: var(--space-xl);
+  }
+  
+  .legal-info {
+    background: var(--color-bg-alt);
+    padding: var(--space-lg);
+    margin: var(--space-md) 0;
+  }
+  
+  .legal-info dt {
+    font-weight: bold;
+    color: var(--color-text-muted);
+    font-size: 0.875rem;
+    margin-top: var(--space-md);
+  }
+  
+  .legal-info dt:first-child {
+    margin-top: 0;
+  }
+  
+  .legal-info dd {
+    margin: var(--space-xs) 0 0 0;
+  }
+</style>

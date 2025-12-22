@@ -1,0 +1,139 @@
+---
+/**
+ * PAGE LISTE APPARTEMENTS À VENDRE
+ */
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Breadcrumbs from '@components/Breadcrumbs.astro';
+import PropertyCard from '@components/PropertyCard.astro';
+
+const pageTitle = "Appartements à Vendre Lyon 2ème : Toutes nos Annonces";
+const pageDescription = "Consultez tous nos appartements à vendre dans le 2ème arrondissement de Lyon. Studios, T2, T3, T4 à Bellecour, Ainay, Confluence, Perrache. Mise à jour quotidienne.";
+
+const breadcrumbs = [
+  { label: 'Accueil', href: '/' },
+  { label: 'Acheter', href: '/acheter/' },
+  { label: 'Appartements' }
+];
+
+// Données exemple - À remplacer par données dynamiques
+const appartements = [
+  { title: "T3 75m² - Vue Place Bellecour", price: 520000, surface: 75, rooms: 3, quartier: "Bellecour", href: "/acheter/appartements/t3-bellecour-vue-place/", dpe: "D" },
+  { title: "T2 45m² - Rue Franklin", price: 315000, surface: 45, rooms: 2, quartier: "Ainay", href: "/acheter/appartements/t2-ainay-franklin/", dpe: "C" },
+  { title: "T4 95m² - Résidence récente", price: 480000, surface: 95, rooms: 4, quartier: "Confluence", href: "/acheter/appartements/t4-confluence-neuf/", dpe: "B" },
+  { title: "T2 38m² - Proche gare", price: 195000, surface: 38, rooms: 2, quartier: "Perrache", href: "/acheter/appartements/t2-perrache-gare/", dpe: "D" },
+  { title: "T3 68m² - Place Ampère", price: 430000, surface: 68, rooms: 3, quartier: "Ainay", href: "/acheter/appartements/t3-ainay-ampere/", dpe: "C" },
+  { title: "T2 42m² - Vue Saône", price: 255000, surface: 42, rooms: 2, quartier: "Confluence", href: "/acheter/appartements/t2-confluence-saone/", dpe: "B" },
+  { title: "Studio 22m² - Proche Halles", price: 155000, surface: 22, rooms: 1, quartier: "Presqu'île", href: "/acheter/appartements/studio-presquile-halles/", dpe: "E" },
+  { title: "T3 72m² - Place des Jacobins", price: 450000, surface: 72, rooms: 3, quartier: "Cordeliers", href: "/acheter/appartements/t3-cordeliers-jacobins/", dpe: "D" }
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <Breadcrumbs items={breadcrumbs} />
+  
+  <article>
+    <header class="section">
+      <h1>Appartements à Vendre - Lyon 2ème</h1>
+      <p>{appartements.length} biens disponibles dans le 2ème arrondissement</p>
+    </header>
+    
+    <!-- FILTRES -->
+    <section class="filters section">
+      <div class="filters__row">
+        <div class="filter-group">
+          <label class="form-label" for="quartier">Quartier</label>
+          <select id="quartier" class="form-select">
+            <option value="">Tous les quartiers</option>
+            <option value="bellecour">Bellecour</option>
+            <option value="ainay">Ainay</option>
+            <option value="confluence">Confluence</option>
+            <option value="perrache">Perrache</option>
+            <option value="presquile">Presqu'île</option>
+            <option value="cordeliers">Cordeliers</option>
+          </select>
+        </div>
+        
+        <div class="filter-group">
+          <label class="form-label" for="type">Type</label>
+          <select id="type" class="form-select">
+            <option value="">Tous types</option>
+            <option value="studio">Studio</option>
+            <option value="t2">T2</option>
+            <option value="t3">T3</option>
+            <option value="t4">T4 et +</option>
+          </select>
+        </div>
+        
+        <div class="filter-group">
+          <label class="form-label" for="budget">Budget max</label>
+          <select id="budget" class="form-select">
+            <option value="">Sans limite</option>
+            <option value="200000">200 000 €</option>
+            <option value="300000">300 000 €</option>
+            <option value="400000">400 000 €</option>
+            <option value="500000">500 000 €</option>
+            <option value="600000">600 000 €</option>
+          </select>
+        </div>
+        
+        <div class="filter-group">
+          <button class="btn">Filtrer</button>
+        </div>
+      </div>
+    </section>
+    
+    <!-- LISTE DES BIENS -->
+    <section class="section">
+      <div class="properties-list">
+        {appartements.map((appart) => (
+          <PropertyCard {...appart} />
+        ))}
+      </div>
+    </section>
+    
+    <!-- ALERTE -->
+    <section class="section section--alt">
+      <h2>Créer une alerte</h2>
+      <p>
+        Recevez les nouveaux biens correspondant à vos critères directement par email.
+      </p>
+      <form class="alert-form">
+        <div class="form-group">
+          <input type="email" placeholder="Votre email" class="form-input" required />
+        </div>
+        <button type="submit" class="btn btn--primary">Créer l'alerte</button>
+      </form>
+    </section>
+  </article>
+</BaseLayout>
+
+<style>
+  .filters__row {
+    display: flex;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+    align-items: flex-end;
+  }
+  
+  .filter-group {
+    flex: 1;
+    min-width: 150px;
+  }
+  
+  .properties-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+  
+  .alert-form {
+    display: flex;
+    gap: var(--space-md);
+    max-width: 500px;
+  }
+  
+  .alert-form .form-group {
+    flex: 1;
+    margin: 0;
+  }
+</style>

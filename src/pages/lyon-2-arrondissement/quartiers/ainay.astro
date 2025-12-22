@@ -1,0 +1,181 @@
+---
+/**
+ * PAGE QUARTIER AINAY
+ */
+import QuartierLayout from '@layouts/QuartierLayout.astro';
+import PropertyCard from '@components/PropertyCard.astro';
+
+const quartierData = {
+  title: "Immobilier Ainay Lyon 2 : Prix, Biens à Vendre & Guide Complet 2025",
+  description: "Découvrez le quartier Ainay à Lyon 2ème : prix au m² actualisés (6 500€), appartements à vendre, vie de quartier familiale. Expert immobilier local.",
+  quartierName: "Ainay",
+  quartierSlug: "ainay",
+  prixMoyen: 6500,
+  evolution: "+1.8%",
+  typeBiens: "Bourgeois / Haussmannien",
+  ambiance: "Familial / Calme",
+  prixParType: [
+    { type: "Studio (< 30m²)", prixMoyen: 6800, fourchetteBasse: 6100, fourchetteHaute: 7500, evolution: "+2.0%" },
+    { type: "T2 (30-50m²)", prixMoyen: 6600, fourchetteBasse: 5900, fourchetteHaute: 7300, evolution: "+1.9%" },
+    { type: "T3 (50-75m²)", prixMoyen: 6400, fourchetteBasse: 5700, fourchetteHaute: 7100, evolution: "+1.7%" },
+    { type: "T4+ (> 75m²)", prixMoyen: 6300, fourchetteBasse: 5600, fourchetteHaute: 7200, evolution: "+1.5%" }
+  ],
+  faqItems: [
+    {
+      question: "Quel est le prix moyen au m² à Ainay Lyon ?",
+      answer: "Le prix moyen au m² à Ainay est de 6 500 € en janvier 2025. C'est le deuxième quartier le plus cher du 2ème arrondissement après Bellecour. Les prix varient de 5 600 €/m² pour les biens à rénover jusqu'à 7 300 €/m² pour les appartements familiaux rénovés avec extérieur. Le quartier est particulièrement prisé pour ses T3 et T4 familiaux."
+    },
+    {
+      question: "Ainay est-il un bon quartier pour les familles ?",
+      answer: "Ainay est considéré comme LE quartier familial de référence dans Lyon 2ème. Ses atouts : rues calmes et souvent piétonnes, marché quotidien place Ampère, nombreuses écoles de qualité, squares et espaces verts à proximité, commerces de proximité de qualité. L'ambiance village et la sécurité en font un choix privilégié pour les familles avec enfants."
+    },
+    {
+      question: "Quels sont les avantages d'habiter à Ainay ?",
+      answer: "Habiter à Ainay offre de nombreux avantages : ambiance résidentielle calme tout en restant central, architecture bourgeoise de qualité (immeubles XIXème), marché d'Ainay réputé pour ses produits frais, proximité immédiate de Bellecour et des commerces, excellentes écoles, accès rapide aux quais de Saône pour les promenades. C'est un quartier où l'on vit à l'année avec une vraie vie de quartier."
+    },
+    {
+      question: "Comment est le marché immobilier à Ainay ?",
+      answer: "Le marché immobilier à Ainay est caractérisé par une forte demande familiale et une offre limitée. Les biens se vendent en moyenne en 40 jours. La rotation est faible car les habitants s'y installent durablement. Les appartements les plus recherchés sont les T3/T4 avec parquet et cheminées, idéalement au 2ème ou 3ème étage. La présence d'une cave et d'un parking en sous-sol constitue un plus significatif."
+    }
+  ],
+  lastUpdate: "Janvier 2025"
+};
+---
+
+<QuartierLayout {...quartierData}>
+  
+  <Fragment slot="presentation">
+    <p>
+      Le <strong>quartier Ainay</strong> est le cœur résidentiel bourgeois du 2ème arrondissement. 
+      Situé entre Bellecour et Perrache, il offre un cadre de vie privilégié alliant 
+      <strong>calme, authenticité et centralité</strong>.
+    </p>
+    
+    <h3>Situation géographique</h3>
+    <p>
+      Ainay s'étend de la place Ampère au nord jusqu'au cours de Verdun au sud, bordé par 
+      la Saône à l'ouest et la rue Victor Hugo à l'est. Le quartier s'articule autour de 
+      la <strong>basilique Saint-Martin d'Ainay</strong>, joyau de l'art roman du XIème siècle.
+    </p>
+    
+    <h3>Histoire et patrimoine</h3>
+    <p>
+      Ainay tire son nom de l'abbaye bénédictine fondée au VIème siècle. La <strong>basilique d'Ainay</strong>, 
+      classée monument historique, est l'un des plus anciens édifices de Lyon. Le quartier s'est 
+      développé au XIXème siècle avec de beaux immeubles bourgeois qui font aujourd'hui son charme.
+    </p>
+    
+    <h3>Ambiance et population</h3>
+    <p>
+      Ainay attire les <strong>familles CSP+ recherchant la qualité de vie</strong>. L'ambiance 
+      est celle d'un village dans la ville : on se connaît, on fait ses courses au marché, 
+      les enfants jouent dans les rues piétonnes. Population stable, forte proportion de propriétaires.
+    </p>
+  </Fragment>
+  
+  <Fragment slot="analyse-prix">
+    <p>
+      <strong>Notre analyse :</strong> Ainay maintient des prix élevés grâce à sa réputation 
+      de quartier familial par excellence. La demande excède structurellement l'offre, 
+      notamment sur les T3 et T4. Les biens avec extérieur (balcon, terrasse) sont rares et 
+      se négocient avec une prime de 5 à 10%.
+    </p>
+  </Fragment>
+  
+  <Fragment slot="vie-quartier">
+    <h3>Transports</h3>
+    <ul>
+      <li><strong>Métro A</strong> : station Ampère-Victor Hugo (5 min à pied)</li>
+      <li><strong>Bus</strong> : lignes sur le cours de Verdun</li>
+      <li><strong>Vélo'v</strong> : plusieurs stations dans le quartier</li>
+    </ul>
+    
+    <h3>Écoles et crèches</h3>
+    <ul>
+      <li><strong>Écoles</strong> : École Condé, École Sainte-Marie</li>
+      <li><strong>Collège</strong> : Collège Ampère</li>
+      <li><strong>Crèches</strong> : Crèche municipale Ainay</li>
+    </ul>
+    
+    <h3>Commerces et restaurants</h3>
+    <ul>
+      <li><strong>Marché d'Ainay</strong> : marché quotidien réputé (place Ampère)</li>
+      <li><strong>Rue Franklin</strong> : artère commerçante du quartier</li>
+      <li><strong>Bistrots</strong> : nombreuses tables de qualité, ambiance locale</li>
+    </ul>
+    
+    <h3>Espaces verts</h3>
+    <p>
+      Quais de Saône aménagés à 300m, square Gailleton. Le parc des Hauteurs (Fourvière) 
+      accessible via la passerelle.
+    </p>
+  </Fragment>
+  
+  <Fragment slot="avantages-inconvenients">
+    <div class="grid grid--2">
+      <div>
+        <h3>✅ Avantages</h3>
+        <ul>
+          <li>Quartier familial par excellence</li>
+          <li>Ambiance village, vie de quartier</li>
+          <li>Marché d'Ainay quotidien</li>
+          <li>Calme tout en restant central</li>
+          <li>Beaux immeubles bourgeois</li>
+          <li>Excellentes écoles</li>
+          <li>Proximité quais de Saône</li>
+        </ul>
+      </div>
+      <div>
+        <h3>⚠️ Inconvénients</h3>
+        <ul>
+          <li>Prix élevés</li>
+          <li>Peu de biens disponibles</li>
+          <li>Stationnement difficile</li>
+          <li>Moins animé le soir que Bellecour</li>
+          <li>Commerces fermés le dimanche après-midi</li>
+        </ul>
+      </div>
+    </div>
+  </Fragment>
+  
+  <Fragment slot="biens-disponibles">
+    <div class="grid grid--2">
+      <PropertyCard 
+        title="T4 95m² - Rue Franklin"
+        price={595000}
+        surface={95}
+        rooms={4}
+        quartier="Ainay"
+        href="/acheter/appartements/t4-ainay-franklin/"
+        dpe="D"
+      />
+      <PropertyCard 
+        title="T3 68m² - Place Ampère"
+        price={430000}
+        surface={68}
+        rooms={3}
+        quartier="Ainay"
+        href="/acheter/appartements/t3-ainay-ampere/"
+        dpe="C"
+      />
+    </div>
+  </Fragment>
+  
+  <Fragment slot="articles-lies">
+    <div class="grid grid--3">
+      <div class="card">
+        <h4 class="card__title"><a href="/actualites/vivre-ainay-famille/">Vivre à Ainay en famille</a></h4>
+        <p class="card__meta">10/12/2024</p>
+      </div>
+      <div class="card">
+        <h4 class="card__title"><a href="/actualites/marche-ainay-guide/">Le marché d'Ainay : guide complet</a></h4>
+        <p class="card__meta">05/11/2024</p>
+      </div>
+      <div class="card">
+        <h4 class="card__title"><a href="/guides/acheter-appartement-familial-lyon/">Acheter un appartement familial à Lyon</a></h4>
+        <p class="card__meta">Guide</p>
+      </div>
+    </div>
+  </Fragment>
+  
+</QuartierLayout>

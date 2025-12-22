@@ -1,0 +1,299 @@
+---
+/**
+ * PAGE CONTACT
+ * Formulaire et informations de contact
+ */
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Breadcrumbs from '@components/Breadcrumbs.astro';
+
+const pageTitle = "Contact Escalona Immobilier Lyon 2ème : Nous Contacter";
+const pageDescription = "Contactez Escalona Immobilier, votre expert immobilier à Lyon 2ème arrondissement. Estimation gratuite, projet d'achat ou de vente. Réponse sous 24h.";
+
+const breadcrumbs = [
+  { label: 'Accueil', href: '/' },
+  { label: 'Contact' }
+];
+
+// Schema.org LocalBusiness
+const schemaContact = {
+  "@context": "https://schema.org",
+  "@type": "RealEstateAgent",
+  "name": "Escalona Immobilier",
+  "description": "Agence immobilière spécialisée dans le 2ème arrondissement de Lyon",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "[Adresse à compléter]",
+    "addressLocality": "Lyon",
+    "postalCode": "69002",
+    "addressCountry": "FR"
+  },
+  "telephone": "[Téléphone à compléter]",
+  "email": "[Email à compléter]",
+  "url": "https://escalona-immobilier.fr",
+  "areaServed": {
+    "@type": "Place",
+    "name": "Lyon 2ème arrondissement"
+  },
+  "openingHoursSpecification": [
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+      "opens": "09:00",
+      "closes": "19:00"
+    },
+    {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": "Saturday",
+      "opens": "10:00",
+      "closes": "18:00"
+    }
+  ]
+};
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <Breadcrumbs items={breadcrumbs} />
+  
+  <script type="application/ld+json" set:html={JSON.stringify(schemaContact)} />
+  
+  <article>
+    <header class="section">
+      <h1>Nous Contacter</h1>
+      <p>
+        Une question, un projet immobilier dans le 2ème arrondissement de Lyon ? 
+        <strong>Nous vous répondons sous 24h.</strong>
+      </p>
+    </header>
+    
+    <div class="contact-layout">
+      <!-- FORMULAIRE -->
+      <section class="contact-form-section">
+        <h2>Envoyez-nous un message</h2>
+        
+        <form action="/api/contact" method="POST" class="contact-form">
+          <div class="form-row">
+            <div class="form-group">
+              <label class="form-label" for="nom">Nom *</label>
+              <input type="text" id="nom" name="nom" class="form-input" required />
+            </div>
+            
+            <div class="form-group">
+              <label class="form-label" for="prenom">Prénom *</label>
+              <input type="text" id="prenom" name="prenom" class="form-input" required />
+            </div>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label" for="email">Email *</label>
+            <input type="email" id="email" name="email" class="form-input" required />
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label" for="telephone">Téléphone</label>
+            <input type="tel" id="telephone" name="telephone" class="form-input" />
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label" for="sujet">Sujet *</label>
+            <select id="sujet" name="sujet" class="form-select" required>
+              <option value="">Sélectionnez</option>
+              <option value="estimation">Demande d'estimation</option>
+              <option value="achat">Projet d'achat</option>
+              <option value="vente">Projet de vente</option>
+              <option value="location">Location</option>
+              <option value="renseignement">Renseignement général</option>
+              <option value="autre">Autre</option>
+            </select>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-label" for="message">Message *</label>
+            <textarea id="message" name="message" class="form-textarea" rows="5" required placeholder="Décrivez votre projet ou votre question..."></textarea>
+          </div>
+          
+          <div class="form-group">
+            <label class="form-checkbox">
+              <input type="checkbox" name="rgpd" required />
+              <span class="text-small">
+                J'accepte que mes données soient traitées pour répondre à ma demande. 
+                <a href="/politique-confidentialite/">En savoir plus</a>
+              </span>
+            </label>
+          </div>
+          
+          <button type="submit" class="btn btn--primary">Envoyer le message</button>
+        </form>
+      </section>
+      
+      <!-- COORDONNÉES -->
+      <aside class="contact-info">
+        <div class="info-box">
+          <h3>Nos coordonnées</h3>
+          
+          <div class="coordonnee">
+            <strong>Adresse</strong>
+            <address>
+              [Adresse à compléter]<br>
+              69002 Lyon
+            </address>
+          </div>
+          
+          <div class="coordonnee">
+            <strong>Téléphone</strong>
+            <p><a href="tel:[telephone]">[Téléphone à compléter]</a></p>
+          </div>
+          
+          <div class="coordonnee">
+            <strong>Email</strong>
+            <p><a href="mailto:[email]">[Email à compléter]</a></p>
+          </div>
+        </div>
+        
+        <div class="info-box">
+          <h3>Horaires d'ouverture</h3>
+          <table class="horaires">
+            <tr>
+              <td>Lundi - Vendredi</td>
+              <td>9h00 - 19h00</td>
+            </tr>
+            <tr>
+              <td>Samedi</td>
+              <td>10h00 - 18h00</td>
+            </tr>
+            <tr>
+              <td>Dimanche</td>
+              <td>Fermé</td>
+            </tr>
+          </table>
+          <p class="text-small text-muted">
+            Rendez-vous possibles en dehors de ces horaires sur demande.
+          </p>
+        </div>
+        
+        <div class="info-box">
+          <h3>Zone d'intervention</h3>
+          <p>
+            Nous intervenons exclusivement dans le <strong>2ème arrondissement de Lyon</strong> 
+            et ses quartiers : Bellecour, Ainay, Confluence, Perrache, Presqu'île, Cordeliers.
+          </p>
+        </div>
+        
+        <div class="info-box info-box--highlight">
+          <h3>Besoin d'une estimation ?</h3>
+          <p>
+            Obtenez une estimation gratuite et sans engagement de votre bien.
+          </p>
+          <a href="/vendre/estimation-gratuite/" class="btn btn--outline">Estimation gratuite</a>
+        </div>
+      </aside>
+    </div>
+    
+    <!-- Plan d'accès -->
+    <section class="section">
+      <h2>Plan d'Accès</h2>
+      <div class="map-placeholder">
+        <p>[Carte Google Maps à intégrer]</p>
+        <p class="text-small text-muted">
+          Métro A - Station Bellecour ou Ampère<br>
+          Parking Bellecour à 2 minutes à pied
+        </p>
+      </div>
+    </section>
+  </article>
+</BaseLayout>
+
+<style>
+  .contact-layout {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr;
+    gap: var(--space-2xl);
+    margin-bottom: var(--space-2xl);
+  }
+  
+  @media (max-width: 900px) {
+    .contact-layout {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  .contact-form-section {
+    background: var(--color-bg-alt);
+    padding: var(--space-xl);
+    border: 1px solid var(--color-border);
+  }
+  
+  .form-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-md);
+  }
+  
+  .form-checkbox {
+    display: flex;
+    gap: var(--space-sm);
+    align-items: flex-start;
+    cursor: pointer;
+  }
+  
+  .contact-info {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-lg);
+  }
+  
+  .info-box {
+    padding: var(--space-lg);
+    border: 1px solid var(--color-border);
+  }
+  
+  .info-box--highlight {
+    background: var(--color-bg-alt);
+  }
+  
+  .info-box h3 {
+    margin-bottom: var(--space-md);
+  }
+  
+  .coordonnee {
+    margin-bottom: var(--space-md);
+  }
+  
+  .coordonnee strong {
+    display: block;
+    margin-bottom: var(--space-xs);
+    color: var(--color-text-muted);
+    font-size: 0.875rem;
+  }
+  
+  .coordonnee p,
+  .coordonnee address {
+    margin: 0;
+    font-style: normal;
+  }
+  
+  .horaires {
+    width: 100%;
+    border-collapse: collapse;
+  }
+  
+  .horaires td {
+    padding: var(--space-xs) 0;
+    border-bottom: 1px solid var(--color-border);
+  }
+  
+  .horaires td:last-child {
+    text-align: right;
+  }
+  
+  .map-placeholder {
+    background: var(--color-bg-alt);
+    border: 2px dashed var(--color-border);
+    padding: var(--space-2xl);
+    text-align: center;
+    min-height: 300px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+</style>

@@ -1,0 +1,342 @@
+---
+/**
+ * PAGE LYON 2ÈME - Hub principal
+ * Page pilier SEO pour Lyon 2ème arrondissement
+ */
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Breadcrumbs from '@components/Breadcrumbs.astro';
+import KeyInfo from '@components/KeyInfo.astro';
+import PriceTable from '@components/PriceTable.astro';
+import FAQ from '@components/FAQ.astro';
+import CTABox from '@components/CTABox.astro';
+
+const pageTitle = "Immobilier Lyon 2ème Arrondissement : Guide Complet 2025";
+const pageDescription = "Guide complet de l'immobilier dans le 2ème arrondissement de Lyon : prix au m² par quartier, évolution du marché, meilleurs quartiers pour acheter (Bellecour, Ainay, Confluence, Perrache). Analyse experte actualisée.";
+
+const breadcrumbs = [
+  { label: 'Accueil', href: '/' },
+  { label: 'Lyon 2ème arrondissement' }
+];
+
+const keyInfoItems = [
+  { label: "Prix moyen/m²", value: "6 200 €", trend: "stable" as const },
+  { label: "Population", value: "31 000 hab." },
+  { label: "Surface", value: "3,4 km²" },
+  { label: "Densité", value: "9 100 hab/km²" }
+];
+
+const prixParQuartier = [
+  { type: "Bellecour", prixMoyen: 6800, fourchetteBasse: 6200, fourchetteHaute: 7500, evolution: "+2.1%" },
+  { type: "Ainay", prixMoyen: 6500, fourchetteBasse: 5900, fourchetteHaute: 7200, evolution: "+1.8%" },
+  { type: "Presqu'île Centre", prixMoyen: 6200, fourchetteBasse: 5600, fourchetteHaute: 6900, evolution: "+1.5%" },
+  { type: "Cordeliers", prixMoyen: 6300, fourchetteBasse: 5700, fourchetteHaute: 7000, evolution: "+1.2%" },
+  { type: "Confluence", prixMoyen: 5700, fourchetteBasse: 5200, fourchetteHaute: 6300, evolution: "+3.2%" },
+  { type: "Perrache", prixMoyen: 5400, fourchetteBasse: 4800, fourchetteHaute: 6000, evolution: "+2.5%" }
+];
+
+const faqItems = [
+  {
+    question: "Quel est le prix moyen au m² dans le 2ème arrondissement de Lyon en 2025 ?",
+    answer: "Le prix moyen au m² dans le 2ème arrondissement de Lyon est de 6 200 € en janvier 2025. Ce prix varie fortement selon les quartiers : de 5 400 €/m² à Perrache jusqu'à 6 800 €/m² à Bellecour. La tendance est à une légère hausse de 1,8% sur les 12 derniers mois, avec une dynamique plus forte sur la Confluence (+3,2%)."
+  },
+  {
+    question: "Quel est le meilleur quartier du 2ème arrondissement pour acheter ?",
+    answer: "Le meilleur quartier dépend de votre profil et budget. Bellecour et Ainay sont les plus prestigieux, idéaux pour les familles recherchant le calme et les beaux immeubles. La Confluence convient aux jeunes actifs préférant l'architecture moderne et les espaces verts. Perrache offre le meilleur rapport qualité-prix avec sa proximité de la gare et son potentiel de plus-value lié aux projets de rénovation urbaine."
+  },
+  {
+    question: "Le 2ème arrondissement de Lyon est-il un bon investissement locatif ?",
+    answer: "Oui, le 2ème arrondissement est excellent pour l'investissement locatif. La demande locative est très forte grâce à l'emplacement central, aux commerces, aux transports et aux entreprises du quartier. Le rendement brut moyen est de 3,5 à 4,5% selon les quartiers. Les petites surfaces (studios, T2) près des lignes de métro A et D sont particulièrement recherchées par les jeunes actifs et étudiants."
+  },
+  {
+    question: "Combien de temps faut-il pour vendre un appartement dans Lyon 2ème ?",
+    answer: "Le délai moyen de vente dans le 2ème arrondissement de Lyon est de 45 jours pour un bien au prix du marché. Ce délai peut descendre à 20-30 jours pour les biens les plus recherchés (T2/T3 avec extérieur à Ainay ou Bellecour) ou monter à 60-90 jours pour les grandes surfaces ou les biens à rénover."
+  },
+  {
+    question: "Quels sont les projets urbains prévus dans Lyon 2ème ?",
+    answer: "Plusieurs projets majeurs sont en cours ou prévus dans le 2ème arrondissement : la poursuite du développement de la Confluence (phase 2 et 3), la rénovation du quartier Perrache avec la transformation du centre d'échanges, et des opérations de réhabilitation d'immeubles anciens dans le secteur Ainay. Ces projets devraient soutenir les prix dans les années à venir."
+  }
+];
+
+// Schema pour la page
+const pageSchema = {
+  "@context": "https://schema.org",
+  "@type": "Place",
+  "name": "Lyon 2ème arrondissement",
+  "description": "Le 2ème arrondissement de Lyon, situé sur la Presqu'île, comprend les quartiers de Bellecour, Ainay, Confluence, Perrache et Cordeliers. Zone résidentielle et commerciale prisée.",
+  "geo": {
+    "@type": "GeoCoordinates",
+    "latitude": 45.7520,
+    "longitude": 4.8280
+  },
+  "containedInPlace": {
+    "@type": "City",
+    "name": "Lyon",
+    "containedInPlace": {
+      "@type": "AdministrativeArea",
+      "name": "Métropole de Lyon"
+    }
+  }
+};
+---
+
+<BaseLayout 
+  title={pageTitle}
+  description={pageDescription}
+  schema={pageSchema}
+>
+  <Breadcrumbs items={breadcrumbs} />
+  
+  <article>
+    <!-- HERO -->
+    <header class="section">
+      <h1>Immobilier Lyon 2ème Arrondissement</h1>
+      <p class="text-muted">Guide complet 2025 : prix, quartiers, conseils pour acheter ou vendre</p>
+      
+      <KeyInfo items={keyInfoItems} title="Lyon 2ème en chiffres" />
+    </header>
+    
+    <!-- INTRODUCTION -->
+    <section class="section">
+      <h2>Présentation du 2ème arrondissement de Lyon</h2>
+      
+      <p>
+        Le <strong>2ème arrondissement de Lyon</strong> occupe la partie sud de la Presqu'île, 
+        entre le Rhône à l'est et la Saône à l'ouest. C'est l'un des arrondissements les plus 
+        recherchés de Lyon, combinant <strong>patrimoine historique</strong>, 
+        <strong>dynamisme commercial</strong> et <strong>qualité de vie</strong> exceptionnelle.
+      </p>
+      
+      <p>
+        Avec ses <strong>31 000 habitants</strong> répartis sur 3,4 km², le 2ème arrondissement 
+        est densément peuplé mais offre des ambiances très variées selon les quartiers : 
+        du prestige bourgeois de <strong>Bellecour</strong> à l'effervescence moderne de la 
+        <strong>Confluence</strong>, en passant par le charme résidentiel d'<strong>Ainay</strong>.
+      </p>
+      
+      <p>
+        Le marché immobilier y est <strong>particulièrement actif</strong>, avec une demande 
+        soutenue tant pour l'achat que pour la location. Les prix se maintiennent parmi les 
+        plus élevés de Lyon, reflet de l'attractivité constante de ce secteur central.
+      </p>
+    </section>
+    
+    <!-- PRIX PAR QUARTIER -->
+    <section class="section">
+      <h2>Prix immobilier par quartier - Lyon 2ème (2025)</h2>
+      
+      <p>
+        Les prix au m² dans le 2ème arrondissement varient significativement d'un quartier à l'autre. 
+        Voici les prix moyens actualisés :
+      </p>
+      
+      <PriceTable 
+        rows={prixParQuartier}
+        title="Prix au m² par quartier"
+        source="Données DVF et analyse Escalona Immobilier"
+        date="Janvier 2025"
+      />
+      
+      <p>
+        <strong>Analyse :</strong> Le marché du 2ème arrondissement reste dynamique avec une 
+        <strong>hausse moyenne de 1,8%</strong> sur 12 mois. La Confluence connaît la plus forte 
+        progression (+3,2%) grâce aux livraisons de programmes neufs et à l'attractivité croissante 
+        du quartier. Perrache, longtemps délaissé, bénéficie des projets de rénovation urbaine.
+      </p>
+    </section>
+    
+    <!-- QUARTIERS -->
+    <section class="section">
+      <h2>Les quartiers du 2ème arrondissement</h2>
+      
+      <div class="quartiers-list">
+        <div class="card">
+          <h3><a href="/lyon-2-arrondissement/quartiers/bellecour/">Bellecour</a></h3>
+          <p><strong>Prix moyen :</strong> 6 800 €/m²</p>
+          <p>
+            Cœur historique et vitrine de Lyon, le quartier Bellecour s'articule autour de la 
+            plus grande place piétonne d'Europe. Immeubles haussmanniens, boutiques de luxe, 
+            restaurants gastronomiques. Clientèle aisée, peu de rotation.
+          </p>
+          <p><a href="/lyon-2-arrondissement/quartiers/bellecour/">Guide complet Bellecour →</a></p>
+        </div>
+        
+        <div class="card">
+          <h3><a href="/lyon-2-arrondissement/quartiers/ainay/">Ainay</a></h3>
+          <p><strong>Prix moyen :</strong> 6 500 €/m²</p>
+          <p>
+            Quartier résidentiel prisé des familles, Ainay séduit par son calme, ses rues 
+            piétonnes et son marché quotidien. L'abbaye d'Ainay, joyau roman, témoigne de 
+            l'histoire du quartier. Écoles réputées, commerces de proximité.
+          </p>
+          <p><a href="/lyon-2-arrondissement/quartiers/ainay/">Guide complet Ainay →</a></p>
+        </div>
+        
+        <div class="card">
+          <h3><a href="/lyon-2-arrondissement/quartiers/confluence/">Confluence</a></h3>
+          <p><strong>Prix moyen :</strong> 5 700 €/m²</p>
+          <p>
+            Quartier contemporain né de la reconversion d'anciennes friches industrielles, 
+            la Confluence incarne le Lyon du 21ème siècle. Architecture audacieuse, 
+            éco-quartier, centre commercial, musée des Confluences. Forte demande locative.
+          </p>
+          <p><a href="/lyon-2-arrondissement/quartiers/confluence/">Guide complet Confluence →</a></p>
+        </div>
+        
+        <div class="card">
+          <h3><a href="/lyon-2-arrondissement/quartiers/perrache/">Perrache</a></h3>
+          <p><strong>Prix moyen :</strong> 5 400 €/m²</p>
+          <p>
+            Quartier en pleine mutation autour de la gare de Perrache. Meilleur rapport 
+            qualité-prix du 2ème, fort potentiel de plus-value avec les projets de rénovation. 
+            Idéal pour investisseurs avisés.
+          </p>
+          <p><a href="/lyon-2-arrondissement/quartiers/perrache/">Guide complet Perrache →</a></p>
+        </div>
+        
+        <div class="card">
+          <h3><a href="/lyon-2-arrondissement/quartiers/cordeliers/">Cordeliers</a></h3>
+          <p><strong>Prix moyen :</strong> 6 300 €/m²</p>
+          <p>
+            Quartier historique entre Bellecour et Terreaux, Cordeliers mêle patrimoine 
+            (place des Jacobins, palais de la Bourse) et vie commerçante. Animation permanente, 
+            vie nocturne, nombreux restaurants.
+          </p>
+          <p><a href="/lyon-2-arrondissement/quartiers/cordeliers/">Guide complet Cordeliers →</a></p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- TRANSPORTS -->
+    <section class="section">
+      <h2>Transports et accessibilité</h2>
+      
+      <p>
+        Le 2ème arrondissement bénéficie d'une <strong>excellente desserte en transports en commun</strong> :
+      </p>
+      
+      <h3>Métro</h3>
+      <ul>
+        <li><strong>Ligne A</strong> : stations Bellecour, Ampère-Victor Hugo, Perrache</li>
+        <li><strong>Ligne D</strong> : station Bellecour (correspondance)</li>
+      </ul>
+      
+      <h3>Tramway</h3>
+      <ul>
+        <li><strong>T1</strong> : dessert la Confluence jusqu'à Debourg</li>
+        <li><strong>T2</strong> : station Perrache</li>
+      </ul>
+      
+      <h3>Train</h3>
+      <ul>
+        <li><strong>Gare de Perrache</strong> : TER, TGV vers Paris (2h)</li>
+        <li>Accès rapide à Part-Dieu (5 min en métro)</li>
+      </ul>
+      
+      <h3>Vélo</h3>
+      <ul>
+        <li>Nombreuses stations Vélo'v</li>
+        <li>Pistes cyclables le long des quais</li>
+      </ul>
+    </section>
+    
+    <!-- VIE QUOTIDIENNE -->
+    <section class="section">
+      <h2>Vie quotidienne et commodités</h2>
+      
+      <h3>Écoles et crèches</h3>
+      <p>
+        Le 2ème arrondissement compte plusieurs établissements scolaires réputés : 
+        école élémentaire Alix, collège Ampère, lycée Ampère (l'un des meilleurs de Lyon). 
+        Présence de crèches municipales et privées, notamment dans le quartier Ainay.
+      </p>
+      
+      <h3>Commerces</h3>
+      <p>
+        Offre commerciale exceptionnelle : rue de la République (artère commerçante principale), 
+        rue Victor Hugo, centre commercial Confluence. Marchés : marché d'Ainay (quotidien), 
+        marché Sainte-Blandine.
+      </p>
+      
+      <h3>Culture et loisirs</h3>
+      <p>
+        Musée des Confluences, Musée des Tissus, nombreuses galeries d'art, théâtres (Célestins). 
+        Berges du Rhône aménagées pour la promenade et le sport. Parc de la Confluence.
+      </p>
+    </section>
+    
+    <!-- INVESTIR -->
+    <section class="section section--alt">
+      <h2>Investir dans le 2ème arrondissement</h2>
+      
+      <p>
+        Le 2ème arrondissement présente un profil d'investissement <strong>sécurisé et pérenne</strong>. 
+        Voici les points clés à considérer :
+      </p>
+      
+      <h3>Points forts pour l'investissement</h3>
+      <ul>
+        <li><strong>Demande locative très forte</strong> : vacance locative quasi nulle</li>
+        <li><strong>Valorisation régulière</strong> : +15% sur 5 ans en moyenne</li>
+        <li><strong>Profil locataire solide</strong> : cadres, professions libérales, étudiants grandes écoles</li>
+        <li><strong>Liquidité</strong> : revente facile et rapide</li>
+      </ul>
+      
+      <h3>Rendements moyens</h3>
+      <table>
+        <thead>
+          <tr>
+            <th>Type de bien</th>
+            <th>Rendement brut</th>
+            <th>Cible locataire</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Studio 20-25m²</td>
+            <td>4 - 4,5%</td>
+            <td>Étudiants, jeunes actifs</td>
+          </tr>
+          <tr>
+            <td>T2 35-45m²</td>
+            <td>3,5 - 4%</td>
+            <td>Jeunes couples, cadres</td>
+          </tr>
+          <tr>
+            <td>T3 60-75m²</td>
+            <td>3 - 3,5%</td>
+            <td>Familles, expatriés</td>
+          </tr>
+        </tbody>
+      </table>
+      
+      <p>
+        <a href="/guides/investir-immobilier-lyon/">Lire notre guide complet sur l'investissement à Lyon →</a>
+      </p>
+    </section>
+    
+    <!-- FAQ -->
+    <section class="section">
+      <FAQ items={faqItems} title="Questions fréquentes sur Lyon 2ème" />
+    </section>
+    
+    <!-- CTA -->
+    <CTABox 
+      title="Vous cherchez un bien dans le 2ème arrondissement ?"
+      text="Notre équipe connaît chaque rue de la Presqu'île. Parlez-nous de votre projet."
+      buttonText="Nous contacter"
+      buttonHref="/contact/"
+      variant="primary"
+    />
+  </article>
+</BaseLayout>
+
+<style>
+  .quartiers-list {
+    display: grid;
+    gap: var(--space-lg);
+  }
+  
+  .quartiers-list .card h3 {
+    margin-bottom: var(--space-xs);
+  }
+</style>

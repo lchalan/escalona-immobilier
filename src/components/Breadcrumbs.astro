@@ -1,0 +1,45 @@
+---
+/**
+ * Breadcrumbs Component
+ * Fil d'Ariane avec Schema.org BreadcrumbList
+ * Important pour SEO et navigation
+ */
+
+interface BreadcrumbItem {
+  label: string;
+  href?: string;
+}
+
+interface Props {
+  items: BreadcrumbItem[];
+}
+
+const { items } = Astro.props;
+
+// Génération du schema BreadcrumbList
+const breadcrumbSchema = {
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": items.map((item, index) => ({
+    "@type": "ListItem",
+    "position": index + 1,
+    "name": item.label,
+    ...(item.href && { "item": `https://escalona-immobilier.fr${item.href}` })
+  }))
+};
+---
+
+<nav class="breadcrumbs" aria-label="Fil d'Ariane">
+  {items.map((item, index) => (
+    <>
+      {index > 0 && <span aria-hidden="true">›</span>}
+      {item.href ? (
+        <a href={item.href}>{item.label}</a>
+      ) : (
+        <span aria-current="page">{item.label}</span>
+      )}
+    </>
+  ))}
+</nav>
+
+<script type="application/ld+json" set:html={JSON.stringify(breadcrumbSchema)} />

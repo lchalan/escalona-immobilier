@@ -1,0 +1,238 @@
+---
+/**
+ * PAGE ACHETER - Index
+ * Hub pour les acheteurs
+ */
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Breadcrumbs from '@components/Breadcrumbs.astro';
+import KeyInfo from '@components/KeyInfo.astro';
+import FAQ from '@components/FAQ.astro';
+import CTABox from '@components/CTABox.astro';
+import PropertyCard from '@components/PropertyCard.astro';
+
+const pageTitle = "Acheter un Appartement à Lyon 2ème : Biens à Vendre & Conseils";
+const pageDescription = "Trouvez votre appartement à vendre dans le 2ème arrondissement de Lyon. Sélection de biens, guide d'achat, accompagnement personnalisé. Escalona Immobilier, expert Lyon 2.";
+
+const breadcrumbs = [
+  { label: 'Accueil', href: '/' },
+  { label: 'Acheter' }
+];
+
+const keyInfoItems = [
+  { label: "Biens disponibles", value: "24" },
+  { label: "Prix moyen", value: "6 200 €/m²" },
+  { label: "Délai de vente", value: "45 jours" },
+  { label: "Accompagnement", value: "Personnalisé" }
+];
+
+const faqAchat = [
+  {
+    question: "Comment acheter un appartement à Lyon 2ème ?",
+    answer: "Pour acheter un appartement à Lyon 2ème, commencez par définir votre budget (incluant frais de notaire de 7-8%), identifiez le quartier qui vous correspond, puis contactez notre agence pour accéder à notre sélection de biens. Nous vous accompagnons de la recherche jusqu'à la signature chez le notaire, en passant par les visites, la négociation et le suivi du financement."
+  },
+  {
+    question: "Quel budget pour acheter dans le 2ème arrondissement de Lyon ?",
+    answer: "Le budget moyen pour acheter dans le 2ème arrondissement de Lyon dépend du quartier et de la surface. Pour un T2 de 40m², comptez 220 000€ à Perrache jusqu'à 280 000€ à Bellecour. Pour un T3 de 65m², les prix vont de 350 000€ (Perrache/Confluence) à 450 000€ (Bellecour/Ainay). Ajoutez 7-8% de frais de notaire et prévoyez un apport de 10-20%."
+  },
+  {
+    question: "Quels sont les frais d'achat immobilier à Lyon ?",
+    answer: "Les frais d'achat immobilier à Lyon comprennent : les frais de notaire (7-8% dans l'ancien, 2-3% dans le neuf), les frais d'agence (généralement inclus dans le prix affiché), les frais de dossier bancaire (environ 1 000€), et éventuellement les frais de courtier (1% du prêt). Au total, prévoyez 8-10% du prix du bien en frais annexes."
+  },
+  {
+    question: "Faut-il acheter dans le neuf ou l'ancien à Lyon 2ème ?",
+    answer: "Le choix entre neuf et ancien à Lyon 2ème dépend de vos priorités. L'ancien (Bellecour, Ainay, Cordeliers) offre du cachet, des volumes et un emplacement premium, mais peut nécessiter des travaux. Le neuf (Confluence) garantit des normes énergétiques récentes, peu de travaux et des garanties, mais moins de charme. Le neuf coûte 15-20% moins cher au m² que l'ancien rénové à emplacement comparable."
+  }
+];
+
+// Biens exemple
+const biensRecents = [
+  { title: "T3 75m² - Bellecour", price: 520000, surface: 75, rooms: 3, quartier: "Bellecour", href: "/acheter/appartements/t3-bellecour-vue-place/", dpe: "D" },
+  { title: "T2 45m² - Ainay", price: 315000, surface: 45, rooms: 2, quartier: "Ainay", href: "/acheter/appartements/t2-ainay-franklin/", dpe: "C" },
+  { title: "T4 95m² - Confluence", price: 480000, surface: 95, rooms: 4, quartier: "Confluence", href: "/acheter/appartements/t4-confluence-neuf/", dpe: "B" },
+  { title: "T2 38m² - Perrache", price: 195000, surface: 38, rooms: 2, quartier: "Perrache", href: "/acheter/appartements/t2-perrache-gare/", dpe: "D" }
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <Breadcrumbs items={breadcrumbs} />
+  
+  <article>
+    <header class="section">
+      <h1>Acheter un Appartement à Lyon 2ème Arrondissement</h1>
+      <p>
+        Découvrez notre sélection de biens à vendre dans le 2ème arrondissement de Lyon : 
+        Bellecour, Ainay, Confluence, Perrache et Cordeliers. Accompagnement personnalisé 
+        par nos experts du secteur.
+      </p>
+      
+      <KeyInfo items={keyInfoItems} title="Le marché en ce moment" />
+    </header>
+    
+    <!-- BIENS RÉCENTS -->
+    <section class="section">
+      <h2>Nos derniers biens à vendre</h2>
+      
+      <div class="grid grid--2">
+        {biensRecents.map((bien) => (
+          <PropertyCard {...bien} />
+        ))}
+      </div>
+      
+      <p class="text-center mt-lg">
+        <a href="/acheter/appartements/" class="btn btn--primary">Voir tous nos biens</a>
+      </p>
+    </section>
+    
+    <!-- RECHERCHE PAR QUARTIER -->
+    <section class="section">
+      <h2>Acheter par quartier</h2>
+      
+      <div class="grid grid--3">
+        <div class="card">
+          <h3><a href="/acheter/appartements/?quartier=bellecour">Bellecour</a></h3>
+          <p class="card__meta">À partir de 6 200 €/m²</p>
+          <p>Prestige, haussmannien, central</p>
+        </div>
+        <div class="card">
+          <h3><a href="/acheter/appartements/?quartier=ainay">Ainay</a></h3>
+          <p class="card__meta">À partir de 5 900 €/m²</p>
+          <p>Familial, calme, marché</p>
+        </div>
+        <div class="card">
+          <h3><a href="/acheter/appartements/?quartier=confluence">Confluence</a></h3>
+          <p class="card__meta">À partir de 5 000 €/m²</p>
+          <p>Moderne, neuf, dynamique</p>
+        </div>
+        <div class="card">
+          <h3><a href="/acheter/appartements/?quartier=perrache">Perrache</a></h3>
+          <p class="card__meta">À partir de 4 500 €/m²</p>
+          <p>Accessible, potentiel, transport</p>
+        </div>
+        <div class="card">
+          <h3><a href="/acheter/appartements/?quartier=presquile">Presqu'île</a></h3>
+          <p class="card__meta">À partir de 5 500 €/m²</p>
+          <p>Central, animé, investissement</p>
+        </div>
+        <div class="card">
+          <h3><a href="/acheter/appartements/?quartier=cordeliers">Cordeliers</a></h3>
+          <p class="card__meta">À partir de 5 400 €/m²</p>
+          <p>Caractère, historique, cachet</p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- GUIDES -->
+    <section class="section section--alt">
+      <h2>Nos guides pour acheter</h2>
+      
+      <div class="grid grid--2">
+        <div class="card">
+          <h3><a href="/acheter/premier-achat/">Guide du premier achat</a></h3>
+          <p>Tout ce qu'il faut savoir pour acheter son premier bien immobilier à Lyon.</p>
+        </div>
+        <div class="card">
+          <h3><a href="/acheter/investissement-locatif/">Guide de l'investissement locatif</a></h3>
+          <p>Investir dans le 2ème arrondissement : rendements, fiscalité, conseils.</p>
+        </div>
+        <div class="card">
+          <h3><a href="/acheter/frais-notaire-lyon/">Frais de notaire à Lyon</a></h3>
+          <p>Calculez vos frais de notaire et comprenez leur composition.</p>
+        </div>
+        <div class="card">
+          <h3><a href="/acheter/pret-immobilier/">Guide du prêt immobilier</a></h3>
+          <p>Taux, apport, durée : tout sur le financement de votre achat.</p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- NOTRE ACCOMPAGNEMENT -->
+    <section class="section">
+      <h2>Notre accompagnement acheteur</h2>
+      
+      <div class="steps">
+        <div class="step">
+          <div class="step__number">1</div>
+          <h3>Définition du projet</h3>
+          <p>Nous analysons ensemble votre budget, vos critères et vous conseillons sur les quartiers adaptés.</p>
+        </div>
+        
+        <div class="step">
+          <div class="step__number">2</div>
+          <h3>Recherche personnalisée</h3>
+          <p>Nous sélectionnons les biens correspondant à vos critères, y compris des offres exclusives.</p>
+        </div>
+        
+        <div class="step">
+          <div class="step__number">3</div>
+          <h3>Visites et conseil</h3>
+          <p>Nous organisons les visites et vous donnons notre avis expert sur chaque bien.</p>
+        </div>
+        
+        <div class="step">
+          <div class="step__number">4</div>
+          <h3>Négociation</h3>
+          <p>Nous négocions le meilleur prix pour vous grâce à notre connaissance du marché.</p>
+        </div>
+        
+        <div class="step">
+          <div class="step__number">5</div>
+          <h3>Accompagnement jusqu'à la signature</h3>
+          <p>Nous vous accompagnons dans les démarches administratives jusqu'à la remise des clés.</p>
+        </div>
+      </div>
+    </section>
+    
+    <!-- FAQ -->
+    <section class="section">
+      <FAQ items={faqAchat} title="Questions fréquentes sur l'achat" />
+      <p><a href="/faq/faq-achat/">Voir toutes les questions sur l'achat →</a></p>
+    </section>
+    
+    <!-- CTA -->
+    <CTABox 
+      title="Vous avez un projet d'achat ?"
+      text="Parlez-nous de votre projet. Nous vous recontactons sous 24h avec une sélection personnalisée."
+      buttonText="Nous contacter"
+      buttonHref="/contact/"
+      variant="primary"
+    />
+  </article>
+</BaseLayout>
+
+<style>
+  .steps {
+    display: grid;
+    gap: var(--space-lg);
+  }
+  
+  .step {
+    display: grid;
+    grid-template-columns: 60px 1fr;
+    gap: var(--space-md);
+    align-items: start;
+  }
+  
+  .step__number {
+    width: 50px;
+    height: 50px;
+    border: 2px solid var(--color-text);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    font-weight: bold;
+  }
+  
+  .step h3 {
+    margin-bottom: var(--space-xs);
+  }
+  
+  .step p {
+    margin: 0;
+    color: var(--color-text-light);
+  }
+  
+  .mt-lg {
+    margin-top: var(--space-lg);
+  }
+</style>

@@ -1,0 +1,186 @@
+---
+/**
+ * PAGE QUARTIER PERRACHE
+ */
+import QuartierLayout from '@layouts/QuartierLayout.astro';
+import PropertyCard from '@components/PropertyCard.astro';
+
+const quartierData = {
+  title: "Immobilier Perrache Lyon 2 : Prix, Biens à Vendre & Guide Complet 2025",
+  description: "Découvrez le quartier Perrache à Lyon 2ème : prix au m² actualisés (5 400€), meilleur rapport qualité-prix, quartier en transformation. Expert immobilier local.",
+  quartierName: "Perrache",
+  quartierSlug: "perrache",
+  prixMoyen: 5400,
+  evolution: "+2.5%",
+  typeBiens: "Mixte / Rénové",
+  ambiance: "Populaire / En mutation",
+  prixParType: [
+    { type: "Studio (< 30m²)", prixMoyen: 5800, fourchetteBasse: 5000, fourchetteHaute: 6500, evolution: "+2.8%" },
+    { type: "T2 (30-50m²)", prixMoyen: 5500, fourchetteBasse: 4700, fourchetteHaute: 6200, evolution: "+2.6%" },
+    { type: "T3 (50-75m²)", prixMoyen: 5300, fourchetteBasse: 4500, fourchetteHaute: 6000, evolution: "+2.4%" },
+    { type: "T4+ (> 75m²)", prixMoyen: 5100, fourchetteBasse: 4300, fourchetteHaute: 5800, evolution: "+2.2%" }
+  ],
+  faqItems: [
+    {
+      question: "Quel est le prix moyen au m² à Perrache Lyon ?",
+      answer: "Le prix moyen au m² à Perrache est de 5 400 € en janvier 2025, ce qui en fait le quartier le plus accessible du 2ème arrondissement. Les prix varient de 4 300 €/m² pour les biens à rénover jusqu'à 6 500 €/m² pour les appartements entièrement rénovés proches du métro. C'est le quartier offrant le meilleur rapport qualité-prix de la Presqu'île."
+    },
+    {
+      question: "Perrache est-il un bon quartier pour investir ?",
+      answer: "Perrache présente un excellent potentiel d'investissement. Les prix encore contenus, combinés aux projets de rénovation urbaine du centre d'échanges et à la proximité de la gare, laissent espérer une belle plus-value à moyen terme. Le rendement locatif brut atteint 4,5 à 5%, le plus élevé du 2ème arrondissement. La demande locative est forte (étudiants, jeunes actifs)."
+    },
+    {
+      question: "Comment évolue le quartier Perrache ?",
+      answer: "Perrache est en pleine transformation. Le projet de rénovation du centre d'échanges va métamorphoser l'entrée sud de la Presqu'île d'ici 2027-2030. De nouveaux commerces et espaces publics sont prévus. Le quartier bénéficie également de la dynamique de la Confluence voisine. C'est le moment d'acheter avant que les prix ne rattrapent ceux du reste du 2ème."
+    },
+    {
+      question: "Quels sont les avantages de vivre à Perrache ?",
+      answer: "Vivre à Perrache offre plusieurs avantages : prix immobiliers accessibles pour le 2ème arrondissement, excellente desserte transport (gare TGV, métro A, tramway T1/T2), proximité immédiate de la Confluence et ses commerces, potentiel de plus-value avec les projets urbains. Le quartier est également bien desservi en commerces de proximité et restaurants."
+    }
+  ],
+  lastUpdate: "Janvier 2025"
+};
+---
+
+<QuartierLayout {...quartierData}>
+  
+  <Fragment slot="presentation">
+    <p>
+      Le <strong>quartier Perrache</strong> est historiquement l'entrée sud de la Presqu'île, 
+      articulé autour de la <strong>gare de Lyon-Perrache</strong>. Longtemps considéré comme 
+      moins attractif, il connaît aujourd'hui une <strong>mutation profonde</strong> qui en fait 
+      un secteur d'investissement particulièrement intéressant.
+    </p>
+    
+    <h3>Situation géographique</h3>
+    <p>
+      Perrache s'étend autour de la gare et du centre d'échanges, entre le cours de Verdun 
+      au nord et le cours Charlemagne au sud. Le quartier fait la jonction entre l'ancien 
+      (Ainay) et le nouveau (Confluence) Lyon 2ème.
+    </p>
+    
+    <h3>Histoire et évolution</h3>
+    <p>
+      La gare de Perrache, inaugurée en 1857, a longtemps été la gare principale de Lyon. 
+      Le centre d'échanges construit dans les années 1970 a coupé le quartier en deux, 
+      créant une rupture urbaine. Les projets actuels visent à <strong>recoudre ce tissu urbain</strong> 
+      et redonner au quartier son attractivité.
+    </p>
+    
+    <h3>Ambiance et population</h3>
+    <p>
+      Population <strong>mixte et cosmopolite</strong> : étudiants, jeunes actifs, familles 
+      modestes, population de passage (gare). Le quartier a une ambiance populaire et vivante, 
+      avec de nombreux commerces ethniques et restaurants abordables. En cours de gentrification progressive.
+    </p>
+  </Fragment>
+  
+  <Fragment slot="analyse-prix">
+    <p>
+      <strong>Notre analyse :</strong> Perrache offre le meilleur rapport qualité-prix du 2ème 
+      arrondissement. Les prix sont 20 à 25% inférieurs à Bellecour pour une localisation 
+      qui reste très centrale. La rénovation du centre d'échanges devrait tirer les prix 
+      vers le haut dans les prochaines années. C'est le moment d'acheter.
+    </p>
+  </Fragment>
+  
+  <Fragment slot="vie-quartier">
+    <h3>Transports</h3>
+    <ul>
+      <li><strong>Gare de Perrache</strong> : TGV Paris (2h), TER régionaux</li>
+      <li><strong>Métro A</strong> : station Perrache (terminus)</li>
+      <li><strong>Tramway T1 et T2</strong> : arrêt Perrache</li>
+      <li><strong>Bus</strong> : hub majeur, nombreuses lignes</li>
+    </ul>
+    
+    <h3>Écoles et services</h3>
+    <ul>
+      <li><strong>Écoles</strong> : École Condorcet, Groupe scolaire Perrache</li>
+      <li><strong>Université</strong> : Proximité Lyon 2 (Berges du Rhône)</li>
+      <li><strong>Services</strong> : Poste, banques, pharmacies</li>
+    </ul>
+    
+    <h3>Commerces et restaurants</h3>
+    <ul>
+      <li><strong>Cours de Verdun</strong> : commerces variés</li>
+      <li><strong>Rue Marc-Antoine Petit</strong> : restaurants, bars</li>
+      <li><strong>Marché</strong> : marché Sainte-Blandine (samedi matin)</li>
+      <li><strong>Confluence</strong> : centre commercial à 10 min à pied</li>
+    </ul>
+    
+    <h3>Loisirs</h3>
+    <p>
+      Proximité immédiate de la Confluence et ses équipements. Quais de Saône accessibles. 
+      Salles de sport, cinéma au centre commercial.
+    </p>
+  </Fragment>
+  
+  <Fragment slot="avantages-inconvenients">
+    <div class="grid grid--2">
+      <div>
+        <h3>✅ Avantages</h3>
+        <ul>
+          <li>Prix les plus bas du 2ème arrondissement</li>
+          <li>Excellente desserte transport (gare + métro + tram)</li>
+          <li>Fort potentiel de plus-value</li>
+          <li>Proximité Confluence</li>
+          <li>Quartier en transformation</li>
+          <li>Rendement locatif attractif</li>
+          <li>Position centrale malgré tout</li>
+        </ul>
+      </div>
+      <div>
+        <h3>⚠️ Inconvénients</h3>
+        <ul>
+          <li>Image encore populaire</li>
+          <li>Centre d'échanges vieillissant (travaux prévus)</li>
+          <li>Bruit de la gare sur certains axes</li>
+          <li>Moins de charme que Ainay/Bellecour</li>
+          <li>Travaux urbains à venir</li>
+          <li>Certains immeubles à rénover</li>
+        </ul>
+      </div>
+    </div>
+  </Fragment>
+  
+  <Fragment slot="biens-disponibles">
+    <div class="grid grid--2">
+      <PropertyCard 
+        title="T3 62m² - Cours de Verdun"
+        price={295000}
+        surface={62}
+        rooms={3}
+        quartier="Perrache"
+        href="/acheter/appartements/t3-perrache-verdun/"
+        dpe="D"
+      />
+      <PropertyCard 
+        title="T2 38m² - Proche gare"
+        price={185000}
+        surface={38}
+        rooms={2}
+        quartier="Perrache"
+        href="/acheter/appartements/t2-perrache-gare/"
+        dpe="E"
+      />
+    </div>
+  </Fragment>
+  
+  <Fragment slot="articles-lies">
+    <div class="grid grid--3">
+      <div class="card">
+        <h4 class="card__title"><a href="/actualites/perrache-renovation-2025/">Perrache : les projets de rénovation</a></h4>
+        <p class="card__meta">18/12/2024</p>
+      </div>
+      <div class="card">
+        <h4 class="card__title"><a href="/actualites/investir-perrache/">Investir à Perrache : le bon moment ?</a></h4>
+        <p class="card__meta">01/12/2024</p>
+      </div>
+      <div class="card">
+        <h4 class="card__title"><a href="/guides/investir-quartier-mutation/">Investir dans un quartier en mutation</a></h4>
+        <p class="card__meta">Guide</p>
+      </div>
+    </div>
+  </Fragment>
+  
+</QuartierLayout>

@@ -1,0 +1,187 @@
+---
+/**
+ * PAGE QUARTIER CORDELIERS
+ */
+import QuartierLayout from '@layouts/QuartierLayout.astro';
+import PropertyCard from '@components/PropertyCard.astro';
+
+const quartierData = {
+  title: "Immobilier Cordeliers Lyon 2 : Prix, Biens à Vendre & Guide Complet 2025",
+  description: "Découvrez le quartier Cordeliers à Lyon 2ème : prix au m² actualisés (6 300€), place des Jacobins, immeubles de caractère. Expert immobilier local.",
+  quartierName: "Cordeliers",
+  quartierSlug: "cordeliers",
+  prixMoyen: 6300,
+  evolution: "+1.2%",
+  typeBiens: "Ancien rénové / Caractère",
+  ambiance: "Historique / Vivant",
+  prixParType: [
+    { type: "Studio (< 30m²)", prixMoyen: 6700, fourchetteBasse: 5900, fourchetteHaute: 7400, evolution: "+1.5%" },
+    { type: "T2 (30-50m²)", prixMoyen: 6400, fourchetteBasse: 5600, fourchetteHaute: 7100, evolution: "+1.3%" },
+    { type: "T3 (50-75m²)", prixMoyen: 6200, fourchetteBasse: 5400, fourchetteHaute: 6900, evolution: "+1.1%" },
+    { type: "T4+ (> 75m²)", prixMoyen: 6000, fourchetteBasse: 5200, fourchetteHaute: 6800, evolution: "+1.0%" }
+  ],
+  faqItems: [
+    {
+      question: "Quel est le prix moyen au m² aux Cordeliers Lyon ?",
+      answer: "Le prix moyen au m² aux Cordeliers est de 6 300 € en janvier 2025. Ce quartier historique offre des appartements de caractère dans des immeubles anciens. Les prix varient de 5 200 €/m² pour les biens à rénover jusqu'à 7 400 €/m² pour les appartements rénovés avec cachet (poutres, cheminées, parquet)."
+    },
+    {
+      question: "Quels sont les atouts du quartier Cordeliers ?",
+      answer: "Les Cordeliers offrent un emplacement stratégique entre Bellecour et Terreaux, alliant patrimoine historique (place des Jacobins, palais de la Bourse) et vie urbaine animée. Le quartier est très bien desservi (métro Cordeliers), proche des commerces de la rue de la République tout en conservant un caractère plus authentique que la Presqu'île commerçante."
+    },
+    {
+      question: "Les Cordeliers sont-ils adaptés pour habiter ?",
+      answer: "Les Cordeliers conviennent aux personnes recherchant l'authenticité et l'histoire tout en restant au cœur de Lyon. Les rues secondaires autour de la place des Jacobins offrent du calme. Le quartier attire les jeunes cadres, les professions libérales et les amateurs de patrimoine. Moins familial que Ainay mais plus résidentiel que la rue de la République."
+    },
+    {
+      question: "Comment est le marché immobilier aux Cordeliers ?",
+      answer: "Le marché des Cordeliers est stable avec une demande soutenue. Les appartements de caractère (moulures, cheminées, hauteur sous plafond) sont très recherchés. Le délai de vente moyen est de 50 jours. Les investisseurs apprécient le secteur pour la location à des cadres et professions libérales. Attention aux copropriétés anciennes qui peuvent nécessiter des travaux."
+    }
+  ],
+  lastUpdate: "Janvier 2025"
+};
+---
+
+<QuartierLayout {...quartierData}>
+  
+  <Fragment slot="presentation">
+    <p>
+      Le <strong>quartier des Cordeliers</strong> est un secteur historique de la Presqu'île, 
+      situé au nord du 2ème arrondissement à la frontière avec le 1er. Articulé autour de la 
+      <strong>place des Jacobins</strong> et du <strong>palais de la Bourse</strong>, il incarne 
+      l'histoire marchande et bourgeoise de Lyon.
+    </p>
+    
+    <h3>Situation géographique</h3>
+    <p>
+      Les Cordeliers s'étendent entre la place Bellecour au sud et la place des Terreaux au nord, 
+      de la rue de la République à l'est jusqu'à la rue Grenette à l'ouest. C'est un quartier 
+      de transition entre le 1er et le 2ème arrondissement.
+    </p>
+    
+    <h3>Histoire et patrimoine</h3>
+    <p>
+      Le nom vient de l'ancien couvent des Cordeliers (franciscains). La <strong>place des Jacobins</strong>, 
+      avec sa fontaine monumentale, est l'une des plus belles de Lyon. Le <strong>palais de la Bourse</strong> 
+      (1860), chef-d'œuvre néoclassique, abrite aujourd'hui la CCI. Les immeubles alentour 
+      témoignent de la prospérité du négoce lyonnais aux XVIIIème et XIXème siècles.
+    </p>
+    
+    <h3>Ambiance et population</h3>
+    <p>
+      Quartier <strong>vivant et cosmopolite</strong> : mélange de résidents de longue date, 
+      de jeunes actifs et de professions libérales. L'ambiance est urbaine avec des restaurants, 
+      bars et commerces. Vie nocturne présente mais moins intense que sur la rue Mercière.
+    </p>
+  </Fragment>
+  
+  <Fragment slot="analyse-prix">
+    <p>
+      <strong>Notre analyse :</strong> Les Cordeliers offrent un bon compromis entre centralité 
+      et cachet. Les prix sont légèrement inférieurs à Bellecour pour un emplacement tout 
+      aussi central. Les appartements avec vue sur la place des Jacobins ou le palais de la 
+      Bourse bénéficient d'une prime. Attention aux nuisances sonores sur certains axes.
+    </p>
+  </Fragment>
+  
+  <Fragment slot="vie-quartier">
+    <h3>Transports</h3>
+    <ul>
+      <li><strong>Métro A</strong> : station Cordeliers</li>
+      <li><strong>Métro D</strong> : station Bellecour (5 min à pied)</li>
+      <li><strong>Bus</strong> : nombreuses lignes rue de la République</li>
+      <li><strong>Vélo'v</strong> : stations place des Jacobins, rue de la Bourse</li>
+    </ul>
+    
+    <h3>Patrimoine remarquable</h3>
+    <ul>
+      <li><strong>Place des Jacobins</strong> : fontaine et immeubles classés</li>
+      <li><strong>Palais de la Bourse</strong> : architecture néoclassique</li>
+      <li><strong>Église Saint-Nizier</strong> : gothique flamboyant (limite 1er)</li>
+      <li><strong>Traboules</strong> : passages typiquement lyonnais</li>
+    </ul>
+    
+    <h3>Commerces et restaurants</h3>
+    <ul>
+      <li><strong>Rue de la Bourse</strong> : commerces de bouche, cafés</li>
+      <li><strong>Rue Mercière</strong> : restaurants (attention zone touristique)</li>
+      <li><strong>Rue Grenette</strong> : boutiques, terrasses</li>
+      <li><strong>Proximité Halles Paul Bocuse</strong></li>
+    </ul>
+    
+    <h3>Culture</h3>
+    <p>
+      Proximité de l'Opéra de Lyon, des musées du 1er arrondissement. 
+      Galeries d'art rue Auguste Comte. Vie culturelle riche.
+    </p>
+  </Fragment>
+  
+  <Fragment slot="avantages-inconvenients">
+    <div class="grid grid--2">
+      <div>
+        <h3>✅ Avantages</h3>
+        <ul>
+          <li>Patrimoine architectural remarquable</li>
+          <li>Emplacement ultra-central</li>
+          <li>Appartements de caractère</li>
+          <li>Métro Cordeliers direct</li>
+          <li>Vie culturelle et gastronomique</li>
+          <li>Charme historique</li>
+          <li>Bon compromis prix/emplacement</li>
+        </ul>
+      </div>
+      <div>
+        <h3>⚠️ Inconvénients</h3>
+        <ul>
+          <li>Bruit sur certains axes (rue Mercière)</li>
+          <li>Copropriétés anciennes (travaux potentiels)</li>
+          <li>Peu d'espaces verts</li>
+          <li>Stationnement très difficile</li>
+          <li>Tourisme sur la rue Mercière</li>
+          <li>Immeubles parfois mal entretenus</li>
+        </ul>
+      </div>
+    </div>
+  </Fragment>
+  
+  <Fragment slot="biens-disponibles">
+    <div class="grid grid--2">
+      <PropertyCard 
+        title="T3 72m² - Place des Jacobins"
+        price={450000}
+        surface={72}
+        rooms={3}
+        quartier="Cordeliers"
+        href="/acheter/appartements/t3-cordeliers-jacobins/"
+        dpe="D"
+      />
+      <PropertyCard 
+        title="T2 48m² - Rue de la Bourse"
+        price={295000}
+        surface={48}
+        rooms={2}
+        quartier="Cordeliers"
+        href="/acheter/appartements/t2-cordeliers-bourse/"
+        dpe="C"
+      />
+    </div>
+  </Fragment>
+  
+  <Fragment slot="articles-lies">
+    <div class="grid grid--3">
+      <div class="card">
+        <h4 class="card__title"><a href="/actualites/place-jacobins-histoire/">La place des Jacobins : histoire</a></h4>
+        <p class="card__meta">08/12/2024</p>
+      </div>
+      <div class="card">
+        <h4 class="card__title"><a href="/actualites/acheter-ancien-lyon/">Acheter dans l'ancien à Lyon</a></h4>
+        <p class="card__meta">25/11/2024</p>
+      </div>
+      <div class="card">
+        <h4 class="card__title"><a href="/guides/renovation-appartement-ancien/">Guide rénovation appartement ancien</a></h4>
+        <p class="card__meta">Guide</p>
+      </div>
+    </div>
+  </Fragment>
+  
+</QuartierLayout>

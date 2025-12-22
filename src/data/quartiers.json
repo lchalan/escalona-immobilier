@@ -1,0 +1,10 @@
+{
+  "quartiers": [
+    { "id": "bellecour", "nom": "Bellecour", "prixMoyenM2": 8200 },
+    { "id": "ainay", "nom": "Ainay", "prixMoyenM2": 8000 },
+    { "id": "confluence", "nom": "Confluence", "prixMoyenM2": 6200 },
+    { "id": "perrache", "nom": "Perrache", "prixMoyenM2": 5800 },
+    { "id": "presquile", "nom": "Presqu'île Centre", "prixMoyenM2": 7200 },
+    { "id": "cordeliers", "nom": "Cordeliers", "prixMoyenM2": 7000 }
+  ]
+}

@@ -1,0 +1,251 @@
+---
+/**
+ * PAGE FAQ LYON 2
+ * Questions sur le 2ème arrondissement
+ */
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Breadcrumbs from '@components/Breadcrumbs.astro';
+
+const pageTitle = "FAQ Lyon 2ème Arrondissement : Quartiers, Prix, Vie Locale";
+const pageDescription = "Tout savoir sur le 2ème arrondissement de Lyon : quartiers, prix immobiliers, transports, écoles, commerces, projets urbains. Guide complet.";
+
+const breadcrumbs = [
+  { label: 'Accueil', href: '/' },
+  { label: 'FAQ', href: '/faq/' },
+  { label: 'Lyon 2ème arrondissement' }
+];
+
+const faqItems = [
+  {
+    question: "Quels sont les quartiers du 2ème arrondissement de Lyon ?",
+    answer: "Le 2ème arrondissement compte 6 quartiers principaux : Bellecour (hypercentre, place emblématique, commerces haut de gamme), Ainay (bourgeois, architecture 19ème, antiquaires), Confluence (éco-quartier moderne au sud, musée, centre commercial), Perrache (proche gare, en mutation), Presqu'île Centre (axe piéton Cordeliers-Bellecour), Cordeliers (dynamique, proche Part-Dieu)."
+  },
+  {
+    question: "Quel est le quartier le plus cher du 2ème arrondissement ?",
+    answer: "Bellecour et Ainay sont les quartiers les plus chers avec des prix moyens de 7 500 à 9 000€/m². Bellecour bénéficie de sa centralité et de son prestige, Ainay de son caractère résidentiel haut de gamme et de son architecture préservée. Les appartements avec vue sur la place Bellecour ou sur les quais atteignent des prix exceptionnels."
+  },
+  {
+    question: "Quel est le quartier le plus abordable du 2ème ?",
+    answer: "Perrache est le quartier le plus accessible avec des prix autour de 5 000-6 500€/m². Historiquement moins prisé en raison de la gare et du centre d'échanges, le quartier se transforme avec des projets de rénovation. C'est une opportunité pour les acheteurs avec budget limité qui veulent vivre en Presqu'île."
+  },
+  {
+    question: "Le 2ème arrondissement est-il bien desservi en transports ?",
+    answer: "Excellemment. Le 2ème dispose du métro A (Bellecour, Ampère, Perrache), du tramway T1 (Perrache-Part-Dieu) et T2 (Perrache-Saint-Priest), de nombreuses lignes de bus, de la gare Perrache (TGV, TER), et de stations Vélo'v. Confluence est accessible par navette fluviale. Tout Lyon est accessible en moins de 20 minutes."
+  },
+  {
+    question: "Y a-t-il de bonnes écoles dans le 2ème arrondissement ?",
+    answer: "Le 2ème compte plusieurs écoles primaires (Alix, Condé, Cavenne, Gilbert Dru), le collège Ampère (excellent niveau), et le prestigieux lycée Ampère. Des établissements privés réputés sont également présents (Institution des Chartreux à proximité). Le secteur est très recherché par les familles pour son offre scolaire."
+  },
+  {
+    question: "Comment est la vie de quartier dans le 2ème ?",
+    answer: "Très animée : marchés (Sainte-Croix, Confluence), nombreux commerces de proximité, restaurants et bars sur les quais, vie culturelle riche (musées, théâtres, cinémas). Le quartier Ainay a un esprit village, Confluence est plus moderne et branché. La Presqu'île attire Lyonnais et touristes toute l'année."
+  },
+  {
+    question: "Quels sont les projets urbains en cours dans le 2ème ?",
+    answer: "Principaux projets : finalisation de Confluence phase 2 (logements, bureaux, commerces), réaménagement de la place Carnot et des abords de Perrache, végétalisation des quais, développement des pistes cyclables. Le quartier Perrache fait l'objet d'une attention particulière pour améliorer son attractivité."
+  },
+  {
+    question: "Le 2ème arrondissement est-il bruyant ?",
+    answer: "Cela dépend de l'emplacement précis. Les axes passants (rue de la République, quais) et les abords de la gare Perrache sont plus bruyants. Les rues secondaires d'Ainay ou les cours intérieures offrent un calme surprenant en plein centre. L'exposition et l'étage du logement sont déterminants."
+  },
+  {
+    question: "Y a-t-il des espaces verts dans le 2ème arrondissement ?",
+    answer: "Le 2ème n'a pas de grand parc mais offre : les quais du Rhône et de Saône aménagés pour la promenade, le parc des Berges de Confluence (4 ha), la place Bellecour (plus grande place piétonne d'Europe). Le parc de la Tête d'Or (6ème) est accessible en 15 minutes à vélo."
+  },
+  {
+    question: "Peut-on se garer facilement dans le 2ème ?",
+    answer: "Le stationnement est difficile et payant (zone verte : 2h max). Des parkings souterrains existent (Bellecour, Célestins, Perrache, Confluence). Pour les résidents, un abonnement parking ou un logement avec place sont recommandés. Beaucoup d'habitants optent pour les transports en commun et le vélo."
+  },
+  {
+    question: "Le 2ème arrondissement est-il adapté aux familles ?",
+    answer: "Oui, particulièrement les quartiers Ainay et Bellecour avec leurs écoles de qualité, leurs rues calmes et leurs commerces. Confluence offre des logements modernes avec terrasses, adaptés aux familles. Le manque d'espaces verts est compensé par la proximité des quais et du parc de la Tête d'Or."
+  },
+  {
+    question: "Est-ce un bon investissement d'acheter dans le 2ème ?",
+    answer: "Le 2ème arrondissement est une valeur sûre : demande locative forte (étudiants, jeunes actifs, expatriés), valorisation régulière du patrimoine (+3-4%/an en moyenne sur 10 ans), faible vacance locative. La rentabilité brute est modérée (2-4%) mais la sécurité et la liquidité de l'investissement sont excellentes."
+  }
+];
+
+// Schema.org FAQPage
+const schemaFaq = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqItems.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+};
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <Breadcrumbs items={breadcrumbs} />
+  
+  <script type="application/ld+json" set:html={JSON.stringify(schemaFaq)} />
+  
+  <article>
+    <header class="section">
+      <h1>FAQ Lyon 2ème Arrondissement</h1>
+      <p>
+        Tout ce que vous devez savoir sur le 2ème arrondissement de Lyon : 
+        quartiers, prix, transports, écoles, vie quotidienne.
+      </p>
+    </header>
+    
+    <section class="section">
+      <div class="faq-list">
+        {faqItems.map(faq => (
+          <details class="faq-item">
+            <summary class="faq-question">{faq.question}</summary>
+            <div class="faq-answer">
+              <p>{faq.answer}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </section>
+    
+    <section class="section">
+      <h2>Découvrir les Quartiers en Détail</h2>
+      <div class="quartier-links">
+        <a href="/lyon-2-arrondissement/quartiers/bellecour/" class="quartier-link">
+          <strong>Bellecour</strong>
+          <span>Hypercentre, commerces, prestige</span>
+        </a>
+        <a href="/lyon-2-arrondissement/quartiers/ainay/" class="quartier-link">
+          <strong>Ainay</strong>
+          <span>Bourgeois, village, antiquaires</span>
+        </a>
+        <a href="/lyon-2-arrondissement/quartiers/confluence/" class="quartier-link">
+          <strong>Confluence</strong>
+          <span>Moderne, éco-quartier, musée</span>
+        </a>
+        <a href="/lyon-2-arrondissement/quartiers/perrache/" class="quartier-link">
+          <strong>Perrache</strong>
+          <span>Gare, accessible, en mutation</span>
+        </a>
+        <a href="/lyon-2-arrondissement/quartiers/presquile/" class="quartier-link">
+          <strong>Presqu'île Centre</strong>
+          <span>Piéton, commerçant, animé</span>
+        </a>
+        <a href="/lyon-2-arrondissement/quartiers/cordeliers/" class="quartier-link">
+          <strong>Cordeliers</strong>
+          <span>Dynamique, jeune, central</span>
+        </a>
+      </div>
+    </section>
+    
+    <section class="section related-links">
+      <h2>Pages Connexes</h2>
+      <ul>
+        <li><a href="/lyon-2-arrondissement/">Guide complet Lyon 2ème</a></li>
+        <li><a href="/marche-immobilier/">Prix du marché immobilier</a></li>
+        <li><a href="/acheter/">Acheter dans le 2ème</a></li>
+        <li><a href="/contact/">Nous contacter</a></li>
+      </ul>
+    </section>
+  </article>
+</BaseLayout>
+
+<style>
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+  
+  .faq-item {
+    border: 1px solid var(--color-border);
+    background: var(--color-bg-alt);
+  }
+  
+  .faq-question {
+    padding: var(--space-lg);
+    cursor: pointer;
+    font-weight: 600;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .faq-question::after {
+    content: '+';
+    font-size: 1.5rem;
+    font-weight: 300;
+    flex-shrink: 0;
+    margin-left: var(--space-md);
+  }
+  
+  details[open] .faq-question::after {
+    content: '−';
+  }
+  
+  .faq-answer {
+    padding: 0 var(--space-lg) var(--space-lg);
+    border-top: 1px solid var(--color-border);
+  }
+  
+  .quartier-links {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-md);
+  }
+  
+  @media (max-width: 768px) {
+    .quartier-links {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (max-width: 480px) {
+    .quartier-links {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  .quartier-link {
+    display: block;
+    padding: var(--space-lg);
+    border: 1px solid var(--color-border);
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  .quartier-link:hover {
+    background: var(--color-bg-alt);
+    border-color: var(--color-primary);
+  }
+  
+  .quartier-link strong {
+    display: block;
+    margin-bottom: var(--space-xs);
+  }
+  
+  .quartier-link span {
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+  }
+  
+  .related-links ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+    list-style: none;
+    padding: 0;
+  }
+  
+  .related-links a {
+    display: inline-block;
+    padding: var(--space-sm) var(--space-md);
+    border: 1px solid var(--color-border);
+    text-decoration: none;
+  }
+  
+  .related-links a:hover {
+    background: var(--color-bg-alt);
+  }
+</style>

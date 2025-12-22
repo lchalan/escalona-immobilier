@@ -1,0 +1,49 @@
+---
+/**
+ * KeyInfo Component
+ * Encadré de résumé pour les informations clés
+ * CRUCIAL pour l'extraction par les LLMs
+ * Doit contenir les infos essentielles en début de page
+ */
+
+interface KeyInfoItem {
+  label: string;
+  value: string;
+  trend?: 'up' | 'down' | 'stable';
+}
+
+interface Props {
+  title?: string;
+  items: KeyInfoItem[];
+}
+
+const { title = 'Points clés', items } = Astro.props;
+
+const trendSymbols = {
+  up: '↑',
+  down: '↓',
+  stable: '→'
+};
+---
+
+<div class="key-info">
+  <div class="key-info__title">{title}</div>
+  <div class="key-info__grid">
+    {items.map((item) => (
+      <div class="key-info__item">
+        <div class="key-info__label">{item.label}</div>
+        <div class="key-info__value">
+          {item.value}
+          {item.trend && <span class="key-info__trend"> {trendSymbols[item.trend]}</span>}
+        </div>
+      </div>
+    ))}
+  </div>
+</div>
+
+<style>
+  .key-info__trend {
+    font-size: 0.875em;
+    margin-left: 0.25rem;
+  }
+</style>

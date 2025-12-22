@@ -1,0 +1,165 @@
+---
+/**
+ * PAGE PLAN DU SITE
+ * Sitemap HTML pour utilisateurs et SEO
+ */
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Breadcrumbs from '@components/Breadcrumbs.astro';
+
+const pageTitle = "Plan du Site - Escalona Immobilier Lyon 2ème";
+const pageDescription = "Plan du site Escalona Immobilier : accédez facilement à toutes les pages du site - quartiers Lyon 2ème, annonces, FAQ, marché immobilier.";
+
+const breadcrumbs = [
+  { label: 'Accueil', href: '/' },
+  { label: 'Plan du site' }
+];
+
+const siteSections = [
+  {
+    title: "Pages principales",
+    links: [
+      { label: "Accueil", href: "/" },
+      { label: "Contact", href: "/contact/" },
+      { label: "Lyon 2ème arrondissement", href: "/lyon-2-arrondissement/" }
+    ]
+  },
+  {
+    title: "Acheter",
+    links: [
+      { label: "Acheter dans le 2ème", href: "/acheter/" },
+      { label: "Appartements à vendre", href: "/acheter/appartements/" }
+    ]
+  },
+  {
+    title: "Vendre",
+    links: [
+      { label: "Vendre votre bien", href: "/vendre/" },
+      { label: "Estimation gratuite", href: "/vendre/estimation-gratuite/" }
+    ]
+  },
+  {
+    title: "Quartiers Lyon 2ème",
+    links: [
+      { label: "Tous les quartiers", href: "/lyon-2-arrondissement/quartiers/" },
+      { label: "Bellecour", href: "/lyon-2-arrondissement/quartiers/bellecour/" },
+      { label: "Ainay", href: "/lyon-2-arrondissement/quartiers/ainay/" },
+      { label: "Confluence", href: "/lyon-2-arrondissement/quartiers/confluence/" },
+      { label: "Perrache", href: "/lyon-2-arrondissement/quartiers/perrache/" },
+      { label: "Presqu'île Centre", href: "/lyon-2-arrondissement/quartiers/presquile/" },
+      { label: "Cordeliers", href: "/lyon-2-arrondissement/quartiers/cordeliers/" }
+    ]
+  },
+  {
+    title: "FAQ - Questions fréquentes",
+    links: [
+      { label: "Toutes les FAQ", href: "/faq/" },
+      { label: "FAQ Achat immobilier", href: "/faq/faq-achat/" },
+      { label: "FAQ Vente immobilier", href: "/faq/faq-vente/" },
+      { label: "FAQ Location", href: "/faq/faq-location/" },
+      { label: "FAQ Lyon 2ème", href: "/faq/faq-lyon-2/" }
+    ]
+  },
+  {
+    title: "Marché immobilier",
+    links: [
+      { label: "Prix et tendances", href: "/marche-immobilier/" },
+      { label: "Rapport mensuel", href: "/marche-immobilier/rapport-mensuel/" }
+    ]
+  },
+  {
+    title: "Informations légales",
+    links: [
+      { label: "Mentions légales", href: "/mentions-legales/" },
+      { label: "Politique de confidentialité", href: "/politique-confidentialite/" }
+    ]
+  }
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <Breadcrumbs items={breadcrumbs} />
+  
+  <article>
+    <header class="section">
+      <h1>Plan du Site</h1>
+      <p>
+        Retrouvez ci-dessous l'ensemble des pages du site Escalona Immobilier.
+      </p>
+    </header>
+    
+    <section class="section">
+      <div class="sitemap-grid">
+        {siteSections.map(section => (
+          <div class="sitemap-section">
+            <h2>{section.title}</h2>
+            <ul>
+              {section.links.map(link => (
+                <li><a href={link.href}>{link.label}</a></li>
+              ))}
+            </ul>
+          </div>
+        ))}
+      </div>
+    </section>
+    
+    <section class="section">
+      <h2>Sitemap XML</h2>
+      <p>
+        Pour les moteurs de recherche, le sitemap XML est disponible à l'adresse : 
+        <a href="/sitemap.xml">/sitemap.xml</a>
+      </p>
+    </section>
+  </article>
+</BaseLayout>
+
+<style>
+  .sitemap-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-xl);
+  }
+  
+  @media (max-width: 900px) {
+    .sitemap-grid {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .sitemap-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  .sitemap-section {
+    border: 1px solid var(--color-border);
+    padding: var(--space-lg);
+  }
+  
+  .sitemap-section h2 {
+    font-size: 1rem;
+    margin-bottom: var(--space-md);
+    padding-bottom: var(--space-sm);
+    border-bottom: 1px solid var(--color-border);
+  }
+  
+  .sitemap-section ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .sitemap-section li {
+    padding: var(--space-xs) 0;
+  }
+  
+  .sitemap-section a {
+    text-decoration: none;
+    color: inherit;
+  }
+  
+  .sitemap-section a:hover {
+    color: var(--color-primary);
+    text-decoration: underline;
+  }
+</style>

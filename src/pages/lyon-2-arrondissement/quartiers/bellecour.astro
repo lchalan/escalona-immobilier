@@ -1,0 +1,236 @@
+---
+/**
+ * PAGE QUARTIER BELLECOUR
+ * Exemple de page quartier complète
+ */
+import QuartierLayout from '@layouts/QuartierLayout.astro';
+import PropertyCard from '@components/PropertyCard.astro';
+
+const quartierData = {
+  // SEO
+  title: "Immobilier Bellecour Lyon 2 : Prix, Biens à Vendre & Guide Complet 2025",
+  description: "Découvrez le quartier Bellecour à Lyon 2ème : prix au m² actualisés (6 800€), appartements à vendre, vie de quartier. Expert immobilier local. Guide complet.",
+  
+  // Quartier info
+  quartierName: "Bellecour",
+  quartierSlug: "bellecour",
+  
+  // Key info
+  prixMoyen: 6800,
+  evolution: "+2.1%",
+  typeBiens: "Haussmannien",
+  ambiance: "Prestige / Central",
+  
+  // Prix détaillés
+  prixParType: [
+    { type: "Studio (< 30m²)", prixMoyen: 7200, fourchetteBasse: 6500, fourchetteHaute: 8000, evolution: "+2.5%" },
+    { type: "T2 (30-50m²)", prixMoyen: 6900, fourchetteBasse: 6200, fourchetteHaute: 7600, evolution: "+2.2%" },
+    { type: "T3 (50-75m²)", prixMoyen: 6700, fourchetteBasse: 6000, fourchetteHaute: 7400, evolution: "+1.9%" },
+    { type: "T4+ (> 75m²)", prixMoyen: 6500, fourchetteBasse: 5800, fourchetteHaute: 7500, evolution: "+1.5%" }
+  ],
+  
+  // FAQ
+  faqItems: [
+    {
+      question: "Quel est le prix moyen au m² à Bellecour Lyon ?",
+      answer: "Le prix moyen au m² à Bellecour est de 6 800 € en janvier 2025, ce qui en fait le quartier le plus cher du 2ème arrondissement. Les prix varient de 6 200 €/m² pour les biens à rénover jusqu'à 7 500 €/m² pour les appartements de standing avec vue sur la place. Les petites surfaces (studios, T2) affichent des prix au m² plus élevés, autour de 7 000-7 200 €."
+    },
+    {
+      question: "Bellecour est-il un bon quartier pour investir ?",
+      answer: "Bellecour est un investissement patrimonial de premier ordre. La rentabilité locative brute est modérée (3-3,5%) mais compensée par une valorisation régulière (+2% par an en moyenne) et une liquidité excellente. C'est un quartier idéal pour sécuriser un capital sur le long terme, avec un risque de vacance locative quasi nul grâce à la demande constante de cadres supérieurs et professions libérales."
+    },
+    {
+      question: "Comment est la vie de quartier à Bellecour ?",
+      answer: "Bellecour offre un cadre de vie prestigieux au cœur de Lyon. La place Bellecour, plus grande place piétonne d'Europe, est le point de départ des grandes artères commerçantes (rue de la République, rue Victor Hugo). Le quartier compte de nombreux restaurants gastronomiques, boutiques de luxe, et bénéficie d'une excellente desserte métro (lignes A et D). L'ambiance est plutôt calme et bourgeoise, idéale pour les familles aisées."
+    },
+    {
+      question: "Quels sont les avantages d'acheter à Bellecour ?",
+      answer: "Acheter à Bellecour offre plusieurs avantages : emplacement ultra-central avec toutes les commodités à pied, architecture haussmannienne de qualité, valorisation patrimoniale stable, prestige de l'adresse, excellente desserte transport (métro A et D), proximité des meilleurs établissements scolaires (lycée Ampère). C'est aussi un quartier très recherché pour la location meublée haut de gamme."
+    },
+    {
+      question: "Quels sont les inconvénients du quartier Bellecour ?",
+      answer: "Les principaux inconvénients de Bellecour sont les prix élevés qui limitent l'accès au quartier, le manque d'espaces verts (la place Bellecour étant minérale), le bruit et l'animation en soirée sur certains axes (rue de la République), et la difficulté de stationnement malgré les parkings souterrains. Les appartements anciens peuvent nécessiter des travaux importants (isolation, électricité)."
+    }
+  ],
+  
+  // Date
+  lastUpdate: "Janvier 2025"
+};
+---
+
+<QuartierLayout {...quartierData}>
+  
+  <!-- SLOT: Présentation -->
+  <Fragment slot="presentation">
+    <p>
+      Le <strong>quartier Bellecour</strong> est le cœur historique et symbolique de Lyon. 
+      Articulé autour de la <strong>place Bellecour</strong>, la plus grande place piétonne d'Europe 
+      (62 000 m²), ce quartier incarne le prestige et l'élégance lyonnaise depuis le XVIIème siècle.
+    </p>
+    
+    <h3>Situation géographique</h3>
+    <p>
+      Bellecour occupe une position centrale sur la Presqu'île, entre le Rhône à l'est et la Saône à l'ouest. 
+      Le quartier s'étend de la rue de la Barre au nord jusqu'à la place Ampère au sud, englobant 
+      les rues les plus commerçantes de Lyon : <strong>rue de la République</strong> et <strong>rue Victor Hugo</strong>.
+    </p>
+    
+    <h3>Histoire et patrimoine</h3>
+    <p>
+      La place Bellecour a été aménagée au XVIIème siècle sur d'anciens terrains marécageux. 
+      La statue équestre de Louis XIV, au centre de la place, est un symbole de la ville. 
+      Les immeubles qui bordent la place, reconstruits après la Révolution, présentent une 
+      architecture classique harmonieuse. Le quartier abrite également de beaux <strong>immeubles haussmanniens</strong> 
+      du XIXème siècle sur les rues adjacentes.
+    </p>
+    
+    <h3>Ambiance et population</h3>
+    <p>
+      Bellecour attire une population aisée : <strong>cadres supérieurs, professions libérales, 
+      familles établies</strong>. L'ambiance est à la fois animée (commerces, restaurants) et 
+      résidentielle dans les rues secondaires. La moyenne d'âge est légèrement supérieure à 
+      la moyenne lyonnaise, avec une forte proportion de propriétaires.
+    </p>
+  </Fragment>
+  
+  <!-- SLOT: Analyse prix -->
+  <Fragment slot="analyse-prix">
+    <p>
+      <strong>Notre analyse :</strong> Les prix à Bellecour se maintiennent à un niveau élevé 
+      malgré le contexte de hausse des taux. La rareté des biens à la vente (moins de 50 biens 
+      disponibles en permanence sur le quartier) et la qualité de la demande soutiennent les prix.
+    </p>
+    <p>
+      Les appartements les plus recherchés sont les <strong>T3 et T4 avec parquet, moulures et hauteur 
+      sous plafond</strong>, idéalement situés dans les étages élevés avec ascenseur. Un balcon ou 
+      une vue sur la place Bellecour peut justifier une plus-value de 10 à 15%.
+    </p>
+  </Fragment>
+  
+  <!-- SLOT: Vie de quartier -->
+  <Fragment slot="vie-quartier">
+    <h3>Transports</h3>
+    <ul>
+      <li><strong>Métro A</strong> : station Bellecour (accès direct Part-Dieu en 8 min)</li>
+      <li><strong>Métro D</strong> : station Bellecour (correspondance vers Vieux Lyon, Gare de Vaise)</li>
+      <li><strong>Bus</strong> : nombreuses lignes sur les quais du Rhône</li>
+      <li><strong>Vélo'v</strong> : 5 stations dans un rayon de 300m</li>
+    </ul>
+    <p>Temps de trajet : Part-Dieu 8 min, Perrache 4 min, Aéroport Saint-Exupéry 35 min (Rhônexpress depuis Part-Dieu).</p>
+    
+    <h3>Écoles et crèches</h3>
+    <ul>
+      <li><strong>Écoles maternelles</strong> : École Bellecour</li>
+      <li><strong>Écoles élémentaires</strong> : École Alix, École République</li>
+      <li><strong>Collège</strong> : Collège Ampère</li>
+      <li><strong>Lycée</strong> : Lycée Ampère (excellent classement national)</li>
+      <li><strong>Crèches</strong> : Crèche municipale Bellecour, plusieurs crèches privées</li>
+    </ul>
+    
+    <h3>Commerces et restaurants</h3>
+    <ul>
+      <li><strong>Rue de la République</strong> : enseignes nationales, grands magasins</li>
+      <li><strong>Rue Victor Hugo</strong> : boutiques mode, décoration</li>
+      <li><strong>Alimentation</strong> : Monoprix Bellecour, commerces de bouche rue des Marronniers</li>
+      <li><strong>Restaurants</strong> : nombreux bistrots et tables gastronomiques, terrasses place Bellecour</li>
+    </ul>
+    
+    <h3>Espaces verts et loisirs</h3>
+    <p>
+      La place Bellecour elle-même est un vaste espace ouvert, bien que minéral. Les <strong>berges du Rhône</strong>, 
+      à 5 minutes à pied, offrent un espace vert aménagé idéal pour le jogging et la promenade. 
+      Le parc de la Tête d'Or est accessible en 15 minutes en métro.
+    </p>
+  </Fragment>
+  
+  <!-- SLOT: Avantages/Inconvénients -->
+  <Fragment slot="avantages-inconvenients">
+    <div class="grid grid--2">
+      <div>
+        <h3>✅ Avantages</h3>
+        <ul>
+          <li>Emplacement ultra-central, tout à pied</li>
+          <li>Prestige de l'adresse</li>
+          <li>Architecture de qualité, beaux volumes</li>
+          <li>Excellente desserte métro (A + D)</li>
+          <li>Commerces et restaurants haut de gamme</li>
+          <li>Valorisation patrimoniale stable</li>
+          <li>Écoles réputées (Lycée Ampère)</li>
+          <li>Liquidité excellente à la revente</li>
+        </ul>
+      </div>
+      <div>
+        <h3>⚠️ Inconvénients</h3>
+        <ul>
+          <li>Prix élevés (budget conséquent requis)</li>
+          <li>Peu d'espaces verts de proximité</li>
+          <li>Animation et bruit sur les axes principaux</li>
+          <li>Stationnement difficile et coûteux</li>
+          <li>Travaux potentiels dans l'ancien</li>
+          <li>Peu de biens disponibles (marché tendu)</li>
+          <li>Charges de copropriété parfois élevées</li>
+        </ul>
+      </div>
+    </div>
+    
+    <h3>Notre avis d'expert</h3>
+    <p>
+      <em>
+        "Bellecour reste une valeur sûre pour qui peut y accéder. C'est un quartier où l'on achète 
+        pour la vie ou pour transmettre un patrimoine. Les primo-accédants devront se tourner vers 
+        des surfaces modestes, mais bénéficieront d'un cadre de vie exceptionnel et d'une plus-value 
+        quasi garantie à long terme. Pour les investisseurs, privilégiez la location meublée 
+        haut de gamme qui offre de meilleurs rendements."
+      </em>
+      <br>— L'équipe Escalona Immobilier
+    </p>
+  </Fragment>
+  
+  <!-- SLOT: Biens disponibles -->
+  <Fragment slot="biens-disponibles">
+    <p class="text-muted">
+      [Espace pour afficher 3-6 biens actuellement en vente à Bellecour]
+    </p>
+    
+    <!-- Exemple de cards (à remplacer par données dynamiques) -->
+    <div class="grid grid--2">
+      <PropertyCard 
+        title="T3 75m² - Vue Place Bellecour"
+        price={520000}
+        surface={75}
+        rooms={3}
+        quartier="Bellecour"
+        href="/acheter/appartements/t3-bellecour-vue-place/"
+        dpe="D"
+      />
+      <PropertyCard 
+        title="T2 45m² - Rue Victor Hugo"
+        price={315000}
+        surface={45}
+        rooms={2}
+        quartier="Bellecour"
+        href="/acheter/appartements/t2-victor-hugo/"
+        dpe="C"
+      />
+    </div>
+  </Fragment>
+  
+  <!-- SLOT: Articles liés -->
+  <Fragment slot="articles-lies">
+    <div class="grid grid--3">
+      <div class="card">
+        <h4 class="card__title"><a href="/actualites/evolution-prix-bellecour-2024/">Évolution des prix à Bellecour en 2024</a></h4>
+        <p class="card__meta">15/12/2024</p>
+      </div>
+      <div class="card">
+        <h4 class="card__title"><a href="/actualites/meilleures-adresses-bellecour/">Les meilleures adresses pour habiter à Bellecour</a></h4>
+        <p class="card__meta">01/11/2024</p>
+      </div>
+      <div class="card">
+        <h4 class="card__title"><a href="/guides/acheter-appartement-lyon-centre/">Guide : Acheter en centre-ville de Lyon</a></h4>
+        <p class="card__meta">Guide</p>
+      </div>
+    </div>
+  </Fragment>
+  
+</QuartierLayout>

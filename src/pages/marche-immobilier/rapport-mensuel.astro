@@ -1,0 +1,318 @@
+---
+/**
+ * PAGE RAPPORT MENSUEL MARCHÉ
+ * Template pour les rapports mensuels
+ */
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Breadcrumbs from '@components/Breadcrumbs.astro';
+import KeyInfo from '@components/KeyInfo.astro';
+import PriceTable from '@components/PriceTable.astro';
+
+// Configuration du rapport - À mettre à jour chaque mois
+const rapportMois = "Janvier";
+const rapportAnnee = "2025";
+const datePublication = "2025-01-15";
+
+const pageTitle = `Marché Immobilier Lyon 2ème ${rapportMois} ${rapportAnnee} : Analyse Mensuelle`;
+const pageDescription = `Analyse du marché immobilier Lyon 2ème arrondissement ${rapportMois} ${rapportAnnee} : prix au m², nombre de transactions, tendances, biens vendus. Rapport mensuel.`;
+
+const breadcrumbs = [
+  { label: 'Accueil', href: '/' },
+  { label: 'Marché immobilier', href: '/marche-immobilier/' },
+  { label: `Rapport ${rapportMois} ${rapportAnnee}` }
+];
+
+// Données du mois - À mettre à jour
+const keyInfoData = {
+  title: `Marché Lyon 2ème - ${rapportMois} ${rapportAnnee}`,
+  items: [
+    { label: "Prix moyen au m²", value: "6 750€/m²" },
+    { label: "Évolution vs mois précédent", value: "-0,5%" },
+    { label: "Évolution vs année précédente", value: "-2%" },
+    { label: "Nombre de ventes", value: "45 transactions" },
+    { label: "Délai moyen de vente", value: "68 jours" },
+    { label: "Stock de biens disponibles", value: "125 biens" }
+  ]
+};
+
+// Évolution par quartier
+const evolutionQuartiers = {
+  headers: ["Quartier", "Prix moyen", "Évolution 1 mois", "Évolution 1 an"],
+  rows: [
+    ["Bellecour", "8 150€/m²", "=", "-1%"],
+    ["Ainay", "7 950€/m²", "=", "-1%"],
+    ["Presqu'île Centre", "7 150€/m²", "+0,5%", "-2%"],
+    ["Cordeliers", "6 950€/m²", "+1%", "+1%"],
+    ["Confluence", "6 150€/m²", "=", "-3%"],
+    ["Perrache", "5 750€/m²", "+1%", "+2%"]
+  ]
+};
+
+// Ventes notables du mois
+const ventesNotables = [
+  {
+    type: "T4 Bellecour",
+    surface: "98 m²",
+    prix: "795 000€",
+    prixM2: "8 112€/m²",
+    detail: "4ème étage avec ascenseur, vue place"
+  },
+  {
+    type: "T2 Ainay",
+    surface: "52 m²",
+    prix: "385 000€",
+    prixM2: "7 404€/m²",
+    detail: "Rénové, parquet, moulures"
+  },
+  {
+    type: "T3 Confluence",
+    surface: "75 m²",
+    prix: "445 000€",
+    prixM2: "5 933€/m²",
+    detail: "Terrasse 15m², parking, DPE B"
+  }
+];
+
+// Schema.org Article
+const schemaArticle = {
+  "@context": "https://schema.org",
+  "@type": "Article",
+  "headline": pageTitle,
+  "description": pageDescription,
+  "datePublished": datePublication,
+  "dateModified": datePublication,
+  "author": {
+    "@type": "RealEstateAgent",
+    "name": "Escalona Immobilier"
+  },
+  "publisher": {
+    "@type": "RealEstateAgent",
+    "name": "Escalona Immobilier"
+  }
+};
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <Breadcrumbs items={breadcrumbs} />
+  
+  <script type="application/ld+json" set:html={JSON.stringify(schemaArticle)} />
+  
+  <article>
+    <header class="section">
+      <p class="date-publication">Publié le {new Date(datePublication).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}</p>
+      <h1>Marché Immobilier Lyon 2ème - {rapportMois} {rapportAnnee}</h1>
+      <p class="intro">
+        Analyse mensuelle du marché immobilier dans le 2ème arrondissement de Lyon. 
+        Prix, volumes, tendances : le point complet sur l'activité du mois.
+      </p>
+    </header>
+    
+    <!-- Synthèse -->
+    <section class="section">
+      <KeyInfo {...keyInfoData} />
+    </section>
+    
+    <!-- Analyse du mois -->
+    <section class="section">
+      <h2>Analyse du Mois</h2>
+      
+      <p>
+        <strong>En {rapportMois} {rapportAnnee}</strong>, le marché immobilier du 2ème arrondissement 
+        de Lyon confirme sa stabilisation amorcée depuis plusieurs mois. Les prix moyens 
+        s'établissent à <strong>6 750€/m²</strong>, en légère baisse de 0,5% par rapport au mois 
+        précédent.
+      </p>
+      
+      <p>
+        Le volume de transactions reste modéré avec <strong>45 ventes enregistrées</strong>, 
+        conforme à la saisonnalité traditionnelle de janvier. Les délais de vente se 
+        maintiennent autour de <strong>68 jours</strong> pour les biens correctement positionnés en prix.
+      </p>
+      
+      <h3>Faits marquants du mois</h3>
+      <ul>
+        <li>Stabilité des prix dans les quartiers premium (Bellecour, Ainay)</li>
+        <li>Légère progression à Perrache et Cordeliers (+1%)</li>
+        <li>Baisse de l'offre disponible vs décembre (-8%)</li>
+        <li>Retour progressif des acquéreurs après la trêve des fêtes</li>
+      </ul>
+    </section>
+    
+    <!-- Évolution par quartier -->
+    <section class="section">
+      <h2>Évolution des Prix par Quartier</h2>
+      
+      <PriceTable {...evolutionQuartiers} />
+      
+      <p class="text-small text-muted">
+        Évolutions calculées sur les transactions enregistrées. Les variations mensuelles 
+        sont à interpréter avec prudence compte tenu du faible volume de transactions.
+      </p>
+    </section>
+    
+    <!-- Ventes notables -->
+    <section class="section">
+      <h2>Ventes Notables du Mois</h2>
+      
+      <div class="ventes-notables">
+        {ventesNotables.map(vente => (
+          <div class="vente-card">
+            <div class="vente-header">
+              <strong>{vente.type}</strong>
+              <span class="vente-prix">{vente.prix}</span>
+            </div>
+            <div class="vente-details">
+              <span>{vente.surface}</span>
+              <span>{vente.prixM2}</span>
+            </div>
+            <p class="vente-description">{vente.detail}</p>
+          </div>
+        ))}
+      </div>
+    </section>
+    
+    <!-- Analyse demande -->
+    <section class="section">
+      <h2>Profil de la Demande</h2>
+      
+      <p>
+        En ce début d'année, la demande est principalement portée par :
+      </p>
+      
+      <ul>
+        <li><strong>Primo-accédants</strong> (35%) : recherchent studios et T2, budget 150-350k€</li>
+        <li><strong>Familles</strong> (30%) : T3-T4, secteurs Ainay et Bellecour privilégiés</li>
+        <li><strong>Investisseurs</strong> (25%) : studios et T2 pour location, calcul de rentabilité strict</li>
+        <li><strong>Secundo-accédants</strong> (10%) : grands appartements, projets de rénovation</li>
+      </ul>
+      
+      <p>
+        Les critères les plus demandés : DPE correct (A-D), luminosité, absence de vis-à-vis, 
+        extérieur (même petit), proximité transports.
+      </p>
+    </section>
+    
+    <!-- Perspectives -->
+    <section class="section">
+      <h2>Perspectives pour le Mois Prochain</h2>
+      
+      <p>
+        Nous anticipons pour février {rapportAnnee} :
+      </p>
+      
+      <ul>
+        <li>Maintien des prix actuels</li>
+        <li>Augmentation de l'offre avec les nouvelles mises en vente post-fêtes</li>
+        <li>Reprise progressive de l'activité</li>
+        <li>Taux d'emprunt stables autour de 3,5-4%</li>
+      </ul>
+      
+      <p>
+        <strong>Notre conseil</strong> : c'est une période favorable pour les acheteurs. 
+        L'offre est correcte, les vendeurs sont à l'écoute, les négociations sont possibles 
+        sur les biens en vente depuis plusieurs mois.
+      </p>
+    </section>
+    
+    <!-- Navigation rapports -->
+    <section class="section">
+      <h2>Rapports Précédents</h2>
+      <nav class="rapports-nav">
+        <a href="/marche-immobilier/" class="btn btn--outline">← Tous les rapports</a>
+        <!-- Liens vers les rapports précédents à ajouter -->
+      </nav>
+    </section>
+    
+    <!-- CTA -->
+    <section class="section cta-section">
+      <h2>Vous avez un projet ?</h2>
+      <p>
+        Achat ou vente, bénéficiez de notre connaissance approfondie du marché local.
+      </p>
+      <div class="cta-buttons">
+        <a href="/acheter/" class="btn btn--primary">Acheter</a>
+        <a href="/vendre/estimation-gratuite/" class="btn btn--outline">Estimation gratuite</a>
+      </div>
+    </section>
+  </article>
+</BaseLayout>
+
+<style>
+  .date-publication {
+    color: var(--color-text-muted);
+    font-size: 0.875rem;
+    margin-bottom: var(--space-sm);
+  }
+  
+  .intro {
+    font-size: 1.125rem;
+    color: var(--color-text-muted);
+  }
+  
+  .ventes-notables {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-lg);
+  }
+  
+  @media (max-width: 900px) {
+    .ventes-notables {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+  
+  @media (max-width: 600px) {
+    .ventes-notables {
+      grid-template-columns: 1fr;
+    }
+  }
+  
+  .vente-card {
+    border: 1px solid var(--color-border);
+    padding: var(--space-lg);
+  }
+  
+  .vente-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    margin-bottom: var(--space-sm);
+  }
+  
+  .vente-prix {
+    font-weight: bold;
+    color: var(--color-primary);
+  }
+  
+  .vente-details {
+    display: flex;
+    gap: var(--space-md);
+    font-size: 0.875rem;
+    color: var(--color-text-muted);
+    margin-bottom: var(--space-sm);
+  }
+  
+  .vente-description {
+    font-size: 0.875rem;
+    margin: 0;
+  }
+  
+  .rapports-nav {
+    display: flex;
+    gap: var(--space-md);
+  }
+  
+  .cta-section {
+    text-align: center;
+    background: var(--color-bg-alt);
+    padding: var(--space-xl);
+    border: 1px solid var(--color-border);
+  }
+  
+  .cta-buttons {
+    display: flex;
+    gap: var(--space-md);
+    justify-content: center;
+    margin-top: var(--space-lg);
+  }
+</style>

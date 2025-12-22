@@ -1,0 +1,185 @@
+---
+/**
+ * PAGE QUARTIER CONFLUENCE
+ */
+import QuartierLayout from '@layouts/QuartierLayout.astro';
+import PropertyCard from '@components/PropertyCard.astro';
+
+const quartierData = {
+  title: "Immobilier Confluence Lyon 2 : Prix, Biens à Vendre & Guide Complet 2025",
+  description: "Découvrez le quartier Confluence à Lyon 2ème : prix au m² actualisés (5 700€), appartements neufs et récents, éco-quartier moderne. Expert immobilier local.",
+  quartierName: "Confluence",
+  quartierSlug: "confluence",
+  prixMoyen: 5700,
+  evolution: "+3.2%",
+  typeBiens: "Neuf / Contemporain",
+  ambiance: "Moderne / Dynamique",
+  prixParType: [
+    { type: "Studio (< 30m²)", prixMoyen: 6200, fourchetteBasse: 5500, fourchetteHaute: 6800, evolution: "+3.5%" },
+    { type: "T2 (30-50m²)", prixMoyen: 5800, fourchetteBasse: 5200, fourchetteHaute: 6400, evolution: "+3.3%" },
+    { type: "T3 (50-75m²)", prixMoyen: 5600, fourchetteBasse: 5000, fourchetteHaute: 6200, evolution: "+3.0%" },
+    { type: "T4+ (> 75m²)", prixMoyen: 5400, fourchetteBasse: 4800, fourchetteHaute: 6000, evolution: "+2.8%" }
+  ],
+  faqItems: [
+    {
+      question: "Quel est le prix moyen au m² à la Confluence Lyon ?",
+      answer: "Le prix moyen au m² à la Confluence est de 5 700 € en janvier 2025. C'est le quartier qui connaît la plus forte progression du 2ème arrondissement (+3,2% sur 12 mois). Les prix varient de 4 800 €/m² pour les premiers programmes livrés à 6 800 €/m² pour les résidences récentes avec prestations haut de gamme et vue sur le confluent."
+    },
+    {
+      question: "La Confluence est-elle un bon investissement ?",
+      answer: "La Confluence est un excellent choix pour l'investissement locatif. Le quartier attire une population jeune et active (25-40 ans), la demande locative est très forte, et le potentiel de plus-value reste important avec les phases 2 et 3 du projet urbain. Le rendement brut moyen est de 4 à 4,5%, supérieur au reste du 2ème arrondissement."
+    },
+    {
+      question: "Comment est la vie à la Confluence ?",
+      answer: "La vie à la Confluence est résolument moderne et tournée vers les loisirs. Le quartier offre : le centre commercial Confluence (130 boutiques, cinéma), le musée des Confluences, des espaces verts aménagés en bord de Saône, une vie culturelle dynamique (Sucière, événements), de nombreux restaurants et bars branchés. L'ambiance est jeune, urbaine et cosmopolite."
+    },
+    {
+      question: "Quels sont les avantages du neuf à la Confluence ?",
+      answer: "Acheter dans le neuf à la Confluence offre plusieurs avantages : normes RT2012/RE2020 (économies d'énergie), garanties constructeur (décennale, parfait achèvement), balcons ou terrasses sur la plupart des logements, parkings en sous-sol, parties communes modernes, charges de copropriété maîtrisées. Les logements sont lumineux avec de grandes baies vitrées."
+    }
+  ],
+  lastUpdate: "Janvier 2025"
+};
+---
+
+<QuartierLayout {...quartierData}>
+  
+  <Fragment slot="presentation">
+    <p>
+      La <strong>Confluence</strong> est le quartier le plus récent et le plus ambitieux de Lyon. 
+      Né de la reconversion d'anciennes friches industrielles et portuaires, cet <strong>éco-quartier</strong> 
+      incarne le Lyon du XXIème siècle : architecture audacieuse, développement durable et mixité des usages.
+    </p>
+    
+    <h3>Situation géographique</h3>
+    <p>
+      La Confluence occupe la pointe sud de la Presqu'île, au confluent du Rhône et de la Saône. 
+      Le quartier s'étend sur 150 hectares, du cours Charlemagne jusqu'à la pointe où les deux 
+      fleuves se rejoignent. C'est le plus grand projet urbain de Lyon depuis Haussmann.
+    </p>
+    
+    <h3>Histoire et développement</h3>
+    <p>
+      Ancienne zone industrielle (marché de gros, prison, usines), la Confluence a entamé sa 
+      mutation au début des années 2000. La <strong>phase 1</strong> (2003-2015) a vu naître le centre 
+      commercial et les premiers immeubles. La <strong>phase 2</strong> (en cours) développe la partie 
+      sud avec le musée des Confluences. La <strong>phase 3</strong> achèvera le quartier vers 2030.
+    </p>
+    
+    <h3>Ambiance et population</h3>
+    <p>
+      La Confluence attire une population <strong>jeune, active et urbaine</strong> : cadres, 
+      professions créatives, jeunes couples. L'âge moyen est le plus bas du 2ème arrondissement. 
+      Forte proportion de locataires et de primo-accédants. Ambiance cosmopolite et décontractée.
+    </p>
+  </Fragment>
+  
+  <Fragment slot="analyse-prix">
+    <p>
+      <strong>Notre analyse :</strong> La Confluence connaît la plus forte dynamique de prix 
+      du 2ème arrondissement. La demande est portée par les jeunes actifs et investisseurs. 
+      Les programmes neufs se vendent rapidement, souvent sur plan. À surveiller : les 
+      futures livraisons qui pourraient temporairement augmenter l'offre.
+    </p>
+  </Fragment>
+  
+  <Fragment slot="vie-quartier">
+    <h3>Transports</h3>
+    <ul>
+      <li><strong>Tramway T1</strong> : stations Montrochet, Hôtel de Région, Musée des Confluences</li>
+      <li><strong>Métro A</strong> : station Perrache (10 min à pied ou T1)</li>
+      <li><strong>Navette fluviale</strong> : liaison vers Vieux Lyon</li>
+      <li><strong>Vélo'v</strong> : nombreuses stations</li>
+    </ul>
+    
+    <h3>Écoles et crèches</h3>
+    <ul>
+      <li><strong>École</strong> : Groupe scolaire Michel Servet</li>
+      <li><strong>Crèches</strong> : Crèche Confluence, plusieurs micro-crèches</li>
+      <li><strong>À noter</strong> : Offre scolaire en développement avec le quartier</li>
+    </ul>
+    
+    <h3>Commerces et loisirs</h3>
+    <ul>
+      <li><strong>Centre commercial Confluence</strong> : 130 boutiques, cinéma UGC</li>
+      <li><strong>Musée des Confluences</strong> : sciences et sociétés</li>
+      <li><strong>Restaurants</strong> : nombreuses adresses, terrasses sur les quais</li>
+      <li><strong>La Sucrière</strong> : espace culturel, expositions</li>
+    </ul>
+    
+    <h3>Espaces verts</h3>
+    <p>
+      Parc de Saône, place nautique, quais aménagés. Le quartier a été conçu comme un éco-quartier 
+      avec végétalisation importante et gestion des eaux pluviales.
+    </p>
+  </Fragment>
+  
+  <Fragment slot="avantages-inconvenients">
+    <div class="grid grid--2">
+      <div>
+        <h3>✅ Avantages</h3>
+        <ul>
+          <li>Architecture moderne, appartements lumineux</li>
+          <li>Normes énergétiques récentes (RT2012/RE2020)</li>
+          <li>Espaces verts et quais aménagés</li>
+          <li>Centre commercial et loisirs sur place</li>
+          <li>Fort potentiel de plus-value</li>
+          <li>Quartier en devenir, dynamique</li>
+          <li>Prix plus accessibles que Bellecour/Ainay</li>
+        </ul>
+      </div>
+      <div>
+        <h3>⚠️ Inconvénients</h3>
+        <ul>
+          <li>Quartier encore en chantier (phase 2-3)</li>
+          <li>Moins de cachet que l'ancien</li>
+          <li>Manque de commerces de proximité traditionnels</li>
+          <li>Vie de quartier encore en construction</li>
+          <li>Éloigné du centre historique</li>
+          <li>Peu d'écoles pour le moment</li>
+        </ul>
+      </div>
+    </div>
+  </Fragment>
+  
+  <Fragment slot="biens-disponibles">
+    <div class="grid grid--2">
+      <PropertyCard 
+        title="T3 65m² - Résidence récente"
+        price={370000}
+        surface={65}
+        rooms={3}
+        quartier="Confluence"
+        href="/acheter/appartements/t3-confluence-recent/"
+        dpe="B"
+      />
+      <PropertyCard 
+        title="T2 42m² - Vue Saône"
+        price={255000}
+        surface={42}
+        rooms={2}
+        quartier="Confluence"
+        href="/acheter/appartements/t2-confluence-saone/"
+        dpe="B"
+      />
+    </div>
+  </Fragment>
+  
+  <Fragment slot="articles-lies">
+    <div class="grid grid--3">
+      <div class="card">
+        <h4 class="card__title"><a href="/actualites/confluence-phase-2/">Confluence phase 2 : le point</a></h4>
+        <p class="card__meta">20/12/2024</p>
+      </div>
+      <div class="card">
+        <h4 class="card__title"><a href="/actualites/investir-confluence/">Pourquoi investir à la Confluence</a></h4>
+        <p class="card__meta">15/11/2024</p>
+      </div>
+      <div class="card">
+        <h4 class="card__title"><a href="/guides/acheter-neuf-lyon/">Guide : Acheter dans le neuf à Lyon</a></h4>
+        <p class="card__meta">Guide</p>
+      </div>
+    </div>
+  </Fragment>
+  
+</QuartierLayout>

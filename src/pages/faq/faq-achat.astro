@@ -1,0 +1,180 @@
+---
+/**
+ * PAGE FAQ ACHAT
+ * Questions fréquentes sur l'achat immobilier
+ */
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Breadcrumbs from '@components/Breadcrumbs.astro';
+
+const pageTitle = "FAQ Achat Immobilier Lyon 2ème : Questions et Réponses";
+const pageDescription = "Toutes vos questions sur l'achat d'un appartement ou d'une maison à Lyon 2ème arrondissement : budget, financement, étapes, frais. Réponses d'experts.";
+
+const breadcrumbs = [
+  { label: 'Accueil', href: '/' },
+  { label: 'FAQ', href: '/faq/' },
+  { label: 'Questions Achat' }
+];
+
+const faqItems = [
+  {
+    question: "Quel budget minimum pour acheter dans le 2ème arrondissement de Lyon ?",
+    answer: "Pour un studio de 20-25m², comptez minimum 130 000€ à 180 000€ selon le quartier. Un T2 de 40-50m² démarre autour de 250 000€ à 350 000€. Un appartement familial T3-T4 de 70-90m² se négocie entre 450 000€ et 700 000€. Les biens avec extérieur (balcon, terrasse) ou en dernier étage peuvent atteindre des prix plus élevés."
+  },
+  {
+    question: "Quels sont les frais d'acquisition à prévoir en plus du prix d'achat ?",
+    answer: "Prévoyez : 1) Frais de notaire : 7-8% dans l'ancien (environ 3% dans le neuf), 2) Frais de dossier bancaire : 500-1500€, 3) Garantie du prêt (hypothèque ou cautionnement) : 1-2% du montant emprunté, 4) Assurance emprunteur : incluse dans les mensualités. Total : environ 10-12% du prix du bien en plus du prix affiché."
+  },
+  {
+    question: "Combien de temps faut-il pour acheter un appartement ?",
+    answer: "Comptez en moyenne 3 à 4 mois entre le début des recherches et la remise des clés : 1-2 mois de visites pour trouver le bien, quelques jours pour la négociation et l'offre, 2-3 mois entre le compromis et l'acte authentique (obtention du prêt). Si vous avez déjà votre financement, le délai peut être réduit."
+  },
+  {
+    question: "Puis-je acheter sans apport dans le 2ème arrondissement ?",
+    answer: "Acheter sans apport est devenu plus difficile depuis 2022 avec les recommandations du HCSF. Les banques demandent généralement 10% d'apport + les frais de notaire. Cependant, certains profils (jeunes actifs CDI, revenus élevés, premier achat) peuvent encore obtenir un financement à 110%. Un courtier peut vous aider à trouver les meilleures conditions."
+  },
+  {
+    question: "Qu'est-ce que le PTZ et puis-je en bénéficier à Lyon ?",
+    answer: "Le PTZ (Prêt à Taux Zéro) est un prêt sans intérêts pour les primo-accédants. À Lyon (zone A), il est réservé aux logements neufs ou anciens avec travaux importants. Les conditions de ressources sont strictes : pour 2 personnes, revenus max ~51 000€/an. Le PTZ peut financer jusqu'à 40% du bien dans le neuf. Vérifiez votre éligibilité sur le site de l'ANIL."
+  },
+  {
+    question: "Quelle est la différence entre compromis et promesse de vente ?",
+    answer: "Le compromis (ou promesse synallagmatique) engage les deux parties : vendeur ET acheteur. Si l'acheteur se rétracte hors délai légal, il perd son dépôt de garantie. La promesse unilatérale n'engage que le vendeur : l'acheteur a une option d'achat pendant un délai fixé. Le compromis est la forme la plus courante."
+  },
+  {
+    question: "Quelles sont les conditions suspensives à inclure dans le compromis ?",
+    answer: "Les conditions suspensives protègent l'acheteur : 1) Obtention du prêt (obligatoire si financement), 2) Absence de servitude grave non déclarée, 3) Obtention d'un permis de construire si travaux, 4) Vente d'un autre bien si nécessaire. Si la condition n'est pas réalisée, la vente est annulée et le dépôt de garantie restitué."
+  },
+  {
+    question: "Quel délai de rétractation après signature du compromis ?",
+    answer: "L'acheteur bénéficie d'un délai de rétractation de 10 jours calendaires (week-ends et jours fériés inclus). Ce délai court à partir du lendemain de la notification du compromis (remise en main propre ou réception recommandée). Pendant ces 10 jours, l'acheteur peut se rétracter sans motif ni pénalité."
+  },
+  {
+    question: "Comment se passe la signature chez le notaire ?",
+    answer: "La signature de l'acte authentique chez le notaire dure environ 1h30 : lecture de l'acte, signature électronique ou manuscrite, remise des clés, paiement (le notaire débite les fonds déjà déposés). Vous repartez avec une attestation de propriété. Le titre de propriété définitif arrive quelques mois plus tard."
+  },
+  {
+    question: "Puis-je acheter seul(e) ou faut-il être en couple ?",
+    answer: "Vous pouvez parfaitement acheter seul(e). En couple non marié, vous pouvez acheter en indivision (chacun possède une quote-part) ou via une SCI. Pour les couples mariés, le régime matrimonial détermine la propriété. Chaque situation a ses avantages fiscaux et patrimoniaux : consultez un notaire pour choisir."
+  },
+  {
+    question: "Faut-il faire des visites avec un architecte ?",
+    answer: "Pour un bien avec travaux importants ou un appartement ancien, faire intervenir un architecte ou un maître d'œuvre lors d'une seconde visite est recommandé. Il pourra identifier les travaux nécessaires, estimer leur coût, et vous éviter des mauvaises surprises. Comptez 200-500€ pour cette prestation."
+  },
+  {
+    question: "Comment bien négocier le prix d'un appartement ?",
+    answer: "Pour négocier efficacement : 1) Connaissez les prix du marché (notre estimation peut vous aider), 2) Identifiez les défauts et travaux à chiffrer, 3) Sachez depuis combien de temps le bien est en vente, 4) Ayez votre financement prêt pour être crédible, 5) Faites une offre écrite argumentée. En moyenne, la négociation représente 3-5% du prix affiché dans le 2ème."
+  }
+];
+
+// Schema.org FAQPage
+const schemaFaq = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  "mainEntity": faqItems.map(faq => ({
+    "@type": "Question",
+    "name": faq.question,
+    "acceptedAnswer": {
+      "@type": "Answer",
+      "text": faq.answer
+    }
+  }))
+};
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <Breadcrumbs items={breadcrumbs} />
+  
+  <script type="application/ld+json" set:html={JSON.stringify(schemaFaq)} />
+  
+  <article>
+    <header class="section">
+      <h1>FAQ Achat Immobilier Lyon 2ème</h1>
+      <p>
+        Toutes les réponses à vos questions sur l'achat d'un bien immobilier 
+        dans le 2ème arrondissement de Lyon : budget, financement, étapes, frais.
+      </p>
+    </header>
+    
+    <section class="section">
+      <div class="faq-list">
+        {faqItems.map(faq => (
+          <details class="faq-item">
+            <summary class="faq-question">{faq.question}</summary>
+            <div class="faq-answer">
+              <p>{faq.answer}</p>
+            </div>
+          </details>
+        ))}
+      </div>
+    </section>
+    
+    <section class="section related-links">
+      <h2>Pages Connexes</h2>
+      <ul>
+        <li><a href="/acheter/">Appartements à vendre Lyon 2ème</a></li>
+        <li><a href="/marche-immobilier/">Prix et tendances du marché</a></li>
+        <li><a href="/faq/faq-vente/">FAQ Vendre son bien</a></li>
+        <li><a href="/contact/">Nous poser une question</a></li>
+      </ul>
+    </section>
+  </article>
+</BaseLayout>
+
+<style>
+  .faq-list {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-md);
+  }
+  
+  .faq-item {
+    border: 1px solid var(--color-border);
+    background: var(--color-bg-alt);
+  }
+  
+  .faq-question {
+    padding: var(--space-lg);
+    cursor: pointer;
+    font-weight: 600;
+    list-style: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  
+  .faq-question::after {
+    content: '+';
+    font-size: 1.5rem;
+    font-weight: 300;
+    flex-shrink: 0;
+    margin-left: var(--space-md);
+  }
+  
+  details[open] .faq-question::after {
+    content: '−';
+  }
+  
+  .faq-answer {
+    padding: 0 var(--space-lg) var(--space-lg);
+    border-top: 1px solid var(--color-border);
+  }
+  
+  .related-links ul {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--space-md);
+    list-style: none;
+    padding: 0;
+  }
+  
+  .related-links a {
+    display: inline-block;
+    padding: var(--space-sm) var(--space-md);
+    border: 1px solid var(--color-border);
+    text-decoration: none;
+  }
+  
+  .related-links a:hover {
+    background: var(--color-bg-alt);
+  }
+</style>

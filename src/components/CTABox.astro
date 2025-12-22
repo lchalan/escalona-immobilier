@@ -1,0 +1,24 @@
+---
+/**
+ * CTABox Component
+ * Encadré d'appel à l'action
+ */
+
+interface Props {
+  title: string;
+  text?: string;
+  buttonText: string;
+  buttonHref: string;
+  variant?: 'default' | 'primary';
+}
+
+const { title, text, buttonText, buttonHref, variant = 'default' } = Astro.props;
+---
+
+<div class="cta-box">
+  <h3 class="cta-box__title">{title}</h3>
+  {text && <p class="cta-box__text">{text}</p>}
+  <a href={buttonHref} class={`btn ${variant === 'primary' ? 'btn--primary' : ''}`}>
+    {buttonText}
+  </a>
+</div>

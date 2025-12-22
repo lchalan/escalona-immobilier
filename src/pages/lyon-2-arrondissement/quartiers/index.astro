@@ -1,0 +1,195 @@
+---
+/**
+ * PAGE INDEX QUARTIERS
+ * Liste tous les quartiers du 2ème arrondissement
+ */
+import BaseLayout from '@layouts/BaseLayout.astro';
+import Breadcrumbs from '@components/Breadcrumbs.astro';
+
+const pageTitle = "Quartiers Lyon 2ème Arrondissement : Guide Complet par Quartier";
+const pageDescription = "Découvrez tous les quartiers du 2ème arrondissement de Lyon : Bellecour, Ainay, Confluence, Perrache, Presqu'île, Cordeliers. Prix, ambiance, conseils pour chaque quartier.";
+
+const breadcrumbs = [
+  { label: 'Accueil', href: '/' },
+  { label: 'Lyon 2ème', href: '/lyon-2-arrondissement/' },
+  { label: 'Quartiers' }
+];
+
+const quartiers = [
+  {
+    name: "Bellecour",
+    slug: "bellecour",
+    prix: "6 800 €/m²",
+    ambiance: "Prestige / Central",
+    description: "Cœur historique de Lyon, place emblématique, immeubles haussmanniens de standing."
+  },
+  {
+    name: "Ainay",
+    slug: "ainay",
+    prix: "6 500 €/m²",
+    ambiance: "Familial / Calme",
+    description: "Quartier résidentiel prisé des familles, marché quotidien, ambiance village."
+  },
+  {
+    name: "Confluence",
+    slug: "confluence",
+    prix: "5 700 €/m²",
+    ambiance: "Moderne / Dynamique",
+    description: "Éco-quartier contemporain, architecture audacieuse, fort potentiel."
+  },
+  {
+    name: "Presqu'île Centre",
+    slug: "presquile",
+    prix: "6 200 €/m²",
+    ambiance: "Animé / Commercial",
+    description: "Cœur commerçant, rue de la République, vie urbaine intense."
+  },
+  {
+    name: "Cordeliers",
+    slug: "cordeliers",
+    prix: "6 300 €/m²",
+    ambiance: "Historique / Vivant",
+    description: "Patrimoine remarquable, place des Jacobins, appartements de caractère."
+  },
+  {
+    name: "Perrache",
+    slug: "perrache",
+    prix: "5 400 €/m²",
+    ambiance: "En mutation / Accessible",
+    description: "Meilleur rapport qualité-prix, quartier en transformation, fort potentiel."
+  }
+];
+---
+
+<BaseLayout title={pageTitle} description={pageDescription}>
+  <Breadcrumbs items={breadcrumbs} />
+  
+  <article>
+    <header class="section">
+      <h1>Les Quartiers du 2ème Arrondissement de Lyon</h1>
+      <p>
+        Le 2ème arrondissement de Lyon se compose de <strong>6 quartiers distincts</strong>, 
+        chacun avec son identité, son ambiance et ses prix. Du prestige de Bellecour à 
+        l'accessibilité de Perrache, découvrez le quartier qui vous correspond.
+      </p>
+    </header>
+    
+    <section class="section">
+      <h2>Comparatif des quartiers</h2>
+      
+      <table>
+        <thead>
+          <tr>
+            <th>Quartier</th>
+            <th>Prix moyen/m²</th>
+            <th>Ambiance</th>
+            <th>Pour qui ?</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><a href="/lyon-2-arrondissement/quartiers/bellecour/">Bellecour</a></td>
+            <td>6 800 €</td>
+            <td>Prestige</td>
+            <td>CSP+, patrimoine</td>
+          </tr>
+          <tr>
+            <td><a href="/lyon-2-arrondissement/quartiers/ainay/">Ainay</a></td>
+            <td>6 500 €</td>
+            <td>Familial</td>
+            <td>Familles, calme</td>
+          </tr>
+          <tr>
+            <td><a href="/lyon-2-arrondissement/quartiers/cordeliers/">Cordeliers</a></td>
+            <td>6 300 €</td>
+            <td>Historique</td>
+            <td>Amateurs de cachet</td>
+          </tr>
+          <tr>
+            <td><a href="/lyon-2-arrondissement/quartiers/presquile/">Presqu'île Centre</a></td>
+            <td>6 200 €</td>
+            <td>Animé</td>
+            <td>Jeunes actifs, investisseurs</td>
+          </tr>
+          <tr>
+            <td><a href="/lyon-2-arrondissement/quartiers/confluence/">Confluence</a></td>
+            <td>5 700 €</td>
+            <td>Moderne</td>
+            <td>Jeunes, neuf</td>
+          </tr>
+          <tr>
+            <td><a href="/lyon-2-arrondissement/quartiers/perrache/">Perrache</a></td>
+            <td>5 400 €</td>
+            <td>En mutation</td>
+            <td>Investisseurs, budgets serrés</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+    
+    <section class="section">
+      <h2>Tous les quartiers en détail</h2>
+      
+      <div class="quartiers-grid">
+        {quartiers.map((quartier) => (
+          <div class="quartier-card card">
+            <h3 class="card__title">
+              <a href={`/lyon-2-arrondissement/quartiers/${quartier.slug}/`}>{quartier.name}</a>
+            </h3>
+            <p class="card__meta">{quartier.prix} • {quartier.ambiance}</p>
+            <p>{quartier.description}</p>
+            <p>
+              <a href={`/lyon-2-arrondissement/quartiers/${quartier.slug}/`}>
+                Découvrir {quartier.name} →
+              </a>
+            </p>
+          </div>
+        ))}
+      </div>
+    </section>
+    
+    <section class="section section--alt">
+      <h2>Comment choisir son quartier ?</h2>
+      
+      <h3>Vous êtes une famille avec enfants</h3>
+      <p>
+        Privilégiez <strong>Ainay</strong> pour son calme, ses écoles et son marché quotidien. 
+        <strong>Bellecour</strong> est également adapté si votre budget le permet.
+      </p>
+      
+      <h3>Vous êtes jeune actif ou couple sans enfants</h3>
+      <p>
+        La <strong>Confluence</strong> offre des appartements modernes à prix accessibles. 
+        La <strong>Presqu'île Centre</strong> vous place au cœur de l'action.
+      </p>
+      
+      <h3>Vous cherchez un investissement locatif</h3>
+      <p>
+        <strong>Perrache</strong> offre le meilleur rendement avec son potentiel de plus-value. 
+        La <strong>Confluence</strong> attire une forte demande locative jeune.
+      </p>
+      
+      <h3>Vous recherchez le prestige et le patrimoine</h3>
+      <p>
+        <strong>Bellecour</strong> et <strong>Ainay</strong> sont les adresses les plus cotées. 
+        Les <strong>Cordeliers</strong> offrent du caractère à prix légèrement inférieur.
+      </p>
+    </section>
+    
+    <section class="section">
+      <div class="cta-box">
+        <h3>Besoin d'aide pour choisir ?</h3>
+        <p>Notre équipe connaît chaque quartier du 2ème arrondissement. Parlez-nous de votre projet.</p>
+        <a href="/contact/" class="btn btn--primary">Nous contacter</a>
+      </div>
+    </section>
+  </article>
+</BaseLayout>
+
+<style>
+  .quartiers-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: var(--space-lg);
+  }
+</style>
