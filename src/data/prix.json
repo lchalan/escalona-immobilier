@@ -1,12 +1,6 @@
-{
-  "arrondissement": "Lyon 2ème",
-  "lastUpdate": "2024-12-22",
-  "prixParQuartier": {
-    "bellecour": { "moyenne": 8200, "tendance": "stable" },
-    "ainay": { "moyenne": 8000, "tendance": "stable" },
-    "presquile": { "moyenne": 7200, "tendance": "stable" },
-    "cordeliers": { "moyenne": 7000, "tendance": "hausse" },
-    "confluence": { "moyenne": 6200, "tendance": "stable" },
-    "perrache": { "moyenne": 5800, "tendance": "hausse" }
-  }
+﻿{
+  "moyen": 6800,
+  "min": 5000,
+  "max": 9500,
+  "evolution": -2.9
 }
